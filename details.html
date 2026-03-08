@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Details – 21 Days of Focus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange:    #f88032;
+      --orange-dk: #d9681f;
+      --blue:      #0e4f91;
+      --blue-dk:   #0a3d70;
+      --blue-lt:   #e8f0fa;
+      --text:      #111;
+      --muted:     #666;
+      --light:     #f5f5f3;
+      --border:    #e5e5e5;
+      --white:     #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: var(--white); color: var(--text);
+      line-height: 1.7; overflow-x: hidden; font-size: 17px;
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34,1.2,0.64,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 900;
+      background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { height: 42px; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-size: 0.9rem; color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--text); }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.88rem; color: var(--muted); text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--text); }
+    .btn-nav {
+      font-size: 0.9rem; font-weight: 700; font-family: Helvetica, Arial, sans-serif;
+      background: var(--orange); color: #fff;
+      padding: 10px 24px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .btn-nav:hover { background: var(--orange-dk); transform: translateY(-1px); }
+    .btn-nav:active { transform: translateY(0); }
+    @media (max-width: 640px) { nav { padding: 0 20px; } }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    .page-wrap {
+      display: grid; grid-template-columns: 220px 1fr; gap: 64px;
+      max-width: 1100px; margin: 0 auto; padding: 40px 48px 80px;
+    }
+    @media (max-width: 960px) { .page-wrap { grid-template-columns: 1fr; padding: 32px 20px 60px; } }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: none; }
+    @media (min-width: 960px) { .sidebar { display: block; } }
+    .sidebar-inner { position: sticky; top: 88px; }
+    .sidebar-title { font-family: 'Barlow', sans-serif; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; padding-left: 12px; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .sidebar-nav a {
+      display: block; font-size: 0.85rem; color: var(--muted); text-decoration: none;
+      padding: 7px 12px; border-radius: 6px; border-left: 3px solid transparent;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .sidebar-nav a:hover { color: var(--text); background: var(--light); }
+    .sidebar-nav a.active { color: var(--orange); border-left-color: var(--orange); background: rgba(248,128,50,0.05); font-weight: 600; }
+
+    /* ── MAIN CONTENT ── */
+    .main-content { min-width: 0; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { padding-bottom: 48px; border-bottom: 2px solid var(--border); margin-bottom: 0; }
+    .page-header .label { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .page-header h1 {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.025em; line-height: 1.08;
+      color: var(--text); margin-bottom: 16px;
+    }
+    .page-header p { color: var(--muted); font-size: 1.05rem; max-width: 560px; }
+
+    /* ── SECTION BLOCKS ── */
+    .section-block { padding: 64px 0 0; border-top: 1px solid var(--border); margin-top: 64px; }
+    .section-block:first-child { border-top: none; margin-top: 0; padding-top: 56px; }
+
+    .label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Barlow', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em; line-height: 1.1; color: var(--text); margin-bottom: 18px;
+    }
+    h3 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--text); margin-bottom: 10px; }
+    h4 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
+    p { color: var(--muted); line-height: 1.78; font-size: 1.02rem; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    .highlight { color: var(--orange); }
+    .bold-text { color: var(--text); font-weight: 700; }
+    strong { color: var(--text); font-weight: 700; }
+
+    .rule { width: 44px; height: 3px; background: var(--orange); border-radius: 2px; margin: 18px 0 24px; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: Helvetica, Arial, sans-serif; font-weight: 700; font-size: 1rem;
+      background: var(--orange); color: #fff;
+      padding: 15px 32px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none;
+      box-shadow: 0 2px 8px rgba(248,128,50,0.25), 0 8px 24px rgba(248,128,50,0.14);
+      transition: background 0.2s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+    }
+    .btn-primary:hover { background: var(--orange-dk); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    .text-link {
+      font-size: 0.95rem; color: var(--blue); font-weight: 700;
+      text-decoration: none; border-bottom: 1.5px solid rgba(14,79,145,0.3); padding-bottom: 2px;
+      transition: border-color 0.2s ease;
+    }
+    .text-link:hover { border-color: var(--blue); }
+
+    /* ── BEFORE/AFTER ── */
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: 12px; overflow: hidden; margin-top: 32px; }
+    @media (max-width: 600px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba-col { padding: 36px 32px; }
+    .ba-before { background: #fafafa; border: 1.5px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; }
+    .ba-after  { background: var(--blue); border-radius: 0 12px 12px 0; }
+    @media (max-width: 600px) { .ba-before { border-radius: 12px 12px 0 0; border-right: 1.5px solid var(--border); border-bottom: none; } .ba-after { border-radius: 0 0 12px 12px; } }
+    .ba-heading { font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; }
+    .ba-before .ba-heading { color: #bbb; }
+    .ba-after  .ba-heading { color: var(--orange); }
+    .ba-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .ba-item { display: flex; flex-direction: column; gap: 3px; }
+    .ba-item-main { font-family: 'Barlow', sans-serif; font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+    .ba-before .ba-item-main { color: var(--text); }
+    .ba-after  .ba-item-main { color: #fff; }
+    .ba-item-sub { font-size: 0.9rem; color: var(--muted); padding-left: 28px; line-height: 1.5; }
+    .ba-after  .ba-item-sub { color: rgba(255,255,255,0.62); }
+
+    /* ── STEPS (How it works) ── */
+    .detail-steps { display: flex; flex-direction: column; gap: 0; margin-top: 32px; border: 2.5px solid var(--blue); border-radius: 12px; overflow: hidden; }
+    .detail-step {
+      display: grid; grid-template-columns: 72px 1fr; gap: 0;
+      border-bottom: 2px solid var(--blue);
+    }
+    .detail-step:last-child { border-bottom: none; }
+    .step-num-col {
+      background: var(--blue); display: flex; align-items: flex-start; justify-content: center;
+      padding: 28px 16px; flex-shrink: 0;
+    }
+    .step-num-col span {
+      font-family: 'Barlow', sans-serif; font-size: 1.6rem; font-weight: 900;
+      color: var(--orange); line-height: 1;
+    }
+    .step-body { padding: 28px 32px; }
+    .step-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .step-body p { font-size: 1rem; margin-bottom: 0; }
+
+    /* ── COLLAPSIBLE ── */
+    .collapsible { border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 14px; }
+    .collapsible-trigger {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 24px; text-align: left;
+      transition: background 0.2s ease;
+    }
+    .collapsible-trigger:hover { background: var(--light); }
+    .collapsible-title { font-family: 'Barlow', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .collapsible-icon { flex-shrink: 0; color: var(--orange); font-size: 1rem; transition: transform 0.3s ease; }
+    .collapsible-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .collapsible-body-inner { padding: 0 24px 24px; }
+    .collapsible.open .collapsible-icon { transform: rotate(180deg); }
+    .collapsible.open .collapsible-body { max-height: 600px; }
+
+    /* ── VALUE LIST ── */
+    .value-list { list-style: none; display: flex; flex-direction: column; gap: 20px; margin-top: 24px; }
+    .value-item { display: flex; gap: 18px; align-items: flex-start; }
+    .value-icon {
+      flex-shrink: 0; width: 42px; height: 42px;
+      background: rgba(248,128,50,0.1); border: 1.5px solid rgba(248,128,50,0.25); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .value-text strong { display: block; font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+    .value-text p { font-size: 0.95rem; margin: 0; }
+
+    /* ── CHECK/X ── */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 1rem; color: var(--text); }
+    .check-list .yes { color: #22a55a; flex-shrink: 0; font-weight: 700; }
+    .check-list .no  { color: #d93025; flex-shrink: 0; font-weight: 700; }
+
+    /* ── TWO-COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+    .col-card { background: var(--light); border-radius: 10px; padding: 28px 24px; }
+    .col-card h4 { margin-bottom: 14px; }
+
+    /* ── IDENTITY BOXES ── */
+    .identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    @media (max-width: 600px) { .identity-grid { grid-template-columns: 1fr; } }
+    .identity-box { background: var(--light); border-radius: 10px; padding: 24px 20px; }
+    .identity-box .ib-label { font-family: 'Barlow', sans-serif; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .identity-box p { font-size: 0.95rem; margin: 0; }
+    .identity-box.after { background: var(--blue); }
+    .identity-box.after .ib-label { color: var(--orange); }
+    .identity-box.after p { color: rgba(255,255,255,0.8); }
+
+    /* ── STATS ── */
+    .stats-row { display: flex; gap: 48px; flex-wrap: wrap; margin: 32px 0; }
+    .stat-num { font-family: 'Barlow', sans-serif; font-size: 3.5rem; font-weight: 900; letter-spacing: -0.04em; color: var(--blue); line-height: 1; }
+    .stat-label { font-size: 0.88rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── RESULTS LIST ── */
+    .results-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+    @media (max-width: 600px) { .results-cols { grid-template-columns: 1fr; } }
+    .result-item { display: flex; align-items: center; gap: 12px; font-size: 0.98rem; color: var(--text); padding: 11px 0; border-bottom: 1px solid var(--border); }
+    .result-item::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-card { background: var(--light); border-radius: 12px; overflow: hidden; margin-bottom: 20px; display: flex; gap: 0; }
+    @media (max-width: 600px) { .testi-card { flex-direction: column; } }
+    .testi-photo-wrap { flex-shrink: 0; width: 120px; }
+    @media (max-width: 600px) { .testi-photo-wrap { width: 100%; height: 200px; } }
+    .testi-photo { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .testi-body { padding: 28px 28px; flex: 1; }
+    .testi-stars { color: var(--orange); font-size: 0.82rem; letter-spacing: 2px; margin-bottom: 6px; }
+    .testi-goal { font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .testi-quote { font-size: 1rem; color: var(--text); line-height: 1.72; font-style: italic; margin-bottom: 14px; }
+    .testi-name { font-size: 0.88rem; font-weight: 700; color: var(--blue); }
+
+    /* ── COHORTS ── */
+    .cohort-row {
+      background: var(--white); border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 24px 28px; display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap; margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .cohort-row.next { border-color: var(--orange); background: rgba(248,128,50,0.04); }
+    .cohort-date { font-family: 'Barlow', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--text); }
+    .cohort-time { font-size: 0.88rem; color: var(--muted); margin-top: 3px; }
+    .spots-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(248,128,50,0.12); border: 1px solid rgba(248,128,50,0.3);
+      border-radius: 100px; padding: 4px 14px; font-size: 0.8rem; color: var(--orange); font-weight: 700;
+      margin-top: 6px;
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    @media (max-width: 640px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card { border: 1.5px solid var(--border); border-radius: 12px; padding: 36px 32px; position: relative; }
+    .price-card.featured { border-color: var(--orange); box-shadow: 0 4px 16px rgba(248,128,50,0.1), 0 16px 40px rgba(248,128,50,0.07); }
+    .price-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; padding: 4px 16px; border-radius: 100px; white-space: nowrap; }
+    .price-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .price-amount { font-family: 'Barlow', sans-serif; font-size: 3.8rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: var(--text); }
+    .price-orig { font-size: 1rem; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+    .price-note { font-size: 0.82rem; color: var(--orange); font-weight: 700; margin-bottom: 22px; margin-top: 4px; }
+    .price-divider { height: 1px; background: var(--border); margin: 18px 0; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 28px; }
+    .price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.97rem; color: var(--text); }
+    .price-features li .check { color: var(--orange); font-weight: 800; flex-shrink: 0; }
+    .price-features li .val { color: var(--muted); font-size: 0.82rem; margin-left: auto; white-space: nowrap; }
+
+    /* ── FAQ ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-trigger {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 0; text-align: left; transition: opacity 0.2s ease;
+    }
+    .faq-trigger:hover { opacity: 0.75; }
+    .faq-q { font-family: 'Barlow', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .faq-icon { flex-shrink: 0; color: var(--orange); font-size: 1.4rem; font-weight: 300; line-height: 1; transition: transform 0.3s ease; }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-body-inner { padding-bottom: 20px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-item.open .faq-body { max-height: 400px; }
+
+    /* ── GUARANTEE ── */
+    .guarantee-box {
+      background: rgba(34,165,90,0.06); border: 1.5px solid rgba(34,165,90,0.2);
+      border-radius: 12px; padding: 32px 28px;
+    }
+    .guarantee-box h3 { color: #22a55a; margin-bottom: 12px; }
+
+    /* ── FINAL CTA ── */
+    .final-cta-block {
+      background: var(--blue); border-radius: 16px; padding: 56px 48px;
+      text-align: center; margin-top: 0;
+    }
+    .final-cta-block h2 { color: #fff; margin-bottom: 14px; }
+    .final-cta-block p { color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .final-cta-block .contact { margin-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .final-cta-block .contact a { color: rgba(255,255,255,0.65); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── FOOTER ── */
+    footer { background: #0a0f1a; padding: 56px 48px 40px; }
+    .footer-top { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: center; }
+    .footer-brand { font-family: 'Barlow', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; }
+    .footer-brand span { color: var(--orange); }
+    .footer-social { display: flex; gap: 12px; }
+    .soc-link { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; transition: background 0.2s ease, color 0.2s ease; }
+    .soc-link:hover { background: rgba(255,255,255,0.14); color: #fff; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 24px; }
+    .footer-links a { font-size: 0.84rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s ease; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.2); margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div style="display:flex; align-items:center; gap:20px;">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+      Back
+    </a>
+    <a href="/"><img src="brand_assets/Graphics/logo bigga.png" alt="The Focus Tribe" class="nav-logo" /></a>
+  </div>
+  <a href="mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application" class="btn-nav">Apply Now</a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-title">On this page</div>
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#before-after">Before & After</a></li>
+        <li><a href="#solution">The Solution</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#included">What's Included</a></li>
+        <li><a href="#who">Who It's For</a></li>
+        <li><a href="#identity">What Changes</a></li>
+        <li><a href="#story">My Story</a></li>
+        <li><a href="#goals">Goals Completed</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#cohorts">Cohorts</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#guarantee">Guarantee</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-content">
+
+    <!-- Page intro -->
+    <div class="page-header reveal">
+      <div class="label">Everything You Need to Know</div>
+      <h1>The <span class="highlight">21-Day Focus</span> Challenge — Full Details</h1>
+      <p>You're here because you want the full picture before committing. Good. Read everything below — then decide.</p>
+    </div>
+
+    <!-- ── PROBLEM ── -->
+    <div class="section-block reveal" id="problem">
+      <div class="label">The Problem</div>
+      <h2>Why You Keep <span class="highlight">Starting Over</span></h2>
+      <div class="rule"></div>
+      <p>You're not lazy. You're not undisciplined. You've <strong>proven you can start things</strong> — you've done it dozens of times. The problem is finishing.</p>
+      <p>Somewhere between day 3 and day 14, the novelty wears off. Life pushes back. The goal that felt urgent last week now feels optional. You tell yourself you'll restart Monday. You don't.</p>
+      <p>This isn't a willpower problem. It's a <strong>structure problem</strong>. When there are no stakes, no one watching, and no external pressure — <span class="highlight">quitting is costless</span>. So you quit.</p>
+      <p>The most consistent people in the world don't have more willpower. They have better systems and <strong>people around them who expect results</strong>.</p>
+    </div>
+
+    <!-- ── BEFORE / AFTER ── -->
+    <div class="section-block reveal" id="before-after">
+      <div class="label">The Shift</div>
+      <h2>Before & <span class="highlight">After</span></h2>
+      <div class="rule"></div>
+      <div class="ba-grid">
+        <div class="ba-col ba-before">
+          <div class="ba-heading">Without accountability</div>
+          <ul class="ba-list">
+            <li class="ba-item"><div class="ba-item-main">❌ Scattered</div><div class="ba-item-sub">A million ideas, zero follow-through</div></li>
+            <li class="ba-item"><div class="ba-item-main">❌ Stuck in the cycle</div><div class="ba-item-sub">Starting strong, fading fast, restarting again</div></li>
+            <li class="ba-item"><div class="ba-item-main">❌ Eroding self-trust</div><div class="ba-item-sub">Every fail → negative self-view</div></li>
+            <li class="ba-item"><div class="ba-item-main">❌ Doing it alone</div><div class="ba-item-sub">No one noticing when you disappear</div></li>
+            <li class="ba-item"><div class="ba-item-main">❌ Negotiating constantly</div><div class="ba-item-sub">"Just this once" becomes every time</div></li>
+          </ul>
+        </div>
+        <div class="ba-col ba-after">
+          <div class="ba-heading">With the cohort</div>
+          <ul class="ba-list">
+            <li class="ba-item"><div class="ba-item-main" style="color:#fff">✅ Focused</div><div class="ba-item-sub">Clear priorities, daily action, real progress</div></li>
+            <li class="ba-item"><div class="ba-item-main" style="color:#fff">✅ Building momentum</div><div class="ba-item-sub">Showing up even when you don't feel like it</div></li>
+            <li class="ba-item"><div class="ba-item-main" style="color:#fff">✅ Restoring self-trust</div><div class="ba-item-sub">You do what you say you'll do</div></li>
+            <li class="ba-item"><div class="ba-item-main" style="color:#fff">✅ Supported by your Tribe</div><div class="ba-item-sub">People who notice, who care, who call you out</div></li>
+            <li class="ba-item"><div class="ba-item-main" style="color:#fff">✅ New identity forming</div><div class="ba-item-sub">You're becoming someone who follows through</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SOLUTION ── -->
+    <div class="section-block reveal" id="solution">
+      <div class="label">The Solution</div>
+      <h2>A Small Group With <span class="highlight">Real Stakes</span></h2>
+      <div class="rule"></div>
+      <p>The 21-Day Focus Challenge is a structured <strong>accountability sprint</strong>. Not a course. Not a coaching program. Not a mastermind with dozens of strangers.</p>
+      <p>It's a tight cohort of <strong>10–12 people</strong> who all commit publicly, track visibly, and face <span class="highlight">real consequences</span> if they don't follow through.</p>
+      <p>The timeline is <strong>fixed</strong>. The structure is simple. The expectations are clear from day one. Three weeks is long enough to build momentum and short enough to stay focused.</p>
+    </div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <div class="section-block reveal" id="how-it-works">
+      <div class="label">The Process</div>
+      <h2>How It Works — <span class="highlight">In Detail</span></h2>
+      <div class="rule"></div>
+      <div class="detail-steps">
+        <div class="detail-step">
+          <div class="step-num-col"><span>01</span></div>
+          <div class="step-body">
+            <h3>Onboarding Call</h3>
+            <p>Before the challenge starts, you get a 1-on-1 call with Thierry. You'll <strong>clarify your goals</strong>, set your consequence (the thing you'll have to do if you don't complete the challenge), and make sure you're set up for success. This isn't optional — it's how you show up with <span class="highlight">intention</span> instead of drifting in on day one.</p>
+          </div>
+        </div>
+        <div class="detail-step">
+          <div class="step-num-col"><span>02</span></div>
+          <div class="step-body">
+            <h3>Commit Publicly</h3>
+            <p>On day one, you post your goals and your <strong>consequence</strong> to the group WhatsApp. No vague intentions — specific, measurable commitments. The group sees everything. This is the moment it gets real. When others know what you're doing and what you're risking, the psychological stakes go up significantly.</p>
+          </div>
+        </div>
+        <div class="detail-step">
+          <div class="step-num-col"><span>03</span></div>
+          <div class="step-body">
+            <h3>Daily Tracking</h3>
+            <p>Every day, you post your check-in to the group. <strong>Did you do it? Yes or no.</strong> 30 seconds. Everyone sees. There's no hiding a missed day. No "I'll catch up tomorrow." The daily visibility is what makes this work — light enough to not be a burden, <span class="highlight">present enough to matter</span>.</p>
+          </div>
+        </div>
+        <div class="detail-step">
+          <div class="step-num-col"><span>04</span></div>
+          <div class="step-body">
+            <h3>Weekly Live Calls</h3>
+            <p>Three calls over the 21 days — week 1, week 2, week 3. <strong>Video on. Everyone present.</strong> You share wins, obstacles, and what you're adjusting. Thierry facilitates and personally checks in on each person. These calls are where the community forms. Most cohort members stay in touch long after the 21 days end.</p>
+          </div>
+        </div>
+        <div class="detail-step">
+          <div class="step-num-col"><span>05</span></div>
+          <div class="step-body">
+            <h3>The Consequence System</h3>
+            <p>Before day one, you choose your consequence. It needs to be something you genuinely don't want — a donation, a public admission, a payment. Something <span class="highlight">real</span>.</p>
+            <p style="margin-top:12px;"><strong>Miss once:</strong> Redemption 1 — 24 hours to make it up.<br><strong>Miss twice:</strong> Redemption 2 — one more chance.<br><strong>Miss three times:</strong> You execute your consequence. No exceptions. No renegotiating.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <div class="label" style="margin-bottom:12px;">Deeper dives</div>
+        <div class="collapsible" id="col-goals">
+          <button class="collapsible-trigger" onclick="toggleCollapsible('col-goals')"><span class="collapsible-title">What kinds of goals can I pick?</span><span class="collapsible-icon">▾</span></button>
+          <div class="collapsible-body"><div class="collapsible-body-inner"><p>Anything daily and specific — habits (exercise, meditation, reading), projects (write every day, make sales calls), creative work, health goals, business tasks. Up to 3 goals. We clarify these on your onboarding call to make sure they're <strong>achievable and measurable</strong>.</p></div></div>
+        </div>
+        <div class="collapsible" id="col-consequence">
+          <button class="collapsible-trigger" onclick="toggleCollapsible('col-consequence')"><span class="collapsible-title">How do consequences actually work?</span><span class="collapsible-icon">▾</span></button>
+          <div class="collapsible-body"><div class="collapsible-body-inner"><p>You choose before day one. It needs to be something <span class="highlight">you genuinely don't want</span> to do. Past examples: donating to a cause you oppose, posting a public confession, cold showers for a week. The group holds you to it. This isn't about punishment — it's about making quitting as costly as continuing.</p></div></div>
+        </div>
+        <div class="collapsible" id="col-calls">
+          <button class="collapsible-trigger" onclick="toggleCollapsible('col-calls')"><span class="collapsible-title">What happens on the weekly calls?</span><span class="collapsible-icon">▾</span></button>
+          <div class="collapsible-body"><div class="collapsible-body-inner"><p>Each call runs 60–90 minutes. Video on. Each person shares their wins from the week, any obstacles they hit, and what they're adjusting. Thierry facilitates and checks in on each person. It's part accountability meeting, part community call. <strong>Most cohort members say these calls are their favourite part.</strong></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WHAT'S INCLUDED ── -->
+    <div class="section-block reveal" id="included">
+      <div class="label">What You Get</div>
+      <h2>Everything <span class="highlight">Included</span></h2>
+      <div class="rule"></div>
+      <ul class="value-list">
+        <li class="value-item"><div class="value-icon">📞</div><div class="value-text"><strong>1-on-1 Onboarding Call with Thierry</strong><p>Set your goals, your consequence, and your game plan. You start day one with <span class="highlight">clarity and commitment</span>.</p></div></li>
+        <li class="value-item"><div class="value-icon">📊</div><div class="value-text"><strong>Daily Tracking System</strong><p>Simple, visible, 30-second check-ins. The structure that keeps you honest <strong>without adding friction</strong>.</p></div></li>
+        <li class="value-item"><div class="value-icon">🎥</div><div class="value-text"><strong>3 Weekly Live Group Calls</strong><p>Video check-ins with the full cohort. Wins, obstacles, adjustments — in real time with people <strong>who are in it with you</strong>.</p></div></li>
+        <li class="value-item"><div class="value-icon">💬</div><div class="value-text"><strong>WhatsApp Community</strong><p>The group chat where daily check-ins happen, wins get celebrated, and <span class="highlight">no one disappears quietly</span>.</p></div></li>
+        <li class="value-item"><div class="value-icon">👁️</div><div class="value-text"><strong>Personal Tracking by Thierry</strong><p>He monitors every check-in. If you miss one, he notices. If you're struggling, he reaches out. You're not just in a group — <strong>you're seen</strong>.</p></div></li>
+      </ul>
+    </div>
+
+    <!-- ── WHO IT'S FOR ── -->
+    <div class="section-block reveal" id="who">
+      <div class="label">Fit Check</div>
+      <h2>Who This <span class="highlight">Is For</span></h2>
+      <div class="rule"></div>
+      <div class="two-col">
+        <div class="col-card">
+          <h4 style="color:#22a55a;">✓ This works if</h4>
+          <ul class="check-list">
+            <li><span class="yes">✓</span> You thrive under external accountability</li>
+            <li><span class="yes">✓</span> You're willing to commit publicly</li>
+            <li><span class="yes">✓</span> You're serious — not just curious</li>
+            <li><span class="yes">✓</span> You have a specific goal you keep putting off</li>
+            <li><span class="yes">✓</span> You can handle honest feedback</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h4 style="color:#d93025;">✗ This doesn't work if</h4>
+          <ul class="check-list">
+            <li><span class="no">✗</span> You want soft support with no stakes</li>
+            <li><span class="no">✗</span> You need hand-holding through every step</li>
+            <li><span class="no">✗</span> You're not ready to commit publicly</li>
+            <li><span class="no">✗</span> You expect results without showing up</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WHAT CHANGES ── -->
+    <div class="section-block reveal" id="identity">
+      <div class="label">The Real Outcome</div>
+      <h2>What Really <span class="highlight">Changes</span></h2>
+      <div class="rule"></div>
+      <p>The goal isn't just to complete a habit for 21 days. The goal is to stop being someone who starts things and start being someone who <strong>finishes them</strong>.</p>
+      <p>That shift in identity is what the challenge actually produces. When you close the loop — when you do the 21 days and hold your commitment — you prove something to yourself that <span class="highlight">no course or book can give you</span>.</p>
+      <div class="identity-grid">
+        <div class="identity-box">
+          <div class="ib-label">From</div>
+          <p>"I'll start when I'm ready." "I'll try harder this time." "Maybe next month."</p>
+        </div>
+        <div class="identity-box after">
+          <div class="ib-label">To</div>
+          <p style="color:rgba(255,255,255,0.88);">"I said I'd do it. I did it." The kind of person who follows through.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MY STORY ── -->
+    <div class="section-block reveal" id="story">
+      <div class="label">The Host</div>
+      <h2>My <span class="highlight">Story</span></h2>
+      <div class="rule"></div>
+      <div style="display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap;">
+        <img src="brand_assets/me.avif" alt="Thierry" style="width:140px; height:140px; border-radius:50%; object-fit:cover; flex-shrink:0; box-shadow:0 4px 16px rgba(0,0,0,0.12);" />
+        <div style="flex:1; min-width:240px;">
+          <p>Hi, I'm Thierry. I've been running accountability challenges since 2022, after watching people — <strong>smart, motivated, capable people</strong> — fail over and over at goals they genuinely cared about. Not because they lacked desire, but because they lacked structure.</p>
+          <p>I started the first cohort with 6 friends. We set goals, committed publicly, and held each other to them. The results surprised me. People accomplished things in 21 days that had been sitting on their list for <span class="highlight">years</span>.</p>
+          <p>That cohort became another. Then another. Each one refined the structure — tighter timelines, clearer consequences, smaller groups for tighter accountability. <strong>What you're looking at now is the version that works.</strong></p>
+          <p style="font-weight:700; color:var(--text);">— Thierry</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPLETED GOALS ── -->
+    <div class="section-block reveal" id="goals">
+      <div class="label">Proof</div>
+      <h2>What Cohort Members <span class="highlight">Have Done</span></h2>
+      <div class="rule"></div>
+      <div class="stats-row">
+        <div><div class="stat-num">21</div><div class="stat-label">days per round</div></div>
+        <div><div class="stat-num">10–12</div><div class="stat-label">people per cohort</div></div>
+        <div><div class="stat-num">$100k</div><div class="stat-label">raised by one member</div></div>
+      </div>
+      <div class="results-cols">
+        <div class="result-item">Raised $100k in funding</div>
+        <div class="result-item">Organized festivals from scratch</div>
+        <div class="result-item">Launched businesses</div>
+        <div class="result-item">Completed digital detoxes</div>
+        <div class="result-item">Built consistent habits</div>
+        <div class="result-item">Finally finished what they started</div>
+        <div class="result-item">Quit vaping after years</div>
+        <div class="result-item">Lost 5kg and kept it off</div>
+        <div class="result-item">Started cold approaching</div>
+        <div class="result-item">Launched podcasts</div>
+        <div class="result-item">Wrote and published content</div>
+        <div class="result-item">Learned new languages</div>
+        <div class="result-item">Founded travel companies</div>
+        <div class="result-item">Built morning routines that stuck</div>
+        <div class="result-item">Made consistent sales calls</div>
+        <div class="result-item">Completed creative projects</div>
+      </div>
+    </div>
+
+    <!-- ── TESTIMONIALS ── -->
+    <div class="section-block reveal" id="testimonials">
+      <div class="label">From Past Cohorts</div>
+      <h2>What People <span class="highlight">Say</span></h2>
+      <div class="rule"></div>
+      <div class="testi-card">
+        <div class="testi-photo-wrap"><img src="brand_assets/Testimonials/Niko.jpeg" alt="Niko" class="testi-photo" /></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-goal">Festival Organization</div>
+          <p class="testi-quote">"The 21 days of focus challenge was perfectly timed and just what I needed! Being accountable to the group was instrumental. Thierry leads it in a <strong>straightforward, no-bs way</strong> and really cares about people achieving their goals."</p>
+          <div class="testi-name">Niko</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-photo-wrap"><img src="brand_assets/Testimonials/Mitch.png" alt="Mitch" class="testi-photo" /></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-goal">Fitness, Discipline & Overcoming the Inner Nice Guy</div>
+          <p class="testi-quote">"Being accountable to the group was instrumental for me in achieving my goal and succeeding in practicing my daily disciplines. Through the process, my self-talk changed from chastising to <strong>self-love, acceptance and respect</strong>. I also shared my experience with my family which resulted in deeper relationships as well as meaningful discussions around their and our hopes and dreams. Thanks, Thierry, I look forward to the next one!"</p>
+          <div class="testi-name">Mitch</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-photo-wrap"><img src="brand_assets/Testimonials/Clint.jpeg" alt="Clint" class="testi-photo" /></div>
+        <div class="testi-body">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-goal">Consistent Meditation Practice</div>
+          <p class="testi-quote">"It was so great to find a group of likeminded individuals that are so open to helping and supporting others, while also staying strong in their goal. It's always easier to complete a difficult task while having the support of others — <strong>and this group defined that perfectly</strong>. I had a great 21 days with Thierry leading us weekly!"</p>
+          <div class="testi-name">Clint</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COHORTS ── -->
+    <div class="section-block reveal" id="cohorts">
+      <div class="label">Schedule</div>
+      <h2>Upcoming <span class="highlight">Cohorts</span></h2>
+      <div class="rule"></div>
+      <div class="cohort-row next">
+        <div>
+          <div class="cohort-date">March 15, 2026</div>
+          <div class="cohort-time">6:30pm Medellín / 7:30pm EST</div>
+          <div class="spots-badge">4 spots left</div>
+        </div>
+        <a href="mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application – March 15" class="btn-primary">Apply — $197 Early Bird</a>
+      </div>
+      <div class="cohort-row">
+        <div>
+          <div class="cohort-date">April 7, 2026</div>
+          <div class="cohort-time">6:30pm Medellín / 7:30pm EST</div>
+          <div class="spots-badge" style="background:rgba(14,79,145,0.1); border-color:rgba(14,79,145,0.2); color:var(--blue);">10 spots left</div>
+        </div>
+        <a href="mailto:thierry@thefocustribe.com?subject=Notify Me – April 7 Cohort" class="btn-primary" style="background:var(--blue);">Notify Me</a>
+      </div>
+      <div class="cohort-row">
+        <div>
+          <div class="cohort-date">May 5, 2026</div>
+          <div class="cohort-time">6:30pm Medellín / 7:30pm EST</div>
+          <div class="spots-badge" style="background:rgba(14,79,145,0.1); border-color:rgba(14,79,145,0.2); color:var(--blue);">12 spots left</div>
+        </div>
+        <a href="mailto:thierry@thefocustribe.com?subject=Notify Me – May 5 Cohort" class="btn-primary" style="background:var(--blue);">Notify Me</a>
+      </div>
+    </div>
+
+    <!-- ── PRICING ── -->
+    <div class="section-block reveal" id="pricing">
+      <div class="label">Investment</div>
+      <h2>Pricing <span class="highlight">Breakdown</span></h2>
+      <div class="rule"></div>
+      <div class="pricing-grid">
+        <div class="price-card featured">
+          <div class="price-badge">EARLY BIRD</div>
+          <div class="price-label">4+ days before start</div>
+          <div class="price-amount">$197</div>
+          <div class="price-orig">$247</div>
+          <div class="price-note">Save $50 — 4 spots left</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> 1-on-1 onboarding call <span class="val">$150 value</span></li>
+            <li><span class="check">✓</span> Daily tracking system <span class="val">included</span></li>
+            <li><span class="check">✓</span> 3 weekly live calls <span class="val">$200 value</span></li>
+            <li><span class="check">✓</span> WhatsApp community <span class="val">included</span></li>
+            <li><span class="check">✓</span> Personal tracking by Thierry <span class="val">included</span></li>
+          </ul>
+          <a href="mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application" class="btn-primary" style="width:100%;">Apply Now — $197</a>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Standard</div>
+          <div class="price-amount">$247</div>
+          <div class="price-note" style="color:var(--muted);">Less than 4 days before start</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> 1-on-1 onboarding call</li>
+            <li><span class="check">✓</span> Daily tracking system</li>
+            <li><span class="check">✓</span> 3 weekly live calls</li>
+            <li><span class="check">✓</span> WhatsApp community</li>
+            <li><span class="check">✓</span> Personal tracking by Thierry</li>
+          </ul>
+          <a href="mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application" class="btn-primary" style="width:100%; background:var(--blue);">Apply Now — $247</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FAQ ── -->
+    <div class="section-block reveal" id="faq">
+      <div class="label">FAQ</div>
+      <h2>Common <span class="highlight">Questions</span></h2>
+      <div class="rule"></div>
+      <div class="faq-item" id="faq-1">
+        <button class="faq-trigger" onclick="toggleFaq('faq-1')"><span class="faq-q">What if I miss a day?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>You get <strong>two redemptions</strong>. Miss once — 24 hours to make it up (Redemption 1). Miss twice — one more chance (Redemption 2). Miss three times, you execute your consequence. No exceptions. This is what makes the challenge <span class="highlight">real</span>.</p></div></div>
+      </div>
+      <div class="faq-item" id="faq-2">
+        <button class="faq-trigger" onclick="toggleFaq('faq-2')"><span class="faq-q">What kind of goals can I pick?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>Anything daily and specific — habits, projects, creative work, health goals. <strong>Up to 3 goals.</strong> We clarify these on your onboarding call to make sure they're achievable and measurable.</p></div></div>
+      </div>
+      <div class="faq-item" id="faq-3">
+        <button class="faq-trigger" onclick="toggleFaq('faq-3')"><span class="faq-q">What's the time commitment?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>Daily check-ins take <strong>30 seconds</strong>. Three weekly calls are roughly 60–90 minutes each. The onboarding call is 30–45 minutes. Beyond that, you're just doing your goals.</p></div></div>
+      </div>
+      <div class="faq-item" id="faq-4">
+        <button class="faq-trigger" onclick="toggleFaq('faq-4')"><span class="faq-q">Can I join from a different timezone?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>Yes. Calls are at <strong>6:30pm Medellín / 7:30pm EST</strong>. If your timezone makes this impossible, reach out before applying — we'll work something out or point you to a future cohort.</p></div></div>
+      </div>
+      <div class="faq-item" id="faq-5">
+        <button class="faq-trigger" onclick="toggleFaq('faq-5')"><span class="faq-q">What happens after the 21 days?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>The challenge ends. You keep whatever you built. Many cohort members <strong>stay in contact</strong> and some join future rounds with new goals. There's no upsell, no mandatory continuation.</p></div></div>
+      </div>
+      <div class="faq-item" id="faq-6">
+        <button class="faq-trigger" onclick="toggleFaq('faq-6')"><span class="faq-q">What's the exact refund policy?</span><span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-body-inner"><p>Complete all 21 days, attend all calls, post every check-in — then if you genuinely got no value, email Thierry and you'll get <span class="highlight">every dollar back</span>. If you drop out or don't complete the challenge, no refund.</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── GUARANTEE ── -->
+    <div class="section-block reveal" id="guarantee">
+      <div class="label">Our Promise</div>
+      <h2>The <span class="highlight">Satisfaction Guarantee</span></h2>
+      <div class="rule"></div>
+      <div class="guarantee-box">
+        <h3>100% Refund if You Do the Work</h3>
+        <p>Complete all 21 days. Attend all three weekly calls. Post every daily check-in. Hold up your end of the deal.</p>
+        <p>If after all of that you genuinely got <strong>no value</strong> — email Thierry and you'll get every dollar back.</p>
+        <p style="margin-top:14px; font-size:0.9rem; color:var(--muted);">The guarantee exists because the challenge works when you do. It's not a safety net for people who don't show up — it's a <span class="highlight">confidence signal</span> for people who will.</p>
+      </div>
+    </div>
+
+    <!-- ── FINAL CTA ── -->
+    <div class="section-block reveal" style="border-top:none; padding-top:0;">
+      <div class="final-cta-block">
+        <h2>Ready to Stop Circling?</h2>
+        <p>March 15 — 4 spots left. Apply now or lose your place to someone else.</p>
+        <a href="mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application" class="btn-primary" style="font-size:1.05rem; padding:17px 40px;">Apply Now</a>
+        <p class="contact">Questions? <a href="mailto:thierry@thefocustribe.com">thierry@thefocustribe.com</a></p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container" style="padding:0 48px;">
+    <div class="footer-top">
+      <div class="footer-brand">The <span>Focus</span> Tribe</div>
+      <div class="footer-social">
+        <a href="#" class="soc-link" aria-label="Instagram"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="mailto:thierry@thefocustribe.com" class="soc-link" aria-label="Email"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">← Landing Page</a>
+      <a href="#" id="privacy">Privacy</a>
+      <a href="#" id="terms">Terms</a>
+    </div>
+    <p class="footer-copy">© 2026 The Focus Tribe. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')), 400);
+
+  // ── Collapsible ──
+  function toggleCollapsible(id) {
+    const el = document.getElementById(id);
+    const open = el.classList.toggle('open');
+    el.querySelector('.collapsible-trigger').setAttribute('aria-expanded', open);
+  }
+
+  // ── FAQ ──
+  function toggleFaq(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+  }
+
+  // ── Sidebar scrollspy ──
+  const sideLinks = document.querySelectorAll('.sidebar-nav a');
+  const spySections = Array.from(sideLinks).map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  const spyObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        sideLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.sidebar-nav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  spySections.forEach(s => spyObs.observe(s));
+</script>
+</body>
+</html>

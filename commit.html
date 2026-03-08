@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Ready to Commit – 21 Days of Focus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  <style>
+    :root {
+      --orange:    #f88032;
+      --orange-dk: #d9681f;
+      --blue:      #0e4f91;
+      --blue-dk:   #0a3d70;
+      --blue-lt:   #e8f0fa;
+      --text:      #111;
+      --muted:     #666;
+      --light:     #f5f5f3;
+      --border:    #e5e5e5;
+      --white:     #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: var(--white); color: var(--text);
+      line-height: 1.65; font-size: 17px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 900;
+      background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { height: 42px; display: block; }
+    @media (max-width: 640px) { nav { padding: 0 20px; } }
+
+    /* ── SHARED ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 48px; }
+    @media (max-width: 768px) { .container { padding: 0 28px; } }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    /* ── HERO BLURB ── */
+    .commit-hero {
+      background: var(--blue);
+      background-image: url('brand_assets/Group/Screenshot 2025-04-28 at 10.03.48 AM.png');
+      background-size: cover; background-position: center;
+      position: relative; overflow: hidden;
+    }
+    .commit-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,61,112,0.92) 0%, rgba(14,79,145,0.86) 100%);
+    }
+    .commit-hero-inner {
+      position: relative; z-index: 1;
+      padding: 36px 48px 32px;
+      max-width: 860px; margin: 0 auto;
+    }
+    @media (max-width: 640px) { .commit-hero-inner { padding: 28px 20px 24px; } }
+
+    .commit-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px; padding: 6px 18px;
+      font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.9);
+      margin-bottom: 28px; letter-spacing: 0.01em;
+    }
+    .commit-badge-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; }
+
+    .commit-hero h1 {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: clamp(1.9rem, 6vw, 4.4rem);
+      letter-spacing: -0.03em; line-height: 1.06; color: #fff;
+      margin-bottom: 24px;
+    }
+    .commit-hero h1 span { color: var(--orange); }
+
+    .commit-hero-body {
+      font-size: 1.15rem; color: rgba(255,255,255,0.78); line-height: 1.75;
+      max-width: 580px;
+    }
+    .commit-hero-body strong { color: #fff; }
+
+    /* ── PAYMENT SECTION ── */
+    .payment-section { padding: 72px 0 100px; }
+    @media (max-width: 640px) { .payment-section { padding: 48px 0 64px; } }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 14px;
+    }
+    .section-h2 {
+      font-family: 'Barlow', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      letter-spacing: -0.025em; color: var(--text); margin-bottom: 10px;
+    }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 480px; line-height: 1.7; margin-bottom: 36px; }
+
+    /* ── COHORT SELECTION ── */
+    .cohort-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 0; }
+    @media (max-width: 480px) { .cohort-grid { grid-template-columns: 1fr; } }
+
+    .cohort-card {
+      border: 2px solid var(--border); border-radius: 14px;
+      padding: 24px 22px; cursor: pointer; position: relative;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      user-select: none;
+    }
+    .cohort-card:hover { border-color: var(--blue); background: var(--blue-lt); }
+    .cohort-card.selected {
+      border-color: var(--orange);
+      background: rgba(248,128,50,0.04);
+      box-shadow: 0 4px 16px rgba(248,128,50,0.14);
+    }
+    .cohort-card.full { opacity: 0.45; cursor: not-allowed; }
+    .cohort-card.full:hover { border-color: var(--border); background: var(--white); }
+
+    .cohort-check {
+      position: absolute; top: 14px; right: 14px;
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--border); background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .cohort-card.selected .cohort-check { background: var(--orange); border-color: var(--orange); }
+    .cohort-check-tick { display: none; color: #fff; font-size: 0.7rem; font-weight: 900; }
+    .cohort-card.selected .cohort-check-tick { display: block; }
+
+    .cohort-date {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: 1.25rem; color: var(--text); margin-bottom: 4px;
+    }
+    .cohort-time { font-size: 0.88rem; color: var(--muted); margin-bottom: 14px; }
+    .cohort-spots-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(248,128,50,0.1); border: 1px solid rgba(248,128,50,0.25);
+      border-radius: 100px; padding: 3px 12px;
+      font-size: 0.78rem; color: var(--orange); font-weight: 700;
+    }
+    .cohort-spots-badge.full-badge { background: rgba(0,0,0,0.05); border-color: var(--border); color: var(--muted); }
+    .cohort-spots-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+    /* ── PRICING (hidden until cohort selected) ── */
+    .pricing-reveal {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.34,1.1,0.64,1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    .pricing-reveal.open { max-height: 4000px; opacity: 1; }
+
+    .pricing-divider { height: 1px; background: var(--border); margin: 52px 0; }
+
+    /* ── PRICE CARDS ── */
+    .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+    @media (max-width: 620px) { .price-cards { grid-template-columns: 1fr; } }
+
+    .pcard {
+      border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 36px 32px 32px; position: relative;
+      transition: box-shadow 0.2s ease;
+    }
+    @media (max-width: 640px) { .pcard { padding: 32px 20px 24px; } }
+    .pcard:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 16px 48px rgba(0,0,0,0.05); }
+    .pcard.featured {
+      border-color: var(--orange);
+      box-shadow: 0 4px 16px rgba(248,128,50,0.14), 0 16px 40px rgba(248,128,50,0.08);
+    }
+    .pcard-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--orange); color: #fff;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 4px 16px; border-radius: 100px; white-space: nowrap;
+    }
+    .pcard-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .pcard-price {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 3.6rem); letter-spacing: -0.04em; line-height: 1; color: var(--text);
+      margin-bottom: 4px;
+    }
+    .pcard-orig-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .pcard-orig { font-size: 1rem; color: var(--muted); text-decoration: line-through; }
+    .pcard-save { font-size: 0.82rem; color: var(--orange); font-weight: 700; }
+    .pcard-note { font-size: 0.82rem; color: var(--orange); font-weight: 700; margin-bottom: 24px; }
+    .pcard-note.std { color: var(--muted); }
+    .pcard-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .pcard-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .pcard-features li { display: flex; gap: 10px; font-size: 0.95rem; color: var(--text); align-items: flex-start; }
+    .pcard-features li::before { content: '✓'; color: var(--orange); font-weight: 800; flex-shrink: 0; }
+
+    .stripe-wrap { width: 100%; }
+    stripe-buy-button { width: 100%; }
+
+    /* ── GUARANTEE ── */
+    .guarantee-bar {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--light); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 22px 24px; margin-bottom: 52px;
+    }
+    .guarantee-bar .icon { font-size: 1.8rem; flex-shrink: 0; }
+    .guarantee-bar h4 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+    .guarantee-bar p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin: 0; }
+
+    /* ── WHAT HAPPENS NEXT ── */
+    .next-steps { border-top: 1px solid var(--border); padding-top: 48px; }
+    .next-steps h3 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin-bottom: 24px; }
+    .next-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .next-item { display: flex; gap: 16px; align-items: flex-start; }
+    .next-num {
+      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+    .next-item p { font-size: 0.97rem; color: var(--text); line-height: 1.6; margin: 0; }
+    .next-item p span { color: var(--muted); font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    .commit-footer {
+      background: #0a0f1a; padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .commit-footer p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+    .commit-footer a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.82rem; }
+    .commit-footer a:hover { color: rgba(255,255,255,0.7); }
+    @media (max-width: 640px) { .commit-footer { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/"><img src="brand_assets/Graphics/logo bigga.png" alt="The Focus Tribe" class="nav-logo" /></a>
+  <a href="index.html" style="font-size:0.9rem; color:var(--muted); text-decoration:none;">← Back to the challenge</a>
+</nav>
+
+<!-- ── HERO BLURB ── -->
+<div class="commit-hero">
+  <div class="commit-hero-inner">
+    <h1>This decision<br>already makes you <span>different.</span></h1>
+  </div>
+</div>
+
+<!-- ── PAYMENT ── -->
+<section class="payment-section">
+  <div class="container">
+
+    <!-- STEP 1: COHORT SELECTION -->
+    <div class="section-label">Step 1 of 2</div>
+    <h2 class="section-h2">Which cohort are you joining?</h2>
+    <p class="section-sub">Pick your start date. Once selected, your pricing options will appear below.</p>
+
+    <div class="cohort-grid" id="cohort-grid">
+
+      <div class="cohort-card" onclick="selectCohort(this)" data-cohort="mar15">
+        <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
+        <div class="cohort-date">March 15, 2026</div>
+        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+      </div>
+
+      <div class="cohort-card" onclick="selectCohort(this)" data-cohort="april5">
+        <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
+        <div class="cohort-date">April 5, 2026</div>
+        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+      </div>
+
+      <div class="cohort-card" onclick="selectCohort(this)" data-cohort="may3">
+        <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
+        <div class="cohort-date">May 3, 2026</div>
+        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+      </div>
+
+    </div>
+
+    <!-- STEP 2: PRICING (hidden until cohort chosen) -->
+    <div class="pricing-reveal" id="pricing-reveal">
+      <div class="pricing-divider"></div>
+
+      <div class="section-label">Step 2 of 2</div>
+      <h2 class="section-h2">Choose your spot.</h2>
+      <p class="section-sub" style="margin-bottom:40px;">Both options include everything. Early Bird is just the reward for committing before the last minute.</p>
+
+      <div class="price-cards">
+
+        <!-- EARLY BIRD -->
+        <div class="pcard featured">
+          <div class="pcard-badge">BEST VALUE — EARLY BIRD</div>
+          <div class="pcard-label">4+ days before start</div>
+          <div class="pcard-price">$197</div>
+          <div class="pcard-orig-row">
+            <span class="pcard-orig">$247</span>
+            <span class="pcard-save">Save $50</span>
+          </div>
+          <div class="pcard-divider"></div>
+          <ul class="pcard-features">
+            <li>1-on-1 onboarding call with Thierry</li>
+            <li>Daily tracking system (21 days)</li>
+            <li>3 weekly live group calls</li>
+            <li>WhatsApp accountability group</li>
+            <li>Personally tracked by Thierry</li>
+          </ul>
+          <div class="stripe-wrap">
+            <stripe-buy-button
+              buy-button-id="buy_btn_1T8poyGg3mcyGFgZ2jcVkPGu"
+              publishable-key="pk_live_51T5WOEGg3mcyGFgZzeiY03Nh4lvFmJMEAmaaRwbl0lhXUlOLKyH77crQiZpvEC2ixIQfIpLyQrXTP5eUZ6A4Q9lf00N2vd8JRR">
+            </stripe-buy-button>
+          </div>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="pcard">
+          <div class="pcard-label">Standard</div>
+          <div class="pcard-price">$247</div>
+          <div class="pcard-note std">Less than 4 days before start</div>
+          <div class="pcard-divider"></div>
+          <ul class="pcard-features">
+            <li>1-on-1 onboarding call with Thierry</li>
+            <li>Daily tracking system (21 days)</li>
+            <li>3 weekly live group calls</li>
+            <li>WhatsApp accountability group</li>
+            <li>Personally tracked by Thierry</li>
+          </ul>
+          <div class="stripe-wrap">
+            <stripe-buy-button
+              buy-button-id="buy_btn_1T8prfGg3mcyGFgZDwiIV6H7"
+              publishable-key="pk_live_51T5WOEGg3mcyGFgZzeiY03Nh4lvFmJMEAmaaRwbl0lhXUlOLKyH77crQiZpvEC2ixIQfIpLyQrXTP5eUZ6A4Q9lf00N2vd8JRR">
+            </stripe-buy-button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GUARANTEE -->
+      <div class="guarantee-bar">
+        <div class="icon">🛡️</div>
+        <div>
+          <h4>100% Money-Back Guarantee</h4>
+          <p>Complete all 21 days, show up to every call, track daily — and if you got zero value, you get a full refund. No hoops. No negotiation. The risk is on us.</p>
+        </div>
+      </div>
+
+      <!-- WHAT HAPPENS NEXT -->
+      <div class="next-steps">
+        <h3>What happens after you pay</h3>
+        <ul class="next-list">
+          <li class="next-item">
+            <div class="next-num">1</div>
+            <p>You'll receive a confirmation email immediately. <span>Check your spam if you don't see it within a few minutes.</span></p>
+          </li>
+          <li class="next-item">
+            <div class="next-num">2</div>
+            <p>Thierry will reach out within 24 hours to schedule your <strong>1-on-1 onboarding call</strong> — where you'll define your goals and set your consequence.</p>
+          </li>
+          <li class="next-item">
+            <div class="next-num">3</div>
+            <p>You'll be added to the WhatsApp group before your cohort starts. <span>Say hello — the group is already active.</span></p>
+          </li>
+          <li class="next-item">
+            <div class="next-num">4</div>
+            <p>Day 1 kicks off on your cohort date. <strong>Show up. Commit publicly. The 21 days start.</strong></p>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /pricing-reveal -->
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div class="commit-footer">
+  <p>© 2026 The Focus Tribe. Payments secured by Stripe.</p>
+  <a href="mailto:thierry@thefocustribe.com">Questions? thierry@thefocustribe.com</a>
+</div>
+
+<script>
+  function selectCohort(card) {
+    if (card.classList.contains('full')) return;
+    document.querySelectorAll('.cohort-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    const reveal = document.getElementById('pricing-reveal');
+    reveal.classList.add('open');
+    setTimeout(() => {
+      reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+</script>
+
+</body>
+</html>
