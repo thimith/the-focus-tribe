@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --orange:    #f88032;
-      --orange-dk: #d9681f;
+      --orange:    #ff5500;
+      --orange-dk: #cc4400;
       --blue:      #0e4f91;
       --blue-dk:   #0a3d70;
       --blue-lt:   #e8f0fa;
@@ -159,6 +159,7 @@
       text-underline-offset: 4px;
       text-decoration-thickness: 2px;
     }
+    .paint-highlight.dark { color: #111; text-decoration: none; }
 
     /* ── PROBLEM / SOLUTION ── */
     #problem { background: var(--light); }
@@ -560,16 +561,16 @@
 <div class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-inner container">
-    <div class="hero-cohort-badge">
-      <span class="hero-dot"></span>
-      Next cohort: March 15
-    </div>
-    <h1 class="hero-title">21-Days of <span class="highlight">Focus.</span></h1>
+    <h1 class="hero-title">21-Days<br>of <span class="highlight">Focus.</span></h1>
     <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight">Get Sh*t Done.</span></p>
     <p class="hero-sub">You know what you need to do. You just can't seem to follow through on your own.</p>
     <p class="hero-body">Join a cohort of 10–12 serious people. Real stakes. Real accountability. <strong style="color:rgba(255,255,255,0.88)">Real results.</strong></p>
     <div class="hero-ctas">
       <a href="commit.html" class="btn-primary" style="font-size:1.1rem; padding:18px 40px;">I'm Ready to Commit</a>
+      <div class="hero-cohort-badge">
+        <span class="hero-dot"></span>
+        Next cohort: March 15
+      </div>
     </div>
   </div>
 </div>
@@ -681,14 +682,13 @@
     <div class="stats-row">
       <div class="reveal"><div class="stat-num">21</div><div class="stat-label">days. Fixed timeline.</div></div>
       <div class="reveal reveal-d1"><div class="stat-num">10–12</div><div class="stat-label">people per cohort.</div></div>
-      <div class="reveal reveal-d2"><div class="stat-num">$100k</div><div class="stat-label">raised by one member.</div></div>
     </div>
     <div class="results-cols" id="results-base">
-      <div class="result-item reveal">Raised $100k in funding</div>
+      <div class="result-item reveal"><span class="paint-highlight dark">Raised $100k in funding</span></div>
       <div class="result-item reveal reveal-d1">Organized festivals from scratch</div>
       <div class="result-item reveal reveal-d1">Launched businesses</div>
-      <div class="result-item reveal reveal-d2">Completed digital detoxes</div>
-      <div class="result-item reveal reveal-d2">Built consistent habits</div>
+      <div class="result-item reveal reveal-d2"><span class="paint-highlight dark">Completed digital detoxes</span></div>
+      <div class="result-item reveal reveal-d2"><span class="paint-highlight dark">Built consistent habits</span></div>
       <div class="result-item reveal reveal-d3">Finally finished what they started</div>
     </div>
     <div class="results-more-wrap" id="results-more">
@@ -715,6 +715,24 @@
   <div class="container">
     <span class="label reveal">From Past Cohorts</span>
     <h2 class="reveal">Real people. <span class="highlight">Real outcomes.</span></h2>
+    <!-- Video testimonial — Alejo -->
+    <div class="alejo-wrap reveal">
+      <div class="alejo-card">
+        <div class="alejo-video-wrap">
+          <video controls playsinline preload="metadata">
+            <source src="brand_assets/Testimonials/Alejo.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="alejo-info">
+          <div class="alejo-avatar">A</div>
+          <div>
+            <div class="alejo-name">Alejo</div>
+            <div class="alejo-goal">Raised $100,000 for real estate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="testi-grid">
       <div class="testi-card reveal">
         <img src="brand_assets/Testimonials/Niko.jpeg" alt="Niko" class="testi-photo" />
@@ -741,24 +759,6 @@
           <div class="testi-goal">Consistent Meditation Practice</div>
           <p class="testi-quote">"It was so great to find a group of likeminded individuals that are so open to helping and supporting others, while also staying strong in their goal. It's always easier to complete a difficult task while having the support of others — and this group defined that perfectly. I had a great 21 days with Thierry leading us weekly!"</p>
           <div class="testi-name">Clint</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Video testimonial — Alejo -->
-    <div class="alejo-wrap reveal">
-      <div class="alejo-card">
-        <div class="alejo-video-wrap">
-          <video controls playsinline preload="metadata">
-            <source src="brand_assets/Testimonials/Alejo.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="alejo-info">
-          <div class="alejo-avatar">A</div>
-          <div>
-            <div class="alejo-name">Alejo</div>
-            <div class="alejo-goal">Raised $100,000 for real estate</div>
-          </div>
         </div>
       </div>
     </div>
@@ -812,7 +812,7 @@
         <p class="reveal">I'm not a productivity guru who sells frameworks. I'm someone who struggled with the same thing you do — knowing what to do, but not doing it consistently. I built the Focus Tribe because I needed it.</p>
         <p class="reveal">I've personally coached over 50 people through this challenge across 6 cohorts. I've watched people go from stuck and scattered to shipping real work — in 21 days. I show up live every week, I know every member's goal, and I hold people accountable the way I wish someone had held me.</p>
         <ul class="thierry-creds reveal">
-          <li><i class="cred-icon">✦</i> Built and run 6 cohorts since 2025</li>
+          <li><i class="cred-icon">✦</i> Built and run 6 cohorts since 2024</li>
           <li><i class="cred-icon">✦</i> 6 years of experience facilitating groups</li>
           <li><i class="cred-icon">✦</i> 50+ members coached!</li>
           <li><i class="cred-icon">✦</i> Weekly live calls — I show up every time</li>

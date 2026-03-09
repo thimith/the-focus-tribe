@@ -1,0 +1,7 @@
+Font for Titles: Barlow Medium
+
+Orange: #f88032
+Blue: #0e4f91
+
+
+Video 1min
