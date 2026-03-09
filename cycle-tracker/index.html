@@ -46,7 +46,7 @@
 
     .day-cell {
       width: 32px;
-      height: 48px;
+      height: 52px;
       border-radius: 8px;
       display: flex;
       flex-direction: column;
@@ -296,6 +296,9 @@
     </div>
   </div>
 
+  <!-- Loading -->
+  <div id="loading" style="display:none;text-align:center;padding:32px;font-size:13px;color:rgba(240,232,245,0.35);">Loading...</div>
+
   <!-- List -->
   <div id="people-list" style="display:flex;flex-direction:column;gap:12px;">
     <div class="empty-state" id="empty-state">
@@ -330,10 +333,49 @@
 </div>
 
 <script>
-  let people = JSON.parse(localStorage.getItem('cycle-tracker') || '[]');
+  // ─── Airtable config ──────────────────────────────────────────────────────
+  const AT_TOKEN  = 'pattjP8yx9tGtCkTy.f18587f7e19faad9130d2ec2e19883d4dc82ccbf2683a8fff6476c269b715061';
+  const AT_BASE   = 'appouXjowVXYVtgW0';
+  const AT_TABLE  = 'People';
+  const AT_URL    = `https://api.airtable.com/v0/${AT_BASE}/${AT_TABLE}`;
+  const AT_HEADS  = { 'Authorization': `Bearer ${AT_TOKEN}`, 'Content-Type': 'application/json' };
 
-  function save() {
-    localStorage.setItem('cycle-tracker', JSON.stringify(people));
+  let people = []; // { id, name, date }
+
+  async function loadFromAirtable() {
+    showLoading(true);
+    try {
+      const res = await fetch(AT_URL + '?fields[]=Name&fields[]=Date', { headers: AT_HEADS });
+      const data = await res.json();
+      people = (data.records || []).map(r => ({
+        id: r.id,
+        name: r.fields.Name || '',
+        date: r.fields.Date || ''
+      })).filter(p => p.name && p.date);
+      renderAll();
+    } catch(e) {
+      console.error('Airtable load error', e);
+    }
+    showLoading(false);
+  }
+
+  async function saveToAirtable(name, date) {
+    const res = await fetch(AT_URL, {
+      method: 'POST',
+      headers: AT_HEADS,
+      body: JSON.stringify({ records: [{ fields: { Name: name, Date: date } }] })
+    });
+    const data = await res.json();
+    if (data.error) { return null; }
+    return { id: data.records[0].id, name, date };
+  }
+
+  async function deleteFromAirtable(id) {
+    await fetch(`${AT_URL}/${id}`, { method: 'DELETE', headers: AT_HEADS });
+  }
+
+  function showLoading(on) {
+    document.getElementById('loading').style.display = on ? '' : 'none';
   }
 
   // Cycle constants
@@ -376,20 +418,37 @@
     people.forEach((p, i) => {
       const card = document.createElement('div');
       card.className = 'person-card';
-      card.style.cssText = 'padding:16px 20px;display:flex;align-items:center;gap:16px;';
+      card.style.cssText = 'padding:14px 16px;position:relative;';
 
-      // Name
+      // Remove button — top right
+      const rm = document.createElement('button');
+      rm.className = 'btn-remove';
+      rm.style.cssText = 'position:absolute;top:10px;right:10px;width:22px;height:22px;font-size:13px;';
+      rm.innerHTML = '&times;';
+      rm.title = 'Remove ' + p.name;
+      rm.setAttribute('aria-label', 'Remove ' + p.name);
+      rm.onclick = async () => {
+        if (confirm(`Remove ${p.name}?`)) {
+          rm.disabled = true;
+          await deleteFromAirtable(p.id);
+          people.splice(i, 1);
+          renderAll();
+        }
+      };
+      card.appendChild(rm);
+
+      // Name row
       const nameCol = document.createElement('div');
-      nameCol.style.cssText = 'min-width:96px;max-width:96px;';
+      nameCol.style.cssText = 'margin-bottom:10px;padding-right:28px;';
       nameCol.innerHTML = `
-        <div style="font-weight:600;font-size:15px;color:#f0e8f5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(p.name)}</div>
-        <div style="font-size:11px;color:rgba(240,232,245,0.3);margin-top:3px;">Since ${fmt(p.date)}</div>
+        <div style="font-weight:600;font-size:15px;color:#f0e8f5;">${esc(p.name)}</div>
+        <div style="font-size:11px;color:rgba(240,232,245,0.3);margin-top:2px;">Since ${fmt(p.date)}</div>
       `;
 
-      // Strip — today + 28 days, same dates across all rows
+      // Strip — today + 28 days, full width
       const strip = document.createElement('div');
       strip.className = 'day-strip';
-      strip.style.flex = '1';
+      strip.style.width = '100%';
 
       for (let d = 0; d < 28; d++) {
         const cellDate = new Date(today);
@@ -415,17 +474,8 @@
         strip.appendChild(cell);
       }
 
-      // Remove
-      const rm = document.createElement('button');
-      rm.className = 'btn-remove';
-      rm.innerHTML = '&times;';
-      rm.title = 'Remove ' + p.name;
-      rm.setAttribute('aria-label', 'Remove ' + p.name);
-      rm.onclick = () => { if (confirm(`Remove ${p.name}?`)) { people.splice(i,1); save(); renderAll(); } };
-
       card.appendChild(nameCol);
       card.appendChild(strip);
-      card.appendChild(rm);
       list.appendChild(card);
     });
   }
@@ -450,19 +500,18 @@
     setTimeout(() => el.style.borderColor = '', 800);
   }
 
-  function addPerson() {
+  async function addPerson() {
     const nameEl = document.getElementById('input-name');
     const dateEl = document.getElementById('input-date');
     const name = nameEl.value.trim();
     const date = dateEl.value;
     if (!name) { shake(nameEl); nameEl.focus(); return; }
     if (!date) { shake(dateEl); dateEl.focus(); return; }
-    people.push({ name, date });
-    save();
-    renderAll();
     closeModal();
     nameEl.value = '';
     dateEl.value = new Date().toISOString().split('T')[0];
+    const record = await saveToAirtable(name, date);
+    if (record) { people.push(record); renderAll(); }
   }
 
   document.addEventListener('keydown', e => {
@@ -474,7 +523,7 @@
   // Default date = today
   document.getElementById('input-date').value = new Date().toISOString().split('T')[0];
 
-  renderAll();
+  loadFromAirtable();
 </script>
 </body>
 </html>

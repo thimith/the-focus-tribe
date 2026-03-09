@@ -147,7 +147,10 @@
     @media (max-width: 640px) { .hero-sub { font-size: 1.05rem; } }
     .hero-body { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; white-space: nowrap; }
     @media (max-width: 640px) { .hero-body { white-space: normal; font-size: 0.95rem; } }
-    .hero-ctas { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .hero-ctas { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+    .hero-ctas-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .hero-survey-link { font-size: 0.92rem; color: rgba(255,255,255,0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; background: none; border: none; padding: 0; font-family: Helvetica, Arial, sans-serif; transition: color 0.2s ease; }
+    .hero-survey-link:hover { color: rgba(255,255,255,0.9); }
     .hero-tagline { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: clamp(1.4rem, 4.2vw, 2.8rem); color: #fff; letter-spacing: -0.01em; margin-bottom: 28px; margin-top: -16px; }
     .paint-highlight {
       display: inline;
@@ -627,10 +630,15 @@
     <p class="hero-sub">You know what you need to do. You just can't seem to follow through on your own.</p>
     <p class="hero-body">Join a cohort of 10–12 serious people. Real stakes. Real accountability. <strong style="color:rgba(255,255,255,0.88)">Real results.</strong></p>
     <div class="hero-ctas">
-      <a href="commit.html" class="btn-primary" style="font-size:1.1rem; padding:18px 40px;">I'm Ready to Commit</a>
-      <div class="hero-cohort-badge">
-        <span class="hero-dot"></span>
-        Next cohort: March 15
+      <div class="hero-ctas-row">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+          <a href="commit.html" class="btn-primary" style="font-size:1.1rem; padding:18px 40px;">I'm Ready to Commit</a>
+          <div class="hero-cohort-badge">
+            <span class="hero-dot"></span>
+            Next cohort: March 15
+          </div>
+        </div>
+        <button class="hero-survey-link" onclick="openSurvey()" style="align-self:flex-start; margin-top:18px;">Not sure? Take the quiz →</button>
       </div>
     </div>
   </div>
@@ -689,6 +697,27 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="how-it-works">
+  <div class="container">
+    <span class="label reveal">The Process</span>
+    <h2 class="reveal">How does it work?</h2>
+    <p class="reveal" style="max-width:540px; margin-bottom:0; font-size:1.3rem; font-weight:700; font-family:'Barlow',sans-serif; color:var(--text);">21 days. A tight structure. No endless second chances.</p>
+    <div class="steps-wrap">
+      <div class="steps-grid">
+        <div class="step-card reveal"><div class="step-num">01</div><h3>Define your Goals</h3><p>Habits, projects, whatever matters most right now. We clarify them on your 1-on-1 onboarding call.</p></div>
+        <div class="step-card reveal reveal-d1"><div class="step-num">02</div><h3>Commit Publicly</h3><p>State your goals and your consequence to the group. Skin in the game from day one.</p></div>
+        <div class="step-card reveal reveal-d2"><div class="step-num">03</div><h3>Track Daily</h3><p>30 seconds. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow."</p></div>
+      </div>
+      <div class="steps-extras reveal" style="margin-top:28px; display:flex; flex-direction:column; gap:14px; padding:28px 32px; border:2.5px solid var(--blue); border-radius:10px; background:var(--blue-lt);">
+        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Join weekly live calls</strong> — Video on. Full cohort. Wins, obstacles, adjustments in real time.</span></div>
+        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Face consequences — or don't</strong> — Miss once? Redemption. Miss twice? Redemption 2. Miss three times? Pay your consequence. No renegotiating.</span></div>
+      </div>
+    </div>
+    <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
   </div>
 </section>
 
@@ -943,27 +972,6 @@
       </table>
       <div class="tracker-sample-label">Sample tracker — yours will be filled in daily</div>
     </div>
-  </div>
-</section>
-
-<!-- ── HOW IT WORKS ── -->
-<section id="how-it-works">
-  <div class="container">
-    <span class="label reveal">The Process</span>
-    <h2 class="reveal">How does it work?</h2>
-    <p class="reveal" style="max-width:540px; margin-bottom:0; font-size:1.3rem; font-weight:700; font-family:'Barlow',sans-serif; color:var(--text);">21 days. A tight structure. No endless second chances.</p>
-    <div class="steps-wrap">
-      <div class="steps-grid">
-        <div class="step-card reveal"><div class="step-num">01</div><h3>Define your Goals</h3><p>Habits, projects, whatever matters most right now. We clarify them on your 1-on-1 onboarding call.</p></div>
-        <div class="step-card reveal reveal-d1"><div class="step-num">02</div><h3>Commit Publicly</h3><p>State your goals and your consequence to the group. Skin in the game from day one.</p></div>
-        <div class="step-card reveal reveal-d2"><div class="step-num">03</div><h3>Track Daily</h3><p>30 seconds. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow."</p></div>
-      </div>
-      <div class="steps-extras reveal" style="margin-top:28px; display:flex; flex-direction:column; gap:14px; padding:28px 32px; border:2.5px solid var(--blue); border-radius:10px; background:var(--blue-lt);">
-        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Join weekly live calls</strong> — Video on. Full cohort. Wins, obstacles, adjustments in real time.</span></div>
-        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Face consequences — or don't</strong> — Miss once? Redemption. Miss twice? Redemption 2. Miss three times? Pay your consequence. No renegotiating.</span></div>
-      </div>
-    </div>
-    <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
   </div>
 </section>
 
