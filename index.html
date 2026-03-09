@@ -159,7 +159,7 @@
       text-underline-offset: 4px;
       text-decoration-thickness: 2px;
     }
-    .paint-highlight.dark { color: #111; text-decoration: none; }
+    .paint-highlight.dark { color: #111; text-decoration: none; background: rgba(255,85,0,0.18); font-family: 'Barlow', sans-serif; font-weight: 900; font-size: 1.15rem; padding: 3px 10px 5px; }
 
     /* ── PROBLEM / SOLUTION ── */
     #problem { background: var(--light); }
@@ -188,6 +188,67 @@
     .prob-list .ico { flex-shrink: 0; margin-top: 2px; font-style: normal; }
     .problem-side .ico { color: #ccc; }
     .solution-side .ico { color: var(--orange); }
+
+    /* ── TRACKER ── */
+    #tracker { background: var(--white); }
+    .tracker-wrap { margin-top: 52px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .tracker-table {
+      width: 100%; border-collapse: collapse; min-width: 700px;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    .tracker-table th, .tracker-table td {
+      text-align: center; padding: 0; font-size: 0.78rem;
+    }
+    /* Header row — day numbers */
+    .tracker-head-row th {
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: 0.72rem; color: var(--muted); padding: 6px 4px;
+      border-bottom: 2px solid var(--border);
+    }
+    .tracker-head-row th.label-col { text-align: left; padding-left: 0; min-width: 180px; }
+    .tracker-head-row th.day-num { width: 32px; }
+    /* Section header rows */
+    .tracker-section-row td {
+      background: var(--blue); color: #fff;
+      font-family: 'Barlow', sans-serif; font-weight: 900;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 8px 12px; text-align: left;
+    }
+    .tracker-section-row.green td { background: #22a55a; }
+    .tracker-section-row.orange td { background: var(--orange); }
+    .tracker-section-row.purple td { background: #7c3aed; }
+    /* Habit rows */
+    .tracker-habit-row td { border-bottom: 1px solid var(--border); height: 36px; }
+    .tracker-habit-row td.habit-name {
+      text-align: left; font-size: 0.88rem; color: var(--text);
+      padding: 0 12px 0 0; white-space: nowrap;
+    }
+    .tracker-habit-row td.day-cell { width: 32px; }
+    /* Dot */
+    .tracker-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--blue); margin: 0 auto;
+      opacity: 0.18;
+    }
+    .tracker-dot.done { opacity: 1; background: var(--blue); }
+    .tracker-dot.done.green { background: #22a55a; }
+    .tracker-dot.done.orange { background: var(--orange); }
+    .tracker-dot.done.purple { background: #7c3aed; }
+    /* Week dividers */
+    .week-sep { border-left: 2px solid var(--border) !important; }
+    /* Sample label */
+    .tracker-sample-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.75rem; color: var(--muted); margin-top: 16px;
+    }
+    .tracker-sample-label::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); display: block; }
+    .tracker-sub { white-space: nowrap; }
+    @media (max-width: 760px) { .tracker-sub { white-space: normal; } }
+    .tracker-time {
+      font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 0.7rem;
+      color: var(--orange); line-height: 1;
+    }
+    .tracker-time.empty { color: var(--border); }
 
     /* ── HOW IT WORKS ── */
     #how-it-works { background: var(--white); }
@@ -229,7 +290,7 @@
     #serious { background: var(--light); }
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
     @media (max-width: 760px) { .split { grid-template-columns: 1fr; gap: 40px; } }
-    .split-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 20px 56px rgba(0,0,0,0.08); }
+    .split-photo { width: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 20px 56px rgba(0,0,0,0.08); display: block; }
     .split-text h2 { margin-bottom: 18px; }
     .split-text p { margin-bottom: 18px; }
     .cohort-callout {
@@ -548,7 +609,7 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="/"><img src="brand_assets/Graphics/logo bigga.png" alt="The Focus Tribe" class="nav-logo" /></a>
+  <a href="/"><img src="brand_assets/Graphics/logo_oneline.jpg" alt="The Focus Tribe" class="nav-logo" /></a>
   <div class="nav-right">
     <a href="#how-it-works" class="nav-link">How it works</a>
     <a href="#pricing" class="nav-link">Pricing</a>
@@ -627,6 +688,260 @@
           <li><span class="ico">✅</span> Consequences that make quitting costly</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRACKER ── -->
+<section id="tracker">
+  <div class="container">
+    <span class="label reveal">What It Looks Like</span>
+    <h2 class="reveal">Your 21 days, <span class="highlight">tracked.</span></h2>
+    <p class="reveal tracker-sub">Every habit. Every session. Every day, visible to the group. This is what accountability looks like in practice.</p>
+    <div class="tracker-wrap reveal">
+      <table class="tracker-table">
+        <thead>
+          <tr class="tracker-head-row">
+            <th class="label-col"></th>
+            <th class="day-num">1</th><th class="day-num">2</th><th class="day-num">3</th><th class="day-num">4</th><th class="day-num">5</th><th class="day-num">6</th><th class="day-num week-sep">7</th>
+            <th class="day-num">8</th><th class="day-num">9</th><th class="day-num">10</th><th class="day-num">11</th><th class="day-num">12</th><th class="day-num">13</th><th class="day-num week-sep">14</th>
+            <th class="day-num">15</th><th class="day-num">16</th><th class="day-num">17</th><th class="day-num">18</th><th class="day-num">19</th><th class="day-num">20</th><th class="day-num">21</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- HABITS -->
+          <tr class="tracker-section-row"><td colspan="22">Habits — Daily</td></tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Wake up at 7:30am</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+          </tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Cold Shower</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+          </tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Meditation</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+          </tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Journaling</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+          </tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Plan next day before bed</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+          </tr>
+
+          <!-- MOVEMENT -->
+          <tr class="tracker-section-row green"><td colspan="22">Movement — 4×/week · 30 min</td></tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">30 min of Movement</td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done green"></div></td>
+          </tr>
+
+          <!-- STUDYING -->
+          <tr class="tracker-section-row orange"><td colspan="22">Studying — 4h/week</td></tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Study session</td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time">1h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell week-sep"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time">1h</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time">2h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell week-sep"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time">1h</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time">0.5h</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+            <td class="day-cell"><div class="tracker-time empty">—</div></td>
+          </tr>
+
+          <!-- DETOX -->
+          <tr class="tracker-section-row purple"><td colspan="22">Detox — Max 1h/week on Instagram</td></tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Stayed under limit</td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+            <td class="day-cell"><div class="tracker-dot done purple"></div></td>
+          </tr>
+
+          <!-- PROJECT -->
+          <tr class="tracker-section-row"><td colspan="22">Project — Build a funnel for my business</td></tr>
+          <tr class="tracker-habit-row">
+            <td class="habit-name">Worked on project</td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell week-sep"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+            <td class="day-cell"><div class="tracker-dot done"></div></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tracker-sample-label">Sample tracker — yours will be filled in daily</div>
     </div>
   </div>
 </section>
@@ -727,7 +1042,7 @@
           <div class="alejo-avatar">A</div>
           <div>
             <div class="alejo-name">Alejo</div>
-            <div class="alejo-goal">Raised $100,000 for real estate</div>
+            <div class="alejo-goal">Raised $100,000 for real estate 🥇</div>
           </div>
         </div>
       </div>
@@ -803,7 +1118,7 @@
   <div class="container">
     <div class="thierry-split">
       <div class="thierry-photo-wrap reveal">
-        <img src="brand_assets/me.jpg" alt="Thierry" class="thierry-photo" />
+        <img src="brand_assets/Graphics/me_arms.png" alt="Thierry" class="thierry-photo" />
         <div class="thierry-cred-badge">6 cohorts. 50+ members.</div>
       </div>
       <div class="thierry-text">
@@ -924,11 +1239,11 @@
         <a href="details.html#pricing" class="btn-outline" style="width:100%; justify-content:center;">See full breakdown →</a>
       </div>
     </div>
-    <div class="reveal" style="margin-top:36px; display:flex; align-items:center; gap:18px; padding:22px 28px; background:var(--light); border-radius:12px; border:1.5px solid var(--border);">
-      <div style="font-size:2rem; flex-shrink:0;">🛡️</div>
+    <div class="reveal" style="margin-top:36px; display:flex; align-items:center; gap:18px; padding:22px 28px; background:#e8f5ee; border-radius:12px; border:1.5px solid #a8d5b5;">
+      <div style="font-size:2rem; flex-shrink:0; filter:hue-rotate(90deg);">🛡️</div>
       <div>
-        <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1.05rem; color:var(--text); margin-bottom:4px;">100% Money-Back Guarantee</div>
-        <p style="margin:0; font-size:0.93rem; color:var(--muted); line-height:1.6;">Complete all 21 days, show up to every call, track daily — and if you got zero value, you get a full refund. No hoops, no negotiation.</p>
+        <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1.05rem; color:#1a5c30; margin-bottom:4px;">100% Money-Back Guarantee</div>
+        <p style="margin:0; font-size:0.93rem; color:#2d7a4a; line-height:1.6;">Complete all 21 days, show up to every call, track daily — and if you got zero value, you get a full refund. No hoops, no negotiation.</p>
       </div>
     </div>
   </div>
