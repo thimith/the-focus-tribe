@@ -747,6 +747,9 @@
         </ul>
       </div>
     </div>
+    <div style="margin-top:36px; text-align:center;">
+      <button class="btn-primary" onclick="openSurvey()">Is this for you? Take the quiz →</button>
+    </div>
   </div>
 </section>
 
@@ -1429,7 +1432,7 @@
 <div class="modal-overlay" id="survey-overlay" onclick="handleOverlayClick(event)">
   <div class="modal" id="survey-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Is this Challenge for you?</div>
+      <div class="modal-title" id="modal-title">Is this for you?</div>
       <button class="modal-close" onclick="closeSurvey()" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
@@ -1551,7 +1554,7 @@
         <p class="score-desc" id="score-desc">Loading your result...</p>
         <ul class="score-benefits" id="score-benefits" style="display:none;"></ul>
         <div class="score-actions">
-          <a href="commit.html" class="btn-primary" id="score-cta" style="width:100%; max-width:320px; justify-content:center;">Apply Now</a>
+          <a href="commit.html" class="btn-primary" id="score-cta" style="width:100%; max-width:320px; justify-content:center;">I'm Ready to Commit</a>
           <button class="retake-link" onclick="retakeSurvey()">Retake the quiz</button>
         </div>
       </div>
@@ -1660,15 +1663,15 @@
       title.textContent = 'This was built for you.';
       desc.textContent = `With a score of ${total}/100, you have exactly the challenges the 21-Day Challenge is designed to solve — and the self-awareness to actually use it. Apply now before the March 15 cohort fills up.`;
       benefits.style.display = 'flex';
-      cta.textContent = 'I\'m Ready to Commit — 4 Spots Left';
-      cta.href = 'mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application';
+      cta.textContent = 'I\'m Ready to Commit';
+      cta.href = 'commit.html';
     } else if (total >= 58) {
       badge.className = 'score-badge good'; badge.textContent = 'Strong Fit';
       title.textContent = 'You\'ll get real value from this.';
       desc.textContent = `A score of ${total}/100 tells us you know external accountability moves you and you have goals you've been circling. The structure is exactly what you need. One conversation will confirm it.`;
       benefits.style.display = 'flex';
       cta.textContent = 'I\'m Ready to Commit';
-      cta.href = 'mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Application';
+      cta.href = 'commit.html';
     } else if (total >= 33) {
       badge.className = 'score-badge good'; badge.textContent = 'Possible Fit';
       title.textContent = 'Might be worth a conversation.';
