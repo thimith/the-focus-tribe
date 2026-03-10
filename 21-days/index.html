@@ -45,7 +45,7 @@
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px;
     }
-    .nav-logo { height: 42px; display: block; }
+    .nav-logo { height: 29px; display: block; }
     .nav-right { display: flex; align-items: center; gap: 28px; }
     .nav-link { font-size: 0.95rem; color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
     .nav-link:hover { color: var(--text); }
@@ -59,7 +59,7 @@
     .btn-nav:hover { background: var(--orange-dk); transform: translateY(-1px); }
     .btn-nav:active { transform: translateY(0); }
     .btn-nav:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-    @media (max-width: 640px) { nav { padding: 0 16px; } .nav-link { display: none; } .nav-logo { height: 29px; } .btn-nav { font-size: 0.78rem; padding: 8px 14px; border-radius: 5px; } }
+    @media (max-width: 640px) { nav { padding: 0 16px; } .nav-link { display: none; } .nav-logo { height: 20px; } .btn-nav { font-size: 0.78rem; padding: 8px 14px; border-radius: 5px; } }
 
     /* ── SHARED ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
@@ -291,7 +291,7 @@
     .text-link:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
     /* ── SPLIT: GROUP ── */
-    #serious { background: var(--light); }
+    #serious { background: var(--light); padding-bottom: 24px; }
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
     @media (max-width: 760px) { .split { grid-template-columns: 1fr; gap: 40px; } }
     .split-photo { width: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1), 0 20px 56px rgba(0,0,0,0.08); display: block; }
@@ -403,7 +403,7 @@
     .price-features li::before { content: '✓'; color: var(--orange); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
 
     /* ── WHO IT'S FOR ── */
-    #who { background: var(--light); }
+    #who { background: var(--light); padding-top: 24px; }
     .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
     @media (max-width: 600px) { .who-grid { grid-template-columns: 1fr; } }
     .who-card { background: var(--white); border-radius: 12px; padding: 36px 30px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
@@ -589,8 +589,6 @@
     .score-badge.good  { background: rgba(248,128,50,0.1); color: var(--orange); }
     .score-badge.low   { background: rgba(0,0,0,0.06); color: var(--muted); }
     .score-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .retake-link { font-size: 0.88rem; color: var(--muted); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; background: none; border: none; }
-    .retake-link:hover { color: var(--text); }
     .score-benefits { list-style: none; text-align: left; margin: 0 auto 28px; max-width: 320px; display: flex; flex-direction: column; gap: 10px; }
     .score-benefits li { display: flex; gap: 10px; font-size: 0.95rem; color: var(--text); }
     .score-benefits li::before { content: '✓'; color: var(--orange); font-weight: 800; flex-shrink: 0; }
@@ -705,17 +703,17 @@
       <div class="reveal" style="border-left:3px solid var(--orange); padding-left:20px;">
         <div style="color:var(--orange); font-size:0.8rem; letter-spacing:2px; margin-bottom:8px;">★★★★★</div>
         <p style="font-family:'Barlow',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text); font-style:italic; line-height:1.4; margin-bottom:10px;">"Just what I needed. No-BS. Real accountability."</p>
-        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">— Niko, organized a full festival in 21 days</div>
+        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">Niko, organized a full festival in 21 days</div>
       </div>
       <div class="reveal reveal-d2" style="border-left:3px solid var(--orange); padding-left:20px;">
         <div style="color:var(--orange); font-size:0.8rem; letter-spacing:2px; margin-bottom:8px;">★★★★★</div>
         <p style="font-family:'Barlow',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text); font-style:italic; line-height:1.4; margin-bottom:10px;">"My self-talk went from self-criticism to self-respect."</p>
-        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">— Mitch, rebuilt his discipline</div>
+        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">Mitch, rebuilt his discipline</div>
       </div>
       <div class="reveal reveal-d3" style="border-left:3px solid var(--orange); padding-left:20px;">
         <div style="color:var(--orange); font-size:0.8rem; letter-spacing:2px; margin-bottom:8px;">★★★★★</div>
-        <p style="font-family:'Barlow',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text); font-style:italic; line-height:1.4; margin-bottom:10px;">"Always easier with the support of others — this group defined it."</p>
-        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">— Clint, built a daily meditation practice</div>
+        <p style="font-family:'Barlow',sans-serif; font-size:1.1rem; font-weight:700; color:var(--text); font-style:italic; line-height:1.4; margin-bottom:10px;">"Always easier with the support of others. This group defined it."</p>
+        <div style="font-size:0.85rem; color:var(--muted); font-weight:600;">Clint, built a daily meditation practice</div>
       </div>
     </div>
   </div>
@@ -726,27 +724,27 @@
   <div class="container">
     <span class="label reveal">The Core Issue</span>
     <h2 class="reveal" style="max-width:900px;">You don't have a <span class="highlight">motivation problem.</span><br>You have a structure problem.</h2>
-    <p class="reveal" style="max-width:620px; font-size:1.1rem; margin-bottom:52px; margin-top:20px;">Willpower runs out. Solo goals drift. You know this — you've lived it. The people who actually follow through aren't more disciplined. They have <strong style="color:var(--text);">external stakes, a visible group, and a timeline they can't escape.</strong> That's what the 21-Day Challenge gives you.</p>
+    <p class="reveal" style="max-width:620px; font-size:1.1rem; margin-bottom:52px; margin-top:20px;">Willpower runs out. Solo goals drift. You know this. You've lived it. The people who actually follow through aren't more disciplined. They have <strong style="color:var(--text);">external stakes, a visible group, and a timeline they can't escape.</strong> That's what the 21-Day Challenge gives you.</p>
     <div class="problem-grid">
       <div class="prob-col problem-side reveal">
         <div class="prob-col-label">The Problem</div>
         <h3>You're doing this alone.</h3>
-        <p>You set goals. You start strong. Then life gets messy and you fade out — again. Not because you lack desire. Because you lack structure.</p>
+        <p>You set goals. You start strong. Then life gets messy and you fade out. Again. Not because you lack desire. Because you lack structure.</p>
         <ul class="prob-list">
-          <li><span class="ico">❌</span> No stakes — quitting costs nothing</li>
-          <li><span class="ico">❌</span> No one watching — disappearing is easy</li>
-          <li><span class="ico">❌</span> No fixed timeline — "I'll restart Monday"</li>
-          <li><span class="ico">❌</span> No external pressure — willpower runs out</li>
+          <li><span class="ico">❌</span> No stakes, quitting costs nothing</li>
+          <li><span class="ico">❌</span> No one watching, disappearing is easy</li>
+          <li><span class="ico">❌</span> No fixed timeline, "I'll restart Monday"</li>
+          <li><span class="ico">❌</span> No external pressure, willpower runs out</li>
         </ul>
       </div>
       <div class="prob-col solution-side reveal reveal-d2">
         <div class="prob-col-label">The Solution</div>
         <h3>21 days. A group. Real stakes.</h3>
-        <p>The most consistent people aren't more disciplined — they have better systems and people around them who expect results.</p>
+        <p>The most consistent people aren't more disciplined. They have better systems and people around them who expect results.</p>
         <ul class="prob-list">
-          <li><span class="ico">✅</span> Public commitment — stakes are real</li>
+          <li><span class="ico">✅</span> Public commitment, stakes are real</li>
           <li><span class="ico">✅</span> 10 people max watching daily</li>
-          <li><span class="ico">✅</span> Fixed 21-day timeline — no drift</li>
+          <li><span class="ico">✅</span> Fixed 21-day timeline, no drift</li>
           <li><span class="ico">✅</span> Consequences that make quitting costly</li>
         </ul>
       </div>
@@ -767,11 +765,11 @@
       <div class="steps-grid">
         <div class="step-card reveal"><div class="step-num">01</div><h3>Define your Goals</h3><p>Habits, projects, whatever matters most right now. We clarify them on your 1-on-1 onboarding call.</p></div>
         <div class="step-card reveal reveal-d1"><div class="step-num">02</div><h3>Commit Publicly</h3><p>State your goals and your consequence to the group. Skin in the game from day one.</p></div>
-        <div class="step-card reveal reveal-d2"><div class="step-num">03</div><h3>Face Consequences</h3><p>Miss once? Redemption. Miss twice? Redemption 2. Miss three times? Pay your consequence. No renegotiating.</p></div>
+        <div class="step-card reveal reveal-d2"><div class="step-num">03</div><h3>Stay Committed</h3><p>We want you to succeed. If you slip, Redemption 1! Slip twice, Redemption 2!! Third time, you fail...</p></div>
       </div>
       <div class="steps-extras reveal" style="margin-top:28px; display:flex; flex-direction:column; gap:14px; padding:28px 32px; border:2.5px solid var(--blue); border-radius:10px; background:var(--blue-lt);">
-        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Join weekly live calls</strong> — Video on. Full cohort. Wins, obstacles, adjustments in real time.</span></div>
-        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Track Daily</strong> — 30 seconds. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow."</span></div>
+        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Join weekly live calls.</strong> Video on. Full cohort. Wins, obstacles, adjustments in real time.</span></div>
+        <div style="display:flex; align-items:flex-start; gap:14px; font-size:1.15rem; color:var(--text);"><span style="color:var(--blue); font-weight:900; flex-shrink:0;">+</span><span><strong>Track Daily.</strong> 30 seconds. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow."</span></div>
       </div>
     </div>
     <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
@@ -796,7 +794,7 @@
         </thead>
         <tbody>
           <!-- HABITS -->
-          <tr class="tracker-section-row"><td colspan="22">Habits — Daily</td></tr>
+          <tr class="tracker-section-row"><td colspan="22">Habits: Daily</td></tr>
           <tr class="tracker-habit-row">
             <td class="habit-name">Wake up at 7:30am</td>
             <td class="day-cell"><div class="tracker-dot done"></div></td>
@@ -919,7 +917,7 @@
           </tr>
 
           <!-- MOVEMENT -->
-          <tr class="tracker-section-row green"><td colspan="22">Movement — 4×/week · 30 min</td></tr>
+          <tr class="tracker-section-row green"><td colspan="22">Movement: 4x/week, 30 min</td></tr>
           <tr class="tracker-habit-row">
             <td class="habit-name">30 min of Movement</td>
             <td class="day-cell"><div class="tracker-dot done green"></div></td>
@@ -946,7 +944,7 @@
           </tr>
 
           <!-- STUDYING -->
-          <tr class="tracker-section-row orange"><td colspan="22">Studying — 4h/week</td></tr>
+          <tr class="tracker-section-row orange"><td colspan="22">Studying: 4h/week</td></tr>
           <tr class="tracker-habit-row">
             <td class="habit-name">Study session</td>
             <td class="day-cell"><div class="tracker-time">0.5h</div></td>
@@ -973,7 +971,7 @@
           </tr>
 
           <!-- DETOX -->
-          <tr class="tracker-section-row purple"><td colspan="22">Detox — Max 1h/week on Instagram</td></tr>
+          <tr class="tracker-section-row purple"><td colspan="22">Detox: Max 1h/week on Instagram</td></tr>
           <tr class="tracker-habit-row">
             <td class="habit-name">Stayed under limit</td>
             <td class="day-cell"><div class="tracker-dot done purple"></div></td>
@@ -1000,7 +998,7 @@
           </tr>
 
           <!-- PROJECT -->
-          <tr class="tracker-section-row"><td colspan="22">Project — Build a funnel for my business</td></tr>
+          <tr class="tracker-section-row"><td colspan="22">Project: Build a funnel for my business</td></tr>
           <tr class="tracker-habit-row">
             <td class="habit-name">Worked on project</td>
             <td class="day-cell"><div class="tracker-dot done"></div></td>
@@ -1027,7 +1025,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="tracker-sample-label">Sample tracker — yours will be filled in daily</div>
+      <div class="tracker-sample-label">Sample tracker, yours will be filled in daily</div>
     </div>
   </div>
 </section>
@@ -1050,6 +1048,38 @@
           <a href="commit.html" class="btn-primary" style="padding:12px 24px; font-size:0.95rem;">I'm Ready to Commit</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO IT'S FOR ── -->
+<section id="who">
+  <div class="container">
+    <span class="label reveal">Fit Check</span>
+    <h2 class="reveal">Is this for you?</h2>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-title yes">✓ This works if</div>
+        <ul class="who-list">
+          <li><span class="yes-icon">✓</span> You thrive under external accountability</li>
+          <li><span class="yes-icon">✓</span> You're willing to commit publicly</li>
+          <li><span class="yes-icon">✓</span> You're serious, not just interested</li>
+          <li><span class="yes-icon">✓</span> You have a specific goal you keep putting off</li>
+        </ul>
+      </div>
+      <div class="who-card reveal reveal-d2">
+        <div class="who-title no">✗ This doesn't work if</div>
+        <ul class="who-list">
+          <li><span class="no-icon">✗</span> You want soft support with no stakes</li>
+          <li><span class="no-icon">✗</span> You need hand-holding through every step</li>
+          <li><span class="no-icon">✗</span> You're not ready to commit publicly</li>
+        </ul>
+      </div>
+    </div>
+    <div class="survey-cta-wrap reveal" style="margin-top:44px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <h3 style="margin:0;">Is this for you?</h3>
+      <button class="btn-primary" onclick="openSurvey()" style="white-space:nowrap;">Take the Survey →</button>
+      <span style="font-size:0.9rem; color:var(--muted);">It takes 30 seconds.</span>
     </div>
   </div>
 </section>
@@ -1154,43 +1184,11 @@
               <div class="testi-goal">Consistent Meditation Practice</div>
             </div>
           </div>
-          <p class="testi-quote">"It was so great to find a group of likeminded individuals that are so open to helping and supporting others, while also staying strong in their goal. It's always easier to complete a difficult task while having the support of others — and this group defined that perfectly. I had a great 21 days with Thierry leading us weekly!"</p>
+          <p class="testi-quote">"It was so great to find a group of likeminded individuals that are so open to helping and supporting others, while also staying strong in their goal. It's always easier to complete a difficult task while having the support of others, and this group defined that perfectly. I had a great 21 days with Thierry leading us weekly!"</p>
         </div>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ── WHO IT'S FOR ── -->
-<section id="who">
-  <div class="container">
-    <span class="label reveal">Fit Check</span>
-    <h2 class="reveal">Is this for you?</h2>
-    <div class="who-grid">
-      <div class="who-card reveal">
-        <div class="who-title yes">✓ This works if</div>
-        <ul class="who-list">
-          <li><span class="yes-icon">✓</span> You thrive under external accountability</li>
-          <li><span class="yes-icon">✓</span> You're willing to commit publicly</li>
-          <li><span class="yes-icon">✓</span> You're serious — not just interested</li>
-          <li><span class="yes-icon">✓</span> You have a specific goal you keep putting off</li>
-        </ul>
-      </div>
-      <div class="who-card reveal reveal-d2">
-        <div class="who-title no">✗ This doesn't work if</div>
-        <ul class="who-list">
-          <li><span class="no-icon">✗</span> You want soft support with no stakes</li>
-          <li><span class="no-icon">✗</span> You need hand-holding through every step</li>
-          <li><span class="no-icon">✗</span> You're not ready to commit publicly</li>
-        </ul>
-      </div>
-    </div>
-    <div class="survey-cta-wrap reveal" style="margin-top:44px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-      <h3 style="margin:0;">Is this for you?</h3>
-      <button class="btn-primary" onclick="openSurvey()" style="white-space:nowrap;">Take the Survey →</button>
-      <span style="font-size:0.9rem; color:var(--muted);">It takes 30 seconds.</span>
-    </div>
   </div>
 </section>
 
@@ -1205,13 +1203,13 @@
       <div class="thierry-text">
         <span class="label reveal">Why Listen to Me</span>
         <h2 class="reveal">I've run this challenge <span class="highlight">from the inside out.</span></h2>
-        <p class="reveal">I'm not a productivity guru who sells frameworks. I'm someone who struggled with the same thing you do — knowing what to do, but not doing it consistently. I built the Focus Tribe because I needed it.</p>
-        <p class="reveal">I've personally coached over 50 people through this challenge across 6 cohorts. I've watched people go from stuck and scattered to shipping real work — in 21 days. I show up live every week, I know every member's goal, and I hold people accountable the way I wish someone had held me.</p>
+        <p class="reveal">I'm not a productivity guru who sells frameworks. I'm someone who struggled with the same thing you do: knowing what to do, but not doing it consistently. I built the Focus Tribe because I needed it.</p>
+        <p class="reveal">I've personally coached over 50 people through this challenge across 6 cohorts. I've watched people go from stuck and scattered to shipping real work in 21 days. I show up live every week, I know every member's goal, and I hold people accountable the way I wish someone had held me.</p>
         <ul class="thierry-creds reveal">
           <li><i class="cred-icon">✦</i> Built and run 6 cohorts since 2024</li>
           <li><i class="cred-icon">✦</i> 6 years of experience facilitating groups</li>
           <li><i class="cred-icon">✦</i> 50+ members coached!</li>
-          <li><i class="cred-icon">✦</i> Weekly live calls — I show up every time</li>
+          <li><i class="cred-icon">✦</i> Weekly live calls, I show up every time</li>
         </ul>
       </div>
     </div>
@@ -1301,9 +1299,9 @@
           <li>Daily tracking system (21 days)</li>
           <li>3 weekly live group calls</li>
           <li>WhatsApp community</li>
-          <li>Personally tracked by Thierry</li>
+          <li>Rewards and Consequences</li>
         </ul>
-        <a href="commit.html" class="btn-primary" style="width:100%;">I'm Ready to Commit — $197</a>
+        <a href="commit.html" class="btn-primary" style="width:100%;">I'm Ready to Commit - $197</a>
       </div>
       <div class="price-card reveal reveal-d2">
         <div class="price-label">Standard</div>
@@ -1315,7 +1313,7 @@
           <li>Daily tracking system (21 days)</li>
           <li>3 weekly live group calls</li>
           <li>WhatsApp community</li>
-          <li>Personally tracked by Thierry</li>
+          <li>Rewards and Consequences</li>
         </ul>
         <a href="details.html#pricing" class="btn-outline" style="width:100%; justify-content:center;">See full breakdown →</a>
       </div>
@@ -1324,7 +1322,7 @@
       <div style="font-size:2rem; flex-shrink:0; filter:hue-rotate(90deg);">🛡️</div>
       <div>
         <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1.05rem; color:#1a5c30; margin-bottom:4px;">100% Money-Back Guarantee</div>
-        <p style="margin:0; font-size:0.93rem; color:#2d7a4a; line-height:1.6;">Complete all 21 days, show up to every call, track daily — and if you got zero value, you get a full refund. No hoops, no negotiation.</p>
+        <p style="margin:0; font-size:0.93rem; color:#2d7a4a; line-height:1.6;">Complete all 21 days, show up to every call, track daily. If you got zero value, you get a full refund. No hoops, no negotiation.</p>
       </div>
     </div>
   </div>
@@ -1353,7 +1351,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>Anything with a daily action. Fitness habits, business goals, creative projects, quitting something, building a routine — past cohorts have done all of it. The key is that your goal has a clear daily action you can track as done or not done.</p>
+          <p>Anything with a daily action. Fitness habits, business goals, creative projects, quitting something, building a routine. Past cohorts have done all of it. The key is that your goal has a clear daily action you can track as done or not done.</p>
         </div>
       </div>
 
@@ -1363,7 +1361,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>You choose it. It has to be something real — money, a task you hate, something that genuinely stings. You state it publicly to the group on day one. If you miss a day three times, you pay it. No renegotiating. This is what makes it work.</p>
+          <p>You choose it. It has to be something real: money, a task you hate, something that genuinely stings. You state it publicly to the group on day one. If you miss a day three times, you pay it. No renegotiating. This is what makes it work.</p>
         </div>
       </div>
 
@@ -1373,7 +1371,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>30 seconds per day to log your check-in, plus 3 live calls of roughly 60 minutes over the 21 days. The time to actually do your goal is on you — the challenge just makes sure you show up for it.</p>
+          <p>30 seconds per day to log your check-in, plus 3 live calls of roughly 60 minutes over the 21 days. The time to actually do your goal is on you. The challenge just makes sure you show up for it.</p>
         </div>
       </div>
 
@@ -1383,7 +1381,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>You get two redemptions over the 21 days. Miss once — you earn a redemption. Miss twice — second redemption. Miss three times — you pay your consequence. It's structured to be firm but human. Life happens. Three misses means you didn't show up.</p>
+          <p>We want you to succeed. If you slip, Redemption 1! Slip twice, Redemption 2!! Third time, you fail...</p>
         </div>
       </div>
 
@@ -1393,7 +1391,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>If you complete all 21 days, attend every call, and track every day — and honestly got zero value — you get a full refund. No hassle. That's the deal. If you quit halfway, there's no refund; the structure only works if you're in it.</p>
+          <p>If you complete all 21 days, attend every call, and track every day, and honestly got zero value, you get a full refund. No hassle. That's the deal. If you quit halfway, there's no refund; the structure only works if you're in it.</p>
         </div>
       </div>
 
@@ -1403,7 +1401,7 @@
           <span class="faq-arrow">↓</span>
         </button>
         <div class="faq-a">
-          <p>Thierry. He's run multiple cohorts, personally tracks every member, leads all the live calls, and has been through the challenge himself. This isn't delegated to an assistant or automated — you'll actually have him watching and pushing you.</p>
+          <p>Thierry. He's run multiple cohorts, personally tracks every member, leads all the live calls, and has been through the challenge himself. This isn't delegated to an assistant or automated. You'll actually have him watching and pushing you.</p>
         </div>
       </div>
 
@@ -1419,7 +1417,7 @@
     <a href="commit.html" class="btn-primary reveal" style="font-size:1.1rem; padding:18px 44px;">I'm Ready to Commit</a>
     <br>
     <a href="details.html" class="sublink reveal">Want to read everything first? →</a>
-    <p class="contact reveal">Questions? <a href="mailto:thierry@thefocustribe.com">thierry@thefocustribe.com</a></p>
+    <p class="contact reveal">Questions? <a href="#" class="js-ml" data-s=""><span class="js-et"></span></a></p>
   </div>
 </section>
 
@@ -1432,7 +1430,7 @@
         <a href="#" class="soc-link" aria-label="Instagram">
           <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="mailto:thierry@thefocustribe.com" class="soc-link" aria-label="Email">
+        <a href="#" class="soc-link js-ml" data-s="" aria-label="Email">
           <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
         </a>
       </div>
@@ -1479,9 +1477,9 @@
       <div class="question-screen" id="q2">
         <div class="question-text">How much does external accountability affect your performance?</div>
         <div class="options">
-          <button class="option-btn" data-q="2" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Hugely — I perform much better when others can see me</button>
-          <button class="option-btn" data-q="2" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Somewhat — it helps but I can go without</button>
-          <button class="option-btn" data-q="2" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> Not much — I'm self-motivated enough</button>
+          <button class="option-btn" data-q="2" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Hugely. I perform much better when others can see me</button>
+          <button class="option-btn" data-q="2" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Somewhat. It helps but I can go without</button>
+          <button class="option-btn" data-q="2" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> Not much. I'm self-motivated enough</button>
         </div>
         <div class="q-next-btn"><button class="btn-primary" style="padding:12px 28px; font-size:0.95rem;" onclick="nextQ(2)" disabled id="next-2">Next →</button></div>
       </div>
@@ -1490,9 +1488,9 @@
       <div class="question-screen" id="q3">
         <div class="question-text">Do you have a specific goal you've been putting off?</div>
         <div class="options">
-          <button class="option-btn" data-q="3" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Yes — it's been on my list for weeks or months</button>
-          <button class="option-btn" data-q="3" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Kind of — I have ideas but nothing concrete</button>
-          <button class="option-btn" data-q="3" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> No — I'm actually on track with my goals</button>
+          <button class="option-btn" data-q="3" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Yes. It's been on my list for weeks or months</button>
+          <button class="option-btn" data-q="3" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Kind of. I have ideas but nothing concrete</button>
+          <button class="option-btn" data-q="3" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> No. I'm actually on track with my goals</button>
         </div>
         <div class="q-next-btn"><button class="btn-primary" style="padding:12px 28px; font-size:0.95rem;" onclick="nextQ(3)" disabled id="next-3">Next →</button></div>
       </div>
@@ -1501,9 +1499,9 @@
       <div class="question-screen" id="q4">
         <div class="question-text">Imagine committing your goal publicly to 10 people you respect. That thought makes you feel...</div>
         <div class="options">
-          <button class="option-btn" data-q="4" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Motivated — that's exactly the push I need</button>
+          <button class="option-btn" data-q="4" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Motivated. That's exactly the push I need</button>
           <button class="option-btn" data-q="4" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Uncomfortable but intrigued</button>
-          <button class="option-btn" data-q="4" data-pts="1" onclick="selectOption(this)"><span class="option-letter">C</span> Anxious — I'd rather keep goals private</button>
+          <button class="option-btn" data-q="4" data-pts="1" onclick="selectOption(this)"><span class="option-letter">C</span> Anxious. I'd rather keep goals private</button>
           <button class="option-btn" data-q="4" data-pts="0" onclick="selectOption(this)"><span class="option-letter">D</span> Indifferent</button>
         </div>
         <div class="q-next-btn"><button class="btn-primary" style="padding:12px 28px; font-size:0.95rem;" onclick="nextQ(4)" disabled id="next-4">Next →</button></div>
@@ -1511,11 +1509,11 @@
 
       <!-- Q5 -->
       <div class="question-screen" id="q5">
-        <div class="question-text">If failing meant a real consequence (paying money, doing something you dislike) — would that change how hard you try?</div>
+        <div class="question-text">If failing meant a real consequence (paying money, doing something you dislike), would that change how hard you try?</div>
         <div class="options">
-          <button class="option-btn" data-q="5" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Absolutely — high stakes make me perform</button>
-          <button class="option-btn" data-q="5" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Probably — I'd take it more seriously</button>
-          <button class="option-btn" data-q="5" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> Not really — consequences don't motivate me</button>
+          <button class="option-btn" data-q="5" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Absolutely. High stakes make me perform</button>
+          <button class="option-btn" data-q="5" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> Probably. I'd take it more seriously</button>
+          <button class="option-btn" data-q="5" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> Not really. Consequences don't motivate me</button>
         </div>
         <div class="q-next-btn"><button class="btn-primary" style="padding:12px 28px; font-size:0.95rem;" onclick="nextQ(5)" disabled id="next-5">Next →</button></div>
       </div>
@@ -1535,7 +1533,7 @@
       <div class="question-screen" id="q7">
         <div class="question-text">Can you commit 30 seconds per day + 3 calls of ~60 min over 21 days?</div>
         <div class="options">
-          <button class="option-btn" data-q="7" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Yes — I can make that work no problem</button>
+          <button class="option-btn" data-q="7" data-pts="3" onclick="selectOption(this)"><span class="option-letter">A</span> Yes. I can make that work no problem</button>
           <button class="option-btn" data-q="7" data-pts="2" onclick="selectOption(this)"><span class="option-letter">B</span> It'll be tight but I'll manage</button>
           <button class="option-btn" data-q="7" data-pts="0" onclick="selectOption(this)"><span class="option-letter">C</span> Probably not in this period</button>
         </div>
@@ -1573,9 +1571,20 @@
         <div class="score-title" id="score-title">This was built for you.</div>
         <p class="score-desc" id="score-desc">Loading your result...</p>
         <ul class="score-benefits" id="score-benefits" style="display:none;"></ul>
+        <div class="score-email-wrap" id="score-email-wrap" style="width:100%; max-width:320px; margin:0 auto 16px;">
+          <p style="font-size:0.82rem; color:var(--muted); margin-bottom:8px; text-align:center;">Get notified when the next cohort opens. Optional.</p>
+          <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <input type="text" id="score-first-input" placeholder="First name" style="flex:1; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--white); outline:none; transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"/>
+            <input type="text" id="score-last-input" placeholder="Last name" style="flex:1; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--white); outline:none; transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"/>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="email" id="score-email-input" placeholder="your@email.com" style="flex:1; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; font-size:0.9rem; font-family:inherit; color:var(--text); background:var(--white); outline:none; transition:border-color 0.2s ease;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'"/>
+            <button onclick="submitWaitlistEmail('score-email-input','score-email-msg','score-first-input','score-last-input')" style="padding:10px 16px; border:none; border-radius:8px; background:var(--orange); color:#fff; font-family:'Barlow',sans-serif; font-weight:700; font-size:0.88rem; cursor:pointer; white-space:nowrap; transition:background 0.2s ease;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
+          </div>
+          <p id="score-email-msg" style="font-size:0.8rem; margin-top:6px; text-align:center; min-height:18px;"></p>
+        </div>
         <div class="score-actions">
           <a href="commit.html" class="btn-primary" id="score-cta" style="width:100%; max-width:320px; justify-content:center;">I'm Ready to Commit</a>
-          <button class="retake-link" onclick="retakeSurvey()">Retake the quiz</button>
         </div>
       </div>
 
@@ -1584,6 +1593,9 @@
 </div><!-- /modal-overlay -->
 
 <script>
+  // ── Email (obfuscated) ──
+  const _em = 'thierry' + '.muller' + '\x40' + 'gmail' + '.com';
+
   // ── Scroll reveal ──
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1681,7 +1693,7 @@
     if (total >= 83) {
       badge.className = 'score-badge great'; badge.textContent = 'Perfect Fit';
       title.textContent = 'This was built for you.';
-      desc.textContent = `With a score of ${total}/100, you have exactly the challenges the 21-Day Challenge is designed to solve — and the self-awareness to actually use it. Apply now before the March 15 cohort fills up.`;
+      desc.textContent = `With a score of ${total}/100, you have exactly the challenges the 21-Day Challenge is designed to solve, and the self-awareness to actually use it. Apply now before the March 15 cohort fills up.`;
       benefits.style.display = 'flex';
       cta.textContent = 'I\'m Ready to Commit';
       cta.href = 'commit.html';
@@ -1695,14 +1707,14 @@
     } else if (total >= 33) {
       badge.className = 'score-badge good'; badge.textContent = 'Possible Fit';
       title.textContent = 'Might be worth a conversation.';
-      desc.textContent = `Your score of ${total}/100 suggests the challenge could help, but it depends on timing and your goals. Reach out — a quick chat will tell you if this cohort is right for you.`;
+      desc.textContent = `Your score of ${total}/100 suggests the challenge could help, but it depends on timing and your goals. Reach out. A quick chat will tell you if this cohort is right for you.`;
       benefits.style.display = 'none';
       cta.textContent = 'Get in Touch';
-      cta.href = 'mailto:thierry@thefocustribe.com?subject=21 Days of Focus – Question';
+      cta.href = 'mailto:' + _em + '?subject=21 Days of Focus - Question';
     } else {
       badge.className = 'score-badge low'; badge.textContent = 'Not Right Yet';
       title.textContent = 'This might not be the right time.';
-      desc.textContent = `A score of ${total}/100 suggests you might not be at the stage where external accountability is your main lever. That's okay — come back when you have a specific goal and feel the pull to commit publicly.`;
+      desc.textContent = `A score of ${total}/100 suggests you might not be at the stage where external accountability is your main lever. That's okay. Come back when you have a specific goal and feel the pull to commit publicly.`;
       benefits.style.display = 'none';
       cta.textContent = 'Learn More First';
       cta.href = 'details.html';
@@ -1717,23 +1729,16 @@
     answer.style.maxHeight = isOpen ? '0' : answer.scrollHeight + 'px';
   }
 
-  function retakeSurvey() {
-    scores = {}; currentQ = 1;
-    document.getElementById('results-screen').classList.remove('active');
-    document.querySelectorAll('.question-screen').forEach(q => q.classList.remove('active'));
-    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-    document.querySelectorAll('[id^="next-"]').forEach(b => b.setAttribute('disabled', ''));
-    document.getElementById('q1').classList.add('active');
-    document.getElementById('progress-label').textContent = 'Question 1 of 8';
-    document.getElementById('progress-fill').style.width = '12.5%';
-    document.getElementById('score-ring-fill').style.strokeDashoffset = '402';
-    document.getElementById('score-benefits').style.display = 'none';
-  }
+  // ── Set obfuscated email links ──
+  document.querySelectorAll('.js-ml').forEach(a => {
+    a.href = 'mailto:' + _em + (a.dataset.s ? '?subject=' + a.dataset.s : '');
+  });
+  document.querySelectorAll('.js-et').forEach(s => s.textContent = _em);
+
 </script>
 
-<!-- COHORT NOTIFY POPUP REMOVED — to restore, see git history -->
-<!-- <style>
-  #notify-popup {
+<style>
+  #waitlist-popup {
     position: fixed; bottom: 28px; right: 28px; z-index: 9999;
     width: 320px; background: #fff;
     border-radius: 16px;
@@ -1744,9 +1749,8 @@
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.2,0.64,1);
     pointer-events: none;
   }
-  #notify-popup.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  #notify-popup.hide { opacity: 0; transform: translateY(20px); pointer-events: none; }
-
+  #waitlist-popup.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #waitlist-popup.hide { opacity: 0; transform: translateY(20px); pointer-events: none; }
   .popup-close {
     position: absolute; top: 12px; right: 14px;
     background: none; border: none; cursor: pointer;
@@ -1755,29 +1759,25 @@
     transition: color 0.2s ease, background 0.2s ease;
   }
   .popup-close:hover { color: var(--text); background: var(--light); }
-
-  .popup-icon {
-    width: 40px; height: 40px; border-radius: 10px;
-    background: var(--blue-lt); display: flex; align-items: center; justify-content: center;
-    margin-bottom: 14px; font-size: 1.3rem;
-  }
-  #notify-popup h4 {
+  #waitlist-popup h4 {
     font-family: 'Barlow', sans-serif; font-weight: 800;
     font-size: 1.05rem; color: var(--text); margin-bottom: 6px; letter-spacing: -0.02em;
   }
-  #notify-popup p {
-    font-size: 0.875rem; color: var(--muted); line-height: 1.55; margin-bottom: 18px;
+  #waitlist-popup > p {
+    font-size: 0.875rem; color: var(--muted); line-height: 1.55; margin-bottom: 16px;
   }
-  .popup-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
-  .popup-fields input {
+  #waitlist-popup input[type="text"],
+  #waitlist-popup input[type="email"] {
     width: 100%; padding: 10px 14px; border: 1.5px solid var(--border);
     border-radius: 8px; font-size: 0.9rem; font-family: inherit; color: var(--text);
-    background: var(--white); outline: none;
-    transition: border-color 0.2s ease;
+    background: var(--white); outline: none; box-sizing: border-box;
+    transition: border-color 0.2s ease; margin-bottom: 10px;
   }
-  .popup-fields input:focus { border-color: var(--blue); }
-  .popup-fields input::placeholder { color: #aaa; }
-
+  #waitlist-popup input[type="text"]:focus,
+  #waitlist-popup input[type="email"]:focus { border-color: var(--orange); }
+  #waitlist-popup input::placeholder { color: #aaa; }
+  #popup-name-row { display: flex; gap: 8px; }
+  #popup-name-row input { flex: 1; }
   #popup-submit {
     width: 100%; padding: 11px; border: none; border-radius: 8px;
     background: var(--orange); color: #fff;
@@ -1787,20 +1787,93 @@
   }
   #popup-submit:hover { background: var(--orange-dk); transform: translateY(-1px); }
   #popup-submit:active { transform: translateY(0); }
-
-  #notify-success {
-    display: none; text-align: center; padding: 8px 0;
-  }
-  #notify-success .success-icon {
+  #popup-msg { font-size: 0.8rem; min-height: 18px; margin-top: 6px; text-align: center; }
+  #popup-success { display: none; text-align: center; padding: 8px 0; }
+  #popup-success .success-icon {
     width: 48px; height: 48px; border-radius: 50%;
     background: #e8f8ee; display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px; font-size: 1.4rem;
+    margin: 0 auto 12px; font-size: 1.4rem;
   }
-  #notify-success h4 {
-    font-family: 'Barlow', sans-serif; font-weight: 800;
-    font-size: 1.05rem; margin-bottom: 6px; color: var(--text);
+  #popup-success h4 { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+  #popup-success p { font-size: 0.875rem; color: var(--muted); }
+</style>
+
+<div id="waitlist-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <button class="popup-close" onclick="closePopup()" aria-label="Close">×</button>
+  <div id="popup-form">
+    <h4 id="popup-title">Next cohort opening soon.</h4>
+    <p>Drop your info to get notified first. No spam, just the date.</p>
+    <div id="popup-name-row">
+      <input type="text" id="popup-first-input" placeholder="First name" />
+      <input type="text" id="popup-last-input" placeholder="Last name" />
+    </div>
+    <input type="email" id="popup-email-input" placeholder="your@email.com" />
+    <button id="popup-submit" onclick="submitWaitlistEmail('popup-email-input','popup-msg','popup-first-input','popup-last-input')">Notify me</button>
+    <p id="popup-msg"></p>
+  </div>
+  <div id="popup-success">
+    <div class="success-icon">✓</div>
+    <h4>You're on the list.</h4>
+    <p>We'll email you as soon as the next cohort opens.</p>
+  </div>
+</div>
+
+<script>
+  // ── Waitlist (Airtable) ──
+  const AIRTABLE_TOKEN  = 'patML20hHVZAJU9lY.7578fffb83a1b43288e71ad2dba05f8ddf8c5bd791b5c27d477f925dc048a3af';
+  const AIRTABLE_BASE   = 'app2J16TBoBritRyC';
+  const AIRTABLE_TABLE  = 'tblaKNLx4bxJpi0TE';
+
+  async function submitWaitlistEmail(inputId, msgId, firstId, lastId) {
+    const input = document.getElementById(inputId);
+    const msg   = document.getElementById(msgId);
+    const email = input ? input.value.trim() : '';
+    const first = firstId ? (document.getElementById(firstId) || {}).value?.trim() || '' : '';
+    const last  = lastId  ? (document.getElementById(lastId)  || {}).value?.trim() || '' : '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (msg) { msg.style.color = '#d93025'; msg.textContent = 'Please enter a valid email.'; }
+      return;
+    }
+    if (msg) { msg.style.color = 'var(--muted)'; msg.textContent = 'Saving...'; }
+    try {
+      const res = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: { 'First Name': first, 'Last Name': last, Email: email, Source: inputId === 'popup-email-input' ? 'Popup' : 'Quiz' } })
+      });
+      if (!res.ok) throw new Error();
+      if (msg) { msg.style.color = '#22a55a'; msg.textContent = "You're on the list!"; }
+      if (input) input.value = '';
+      if (firstId && document.getElementById(firstId)) document.getElementById(firstId).value = '';
+      if (lastId  && document.getElementById(lastId))  document.getElementById(lastId).value  = '';
+      if (inputId === 'popup-email-input') {
+        setTimeout(() => {
+          document.getElementById('popup-form').style.display = 'none';
+          document.getElementById('popup-success').style.display = 'block';
+        }, 800);
+      }
+    } catch {
+      if (msg) { msg.style.color = '#d93025'; msg.textContent = 'Something went wrong. Try again.'; }
+    }
   }
-  #notify-success p { font-size: 0.875rem; color: var(--muted); }
-</style> -->
+
+  // ── Popup trigger (30s or 70% scroll) ──
+  let popupShown = false;
+  function showPopup() {
+    if (popupShown) return;
+    popupShown = true;
+    document.getElementById('waitlist-popup').classList.add('show');
+  }
+  function closePopup() {
+    document.getElementById('waitlist-popup').classList.remove('show');
+    document.getElementById('waitlist-popup').classList.add('hide');
+  }
+  setTimeout(showPopup, 30000);
+  window.addEventListener('scroll', function onScroll() {
+    const scrolled = window.scrollY + window.innerHeight;
+    const total    = document.documentElement.scrollHeight;
+    if (scrolled / total >= 0.70) { showPopup(); window.removeEventListener('scroll', onScroll); }
+  });
+</script>
 </body>
 </html>

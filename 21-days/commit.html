@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I'm Ready to Commit – 21 Days of Focus</title>
+  <title>I'm Ready to Commit | 21 Days of Focus</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
   <style>
@@ -257,19 +257,19 @@
       <div class="cohort-card" onclick="selectCohort(this)" data-cohort="mar15">
         <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
         <div class="cohort-date">March 15, 2026</div>
-        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+        <div class="cohort-time">6:30-8:00pm Medellín / 7:30-9:00pm EST</div>
       </div>
 
       <div class="cohort-card" onclick="selectCohort(this)" data-cohort="april5">
         <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
         <div class="cohort-date">April 5, 2026</div>
-        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+        <div class="cohort-time">6:30-8:00pm Medellín / 7:30-9:00pm EST</div>
       </div>
 
       <div class="cohort-card" onclick="selectCohort(this)" data-cohort="may3">
         <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
         <div class="cohort-date">May 3, 2026</div>
-        <div class="cohort-time">6:30 – 8:00pm Medellín / 7:30 – 9:00pm EST</div>
+        <div class="cohort-time">6:30-8:00pm Medellín / 7:30-9:00pm EST</div>
       </div>
 
     </div>
@@ -286,7 +286,7 @@
 
         <!-- EARLY BIRD -->
         <div class="pcard featured">
-          <div class="pcard-badge">BEST VALUE — EARLY BIRD</div>
+          <div class="pcard-badge">BEST VALUE / EARLY BIRD</div>
           <div class="pcard-label">4+ days before start</div>
           <div class="pcard-price">$197</div>
           <div class="pcard-orig-row">
@@ -299,7 +299,7 @@
             <li>Daily tracking system (21 days)</li>
             <li>3 weekly live group calls</li>
             <li>WhatsApp accountability group</li>
-            <li>Personally tracked by Thierry</li>
+            <li>Rewards and Consequences</li>
           </ul>
           <div class="stripe-wrap">
             <stripe-buy-button
@@ -320,7 +320,7 @@
             <li>Daily tracking system (21 days)</li>
             <li>3 weekly live group calls</li>
             <li>WhatsApp accountability group</li>
-            <li>Personally tracked by Thierry</li>
+            <li>Rewards and Consequences</li>
           </ul>
           <div class="stripe-wrap">
             <stripe-buy-button
@@ -337,7 +337,7 @@
         <div class="icon">🛡️</div>
         <div>
           <h4>100% Money-Back Guarantee</h4>
-          <p>Complete all 21 days, show up to every call, track daily — and if you got zero value, you get a full refund. No hoops. No negotiation. The risk is on us.</p>
+          <p>Complete all 21 days, show up to every call, track daily. If you got zero value, you get a full refund. No hoops. No negotiation. The risk is on us.</p>
         </div>
       </div>
 
@@ -351,11 +351,11 @@
           </li>
           <li class="next-item">
             <div class="next-num">2</div>
-            <p>Thierry will reach out within 24 hours to schedule your <strong>1-on-1 onboarding call</strong> — where you'll define your goals and set your consequence.</p>
+            <p>Thierry will reach out within 24 hours to schedule your <strong>1-on-1 onboarding call</strong> where you'll define your goals and set your consequence.</p>
           </li>
           <li class="next-item">
             <div class="next-num">3</div>
-            <p>You'll be added to the WhatsApp group before your cohort starts. <span>Say hello — the group is already active.</span></p>
+            <p>You'll be added to the WhatsApp group before your cohort starts. <span>Say hello, the group is already active.</span></p>
           </li>
           <li class="next-item">
             <div class="next-num">4</div>
@@ -372,7 +372,7 @@
 <!-- ── FOOTER ── -->
 <div class="commit-footer">
   <p>© 2026 The Focus Tribe. Payments secured by Stripe.</p>
-  <a href="mailto:thierry@thefocustribe.com">Questions? thierry@thefocustribe.com</a>
+  <a href="#" class="js-ml" data-s="">Questions? <span class="js-et"></span></a>
 </div>
 
 <script>
@@ -386,6 +386,13 @@
       reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
   }
+
+  // ── Email (obfuscated) ──
+  const _em = 'thierry' + '.muller' + '\x40' + 'gmail' + '.com';
+  document.querySelectorAll('.js-ml').forEach(a => {
+    a.href = 'mailto:' + _em + (a.dataset.s ? '?subject=' + a.dataset.s : '');
+  });
+  document.querySelectorAll('.js-et').forEach(s => s.textContent = _em);
 </script>
 
 </body>
