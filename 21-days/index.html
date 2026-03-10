@@ -173,9 +173,10 @@
     .prob-col.problem-side { background: #fff; }
     .prob-col.solution-side { background: var(--blue); }
     .prob-col-label {
-      font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 800;
+      font-family: 'Barlow', sans-serif; font-size: 1.05rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px;
     }
+    @media (max-width: 640px) { .prob-col-label { font-size: 1.56rem; } }
     .problem-side .prob-col-label { color: #d93025; }
     .solution-side .prob-col-label { color: #22a55a; }
     .prob-col h3 { font-size: 1.6rem; margin-bottom: 18px; }
@@ -337,7 +338,7 @@
     #testimonials { background: var(--light); }
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
     @media (max-width: 840px) { .testi-grid { grid-template-columns: 1fr; } }
-    .testi-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; }
+    .testi-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; position: relative; }
     .testi-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top; display: block; }
     .testi-body { padding: 26px 22px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
     .testi-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 2px; }
@@ -596,7 +597,7 @@
     @media (max-width: 760px) { .proof-grid { grid-template-columns: 1fr; gap: 20px; } }
 
     /* ── STEP CARD MOBILE ── */
-    @media (max-width: 640px) { .step-card { padding: 28px 20px; } }
+    @media (max-width: 640px) { .step-card { padding: 18px 16px; } }
 
     /* ── PRICE CARD MOBILE ── */
     @media (max-width: 640px) { .price-card { padding: 32px 24px; } .price-amount { font-size: 3.4rem; } }
@@ -604,24 +605,49 @@
     /* ── WHO CARD MOBILE ── */
     @media (max-width: 640px) { .who-card { padding: 28px 20px; } }
 
-    /* ── NAV CTA MOBILE ── */
-    @media (max-width: 400px) { .btn-nav { padding: 8px 14px; font-size: 0.82rem; } }
-
     /* ── MOBILE OVERRIDES ── */
     @media (max-width: 640px) {
+      /* Nav */
+      .nav-logo { height: 24px; }
+      .btn-nav { display: none; }
+
+      /* Hero */
       h2 { font-size: clamp(1.9rem, 8vw, 3.4rem); }
       .hero-inner { padding: 52px 20px 64px; }
-      .hero-ctas-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-sub { font-size: 0.94rem; }
+      .hero-ctas { width: 100%; }
+      .hero-ctas-row { flex-direction: column; align-items: center; gap: 16px; width: 100%; }
       .hero-tagline { font-size: clamp(1.3rem, 6.5vw, 2.8rem); }
       .hero-cohort-badge { margin-bottom: 0; }
+      .hero-ctas .btn-primary { padding: 14px 40px !important; font-size: 1rem !important; }
+
+      /* How it works */
+      .steps-wrap { margin-top: 24px; }
+      .step-num { font-size: 1.8rem; margin-bottom: 8px; }
+      .step-card h3 { font-size: 0.94rem; margin-bottom: 6px; }
+      .step-card p { font-size: 0.83rem; line-height: 1.5; }
+
+      /* Testimonials: photo as small icon beside stars/name */
+      .testi-card { flex-direction: column; }
+      .testi-photo { width: 44px; height: 44px; border-radius: 50%; aspect-ratio: 1/1; position: absolute; top: 22px; right: 22px; }
+      .testi-body { position: relative; }
+
+      /* Proof blurbs */
+      .proof-grid p { font-size: 0.88rem !important; }
+      .proof-grid div { font-size: 0.68rem !important; }
+
+      /* Before / After */
+      .ba-list { gap: 12px; }
+
+      /* Other */
       .thierry-split { grid-template-columns: 1fr; gap: 32px; }
       .thierry-photo { aspect-ratio: 4/5; }
       .stats-row { gap: 20px; }
       .stat-num { font-size: 3rem; }
       .alejo-card { max-width: 100%; }
       .split { gap: 32px; }
-      .steps-extras { padding: 20px; font-size: 1rem; }
-      .steps-extras div { font-size: 1rem; }
+      .steps-extras { padding: 16px; font-size: 0.65rem; }
+      .steps-extras div { font-size: 0.65rem; }
     }
   </style>
 </head>
