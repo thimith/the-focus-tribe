@@ -133,20 +133,20 @@
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
       border-radius: 100px; padding: 6px 18px;
       font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.88);
-      margin-bottom: 28px; letter-spacing: 0.01em;
+      margin-bottom: 0; letter-spacing: 0.01em; align-self: center;
     }
     .hero-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; animation: pulse 2s ease infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.55;transform:scale(1.6)} }
 
     h1.hero-title {
       font-family: 'Barlow', sans-serif; font-weight: 900;
-      font-size: clamp(3rem, 11.2vw, 8.4rem);
+      font-size: clamp(4rem, 21vw, 8.4rem);
       letter-spacing: -0.035em; line-height: 1.02; color: #fff; margin-bottom: 26px;
     }
     .hero-sub { font-size: 1.25rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin-bottom: 14px; }
-    @media (max-width: 640px) { .hero-sub { font-size: 1.05rem; } }
-    .hero-body { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; white-space: nowrap; }
-    @media (max-width: 640px) { .hero-body { white-space: normal; font-size: 0.95rem; } }
+    @media (max-width: 640px) { .hero-sub { font-size: 1.25rem; } }
+    .hero-body { font-size: 1.25rem; color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 36px; white-space: nowrap; }
+    @media (max-width: 640px) { .hero-body { white-space: normal; font-size: 1.25rem; } }
     .hero-ctas { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
     .hero-ctas-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
     .hero-survey-link { font-size: 0.92rem; color: rgba(255,255,255,0.6); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; background: none; border: none; padding: 0; font-family: Helvetica, Arial, sans-serif; transition: color 0.2s ease; }
@@ -176,8 +176,8 @@
       font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 800;
       letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px;
     }
-    .problem-side .prob-col-label { color: #bbb; }
-    .solution-side .prob-col-label { color: var(--orange); }
+    .problem-side .prob-col-label { color: #d93025; }
+    .solution-side .prob-col-label { color: #22a55a; }
     .prob-col h3 { font-size: 1.6rem; margin-bottom: 18px; }
     .problem-side h3 { color: var(--text); }
     .solution-side h3 { color: #fff; }
@@ -606,6 +606,23 @@
 
     /* ── NAV CTA MOBILE ── */
     @media (max-width: 400px) { .btn-nav { padding: 8px 14px; font-size: 0.82rem; } }
+
+    /* ── MOBILE OVERRIDES ── */
+    @media (max-width: 640px) {
+      h2 { font-size: clamp(1.9rem, 8vw, 3.4rem); }
+      .hero-inner { padding: 52px 20px 64px; }
+      .hero-ctas-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .hero-tagline { font-size: clamp(1.3rem, 6.5vw, 2.8rem); }
+      .hero-cohort-badge { margin-bottom: 0; }
+      .thierry-split { grid-template-columns: 1fr; gap: 32px; }
+      .thierry-photo { aspect-ratio: 4/5; }
+      .stats-row { gap: 20px; }
+      .stat-num { font-size: 3rem; }
+      .alejo-card { max-width: 100%; }
+      .split { gap: 32px; }
+      .steps-extras { padding: 20px; font-size: 1rem; }
+      .steps-extras div { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -627,18 +644,14 @@
   <div class="hero-inner container">
     <h1 class="hero-title">21-Days<br>of <span class="highlight">Focus.</span></h1>
     <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight">Get Sh*t Done.</span></p>
-    <p class="hero-sub">You know what you need to do. You just can't seem to follow through on your own.</p>
-    <p class="hero-body">Join a cohort of 10–12 serious people. Real stakes. Real accountability. <strong style="color:rgba(255,255,255,0.88)">Real results.</strong></p>
+    <p class="hero-sub">Alone, you negotiate with yourself. Every time.<br>With people watching daily, real stakes on the line — that's what finally makes the difference.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
-        <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
-          <a href="commit.html" class="btn-primary" style="font-size:1.1rem; padding:18px 40px;">I'm Ready to Commit</a>
-          <div class="hero-cohort-badge">
-            <span class="hero-dot"></span>
-            Next cohort: March 15
-          </div>
+        <a href="commit.html" class="btn-primary" style="font-size:1.1rem; padding:18px 40px;">I'm Ready to Commit</a>
+        <div class="hero-cohort-badge">
+          <span class="hero-dot"></span>
+          Next cohort: March 15
         </div>
-        <button class="hero-survey-link" onclick="openSurvey()" style="align-self:flex-start; margin-top:18px;">Not sure? Take the quiz →</button>
       </div>
     </div>
   </div>
@@ -722,7 +735,7 @@
 </section>
 
 <!-- ── TRACKER ── -->
-<section id="tracker">
+<section id="tracker" style="display:none">
   <div class="container">
     <span class="label reveal">What It Looks Like</span>
     <h2 class="reveal">Your 21 days, <span class="highlight">tracked.</span></h2>
