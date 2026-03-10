@@ -59,7 +59,7 @@
     .btn-nav:hover { background: var(--orange-dk); transform: translateY(-1px); }
     .btn-nav:active { transform: translateY(0); }
     .btn-nav:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-    @media (max-width: 640px) { nav { padding: 0 20px; } .nav-link { display: none; } }
+    @media (max-width: 640px) { nav { padding: 0 16px; } .nav-link { display: none; } .nav-logo { height: 29px; } .btn-nav { font-size: 0.78rem; padding: 8px 14px; border-radius: 5px; } }
 
     /* ── SHARED ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
@@ -339,12 +339,15 @@
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
     @media (max-width: 840px) { .testi-grid { grid-template-columns: 1fr; } }
     .testi-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; position: relative; }
-    .testi-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top; display: block; }
-    .testi-body { padding: 26px 22px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
-    .testi-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 2px; }
-    .testi-goal { font-family: 'Barlow', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: -4px; }
-    .testi-quote { font-size: 0.97rem; color: var(--text); line-height: 1.72; font-style: italic; flex: 1; }
+    .testi-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: top; display: block; flex-shrink: 0; }
+    .testi-header { display: flex; align-items: flex-start; gap: 14px; min-height: 96px; }
+    .testi-meta { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+    .testi-name-row { display: flex; align-items: center; gap: 8px; }
+    .testi-body { padding: 22px 22px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+    .testi-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 2px; white-space: nowrap; }
+    .testi-goal { font-family: 'Barlow', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
     .testi-name { font-size: 0.88rem; font-weight: 700; color: var(--blue); }
+    .testi-quote { font-size: 0.97rem; color: var(--text); line-height: 1.72; font-style: italic; flex: 1; }
 
     /* Video testimonial */
     .alejo-wrap {
@@ -608,10 +611,11 @@
     /* ── MOBILE OVERRIDES ── */
     @media (max-width: 640px) {
       /* Nav */
-      .nav-logo { height: 24px; }
-      .btn-nav { display: none; }
-      nav { justify-content: center; padding: 0 20px; }
-      .nav-right { display: none; }
+      .nav-logo { height: 18px; }
+      nav { justify-content: space-between; padding: 0 16px; }
+      .nav-right { display: flex; }
+      .nav-link { display: none; }
+      .btn-nav { display: inline-flex; font-size: 0.72rem; padding: 7px 11px; border-radius: 5px; white-space: nowrap; }
 
       /* Hero */
       h2 { font-size: clamp(1.9rem, 8vw, 3.4rem); }
@@ -629,10 +633,8 @@
       .step-card h3 { font-size: 0.94rem; margin-bottom: 6px; }
       .step-card p { font-size: 0.83rem; line-height: 1.5; }
 
-      /* Testimonials: photo as small icon beside stars/name */
-      .testi-card { flex-direction: column; }
-      .testi-photo { width: 44px; height: 44px; border-radius: 50%; aspect-ratio: 1/1; position: absolute; top: 22px; right: 22px; }
-      .testi-body { position: relative; }
+      /* Testimonials mobile */
+      .testi-photo { width: 40px; height: 40px; }
 
       /* Survey */
       .option-btn { padding: 10px 14px; font-size: 0.9rem; }
@@ -1057,10 +1059,6 @@
   <div class="container">
     <span class="label reveal">Real Results</span>
     <h2 class="reveal">What past cohorts <span class="highlight">have done</span></h2>
-    <div class="stats-row">
-      <div class="reveal"><div class="stat-num">21</div><div class="stat-label">days. Fixed timeline.</div></div>
-      <div class="reveal reveal-d1"><div class="stat-num">10 max</div><div class="stat-label">people per cohort.</div></div>
-    </div>
     <div class="results-cols" id="results-base">
       <div class="result-item reveal"><span class="paint-highlight dark">Raised $100k in funding</span></div>
       <div class="result-item reveal reveal-d1"><span class="paint-highlight dark">Built consistent habits</span></div>
@@ -1068,6 +1066,8 @@
       <div class="result-item reveal reveal-d2"><span class="paint-highlight dark">Digital Detox</span></div>
       <div class="result-item reveal reveal-d2">Organized a music festival</div>
       <div class="result-item reveal reveal-d3">Fitness Goals</div>
+      <div class="result-item reveal reveal-d3">Quit vaping after years</div>
+      <div class="result-item reveal reveal-d4">Lost 5kg and kept it off</div>
     </div>
     <div class="results-more-wrap" id="results-more">
       <div class="results-cols">
@@ -1113,30 +1113,48 @@
 
     <div class="testi-grid">
       <div class="testi-card reveal">
-        <img src="brand_assets/Testimonials/Niko.jpeg" alt="Niko" class="testi-photo" />
         <div class="testi-body">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-goal">Festival Organization</div>
+          <div class="testi-header">
+            <img src="brand_assets/Testimonials/Niko.jpeg" alt="Niko" class="testi-photo" />
+            <div class="testi-meta">
+              <div class="testi-name-row">
+                <div class="testi-name">Niko</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+              <div class="testi-goal">Festival Organization</div>
+            </div>
+          </div>
           <p class="testi-quote">"The 21 days of focus challenge was perfectly timed and just what I needed! Being accountable to the group was instrumental. Thierry leads it in a straightforward, no-bs way and really cares about people achieving their goals."</p>
-          <div class="testi-name">Niko</div>
         </div>
       </div>
       <div class="testi-card reveal reveal-d2">
-        <img src="brand_assets/Testimonials/Mitch.png" alt="Mitch" class="testi-photo" />
         <div class="testi-body">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-goal">Fitness, Discipline & Overcoming the Inner Nice Guy</div>
+          <div class="testi-header">
+            <img src="brand_assets/Testimonials/Mitch.png" alt="Mitch" class="testi-photo" />
+            <div class="testi-meta">
+              <div class="testi-name-row">
+                <div class="testi-name">Mitch</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+              <div class="testi-goal">Fitness, Discipline & Overcoming the Inner Nice Guy</div>
+            </div>
+          </div>
           <p class="testi-quote">"Being accountable to the group was instrumental for me in achieving my goal and succeeding in practicing my daily disciplines. Through the process, my self-talk changed from chastising to self-love and respect. I also shared my experience with my family which resulted in deeper relationships. Thanks Thierry, I look forward to the next one!"</p>
-          <div class="testi-name">Mitch</div>
         </div>
       </div>
       <div class="testi-card reveal reveal-d3">
-        <img src="brand_assets/Testimonials/Clint.jpeg" alt="Clint" class="testi-photo" />
         <div class="testi-body">
-          <div class="testi-stars">★★★★★</div>
-          <div class="testi-goal">Consistent Meditation Practice</div>
+          <div class="testi-header">
+            <img src="brand_assets/Testimonials/Clint.jpeg" alt="Clint" class="testi-photo" />
+            <div class="testi-meta">
+              <div class="testi-name-row">
+                <div class="testi-name">Clint</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+              <div class="testi-goal">Consistent Meditation Practice</div>
+            </div>
+          </div>
           <p class="testi-quote">"It was so great to find a group of likeminded individuals that are so open to helping and supporting others, while also staying strong in their goal. It's always easier to complete a difficult task while having the support of others — and this group defined that perfectly. I had a great 21 days with Thierry leading us weekly!"</p>
-          <div class="testi-name">Clint</div>
         </div>
       </div>
     </div>
