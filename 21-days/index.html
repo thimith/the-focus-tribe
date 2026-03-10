@@ -632,6 +632,10 @@
       .testi-photo { width: 44px; height: 44px; border-radius: 50%; aspect-ratio: 1/1; position: absolute; top: 22px; right: 22px; }
       .testi-body { position: relative; }
 
+      /* Survey */
+      .option-btn { padding: 10px 14px; font-size: 0.9rem; }
+      .option-letter { width: 24px; height: 24px; font-size: 0.72rem; }
+
       /* Proof blurbs */
       .proof-grid p { font-size: 0.88rem !important; }
       .proof-grid div { font-size: 0.68rem !important; }
@@ -1425,7 +1429,7 @@
 <div class="modal-overlay" id="survey-overlay" onclick="handleOverlayClick(event)">
   <div class="modal" id="survey-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-header">
-      <div class="modal-title" id="modal-title">Are you a fit for the 21-Day Challenge?</div>
+      <div class="modal-title" id="modal-title">Is this Challenge for you?</div>
       <button class="modal-close" onclick="closeSurvey()" aria-label="Close">×</button>
     </div>
     <div class="modal-body">
@@ -1545,13 +1549,7 @@
         <div class="score-badge" id="score-badge">Great Fit</div>
         <div class="score-title" id="score-title">This was built for you.</div>
         <p class="score-desc" id="score-desc">Loading your result...</p>
-        <ul class="score-benefits" id="score-benefits" style="display:none;">
-          <li>1-on-1 onboarding call with Thierry</li>
-          <li>Daily tracking system — 21 days</li>
-          <li>3 weekly live group calls</li>
-          <li>A tight cohort of 10–12 serious people</li>
-          <li>Real stakes. Real accountability. Real results.</li>
-        </ul>
+        <ul class="score-benefits" id="score-benefits" style="display:none;"></ul>
         <div class="score-actions">
           <a href="commit.html" class="btn-primary" id="score-cta" style="width:100%; max-width:320px; justify-content:center;">Apply Now</a>
           <button class="retake-link" onclick="retakeSurvey()">Retake the quiz</button>
