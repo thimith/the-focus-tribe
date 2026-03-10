@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Start-Process -FilePath ''C:\\\\Program Files\\\\nodejs\\\\node.exe'' -ArgumentList ''C:\\\\Users\\\\thier\\\\Documents\\\\VSCode\\\\21-days\\\\serve.mjs'' -NoNewWindow; Start-Sleep -Seconds 2; Write-Host ''Server started''\")"
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"Start-Process -FilePath ''C:\\\\Program Files\\\\nodejs\\\\node.exe'' -ArgumentList ''C:\\\\Users\\\\thier\\\\Documents\\\\VSCode\\\\21-days\\\\serve.mjs'' -NoNewWindow; Start-Sleep -Seconds 2; Write-Host ''Server started''\")",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -Command \"& ''C:\\\\Program Files\\\\nodejs\\\\node.exe'' screenshot.mjs http://localhost:3000/21-days/index.html before-after\")"
     ]
   }
 }
