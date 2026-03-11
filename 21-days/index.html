@@ -217,6 +217,26 @@
     }
     .paint-highlight.dark { color: #111; text-decoration: none; background: rgba(255,85,0,0.18); font-family: 'Barlow', sans-serif; font-weight: 900; font-size: 1.15rem; padding: 3px 10px 5px; }
 
+
+    .draw-underline {
+      position: relative;
+      display: inline;
+    }
+    .draw-underline::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -3px;
+      height: 3px;
+      width: 100%;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 1s;
+    }
+    .draw-underline.underline-visible::after {
+      transform: scaleX(1);
+    }
+
     /* ── PROBLEM / SOLUTION ── */
     #problem { background: var(--light); }
     .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 52px; }
@@ -755,7 +775,7 @@
   <div class="hero-overlay"></div>
   <div class="hero-inner container">
     <h1 class="hero-title">21-Days<br>of <span class="highlight">Focus.</span></h1>
-    <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight">Get Sh*t Done.</span></p>
+    <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight"><span id="typewriter"></span></span></p>
     <p class="hero-sub" style="margin-top:-10px;">From noise and distraction to <span style="text-decoration:underline;">clarity</span> and <span style="text-decoration:underline;">action</span>. In just 3 weeks!</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
@@ -799,7 +819,7 @@
 <section id="problem">
   <div class="container">
     <span class="label reveal">The Core Issue</span>
-    <h2 class="reveal" style="max-width:900px;">You don't have a <span class="highlight">motivation problem.</span><br>You have a structure problem.</h2>
+    <h2 class="reveal" style="max-width:900px;">You don't have a <span class="highlight">motivation problem.</span><br>You have a <span class="draw-underline">structure problem</span>.</h2>
     <p class="reveal" style="max-width:620px; font-size:1.1rem; margin-bottom:52px; margin-top:20px;">Willpower runs out. Solo goals drift. You know this. You've lived it. The people who actually follow through aren't more disciplined. They have <strong style="color:var(--text);">external stakes, a visible group, and a timeline they can't escape.</strong> That's what the 21-Day Challenge gives you.</p>
     <div class="problem-grid">
       <div class="prob-col problem-side reveal">
@@ -1715,6 +1735,12 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
+  const underlineObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('underline-visible'); underlineObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.draw-underline').forEach(el => underlineObs.observe(el));
 
   // ── Results toggle ──
   function toggleResults() {
@@ -2006,6 +2032,20 @@
     const total    = document.documentElement.scrollHeight;
     if (scrolled / total >= 0.70) { showPopup(); window.removeEventListener('scroll', onScroll); }
   });
+
+  // Typewriter effect for "Get Sh*t Done."
+  (function() {
+    const text = 'Get Sh*t Done.';
+    const el = document.getElementById('typewriter');
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        el.textContent += text[i++];
+        setTimeout(type, 80);
+      }
+    }
+    setTimeout(type, 400);
+  })();
 </script>
 </body>
 </html>
