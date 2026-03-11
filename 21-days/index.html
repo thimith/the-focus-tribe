@@ -236,6 +236,7 @@
     .draw-underline.underline-visible::after {
       transform: scaleX(1);
     }
+    .draw-underline--green::after { background: #4a9462; }
 
     /* ── PROBLEM / SOLUTION ── */
     #problem { background: var(--light); }
@@ -280,7 +281,7 @@
     .solution-side .prob-list li { color: var(--muted); }
     .prob-list .ico { flex-shrink: 0; margin-top: 2px; font-style: normal; }
     .problem-side .ico { color: #ccc; }
-    .solution-side .ico { color: var(--orange); }
+    .solution-side .ico { color: #22a55a; }
 
     /* ── TRACKER ── */
     #tracker { background: var(--white); }
@@ -434,6 +435,14 @@
     .testi-name-row { display: flex; align-items: center; gap: 8px; }
     .testi-body { padding: 22px 22px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
     .testi-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 2px; white-space: nowrap; }
+    .testi-stars .star {
+      display: inline-block;
+      animation: star-wave 1.8s ease-in-out infinite;
+    }
+    @keyframes star-wave {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-4px); }
+    }
     .testi-goal { font-family: 'Barlow', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); }
     .testi-name { font-size: 0.88rem; font-weight: 700; color: var(--blue); }
     .testi-quote { font-size: 0.97rem; color: var(--text); line-height: 1.72; font-style: italic; flex: 1; }
@@ -834,15 +843,22 @@
         </ul>
       </div>
       <div class="prob-col solution-side reveal reveal-d2">
-        <div class="prob-col-label"><span class="solution-border-anim">The Solution</span></div>
-        <h3>21 days. A group. Real stakes.</h3>
+        <div class="prob-col-label"><span class="solution-border-anim draw-underline draw-underline--green">The Solution</span></div>
+        <h3>21 days. Accountability. Real stakes.</h3>
         <p>The most consistent people aren't more disciplined. They have better systems and people around them who expect results.</p>
         <ul class="prob-list">
-          <li><span class="ico">✔️</span> Public commitment, stakes are real</li>
-          <li><span class="ico">✔️</span> 10 people max watching daily</li>
-          <li><span class="ico">✔️</span> Fixed 21-day timeline, no drift</li>
-          <li><span class="ico">✔️</span> Consequences that make quitting costly</li>
+          <li><span class="ico">✓</span> Public commitment, stakes are real</li>
+          <li><span class="ico">✓</span> 10 people max, watching daily</li>
+          <li><span class="ico">✓</span> Fixed 21-day timeline, no drift</li>
+          <li><span class="ico">✓</span> Consequences that make quitting costly</li>
         </ul>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:24px; background:var(--blue); border-left:4px solid var(--blue-dk); border-radius:10px; padding:22px 28px; display:flex; align-items:flex-start; gap:16px; box-shadow:0 2px 12px rgba(14,79,145,0.18);">
+      <span style="font-size:1.5rem; flex-shrink:0; margin-top:2px;">🔥</span>
+      <div>
+        <p style="font-weight:800; font-family:'Barlow',sans-serif; font-size:1.1rem; color:#fff; margin-bottom:4px;">Thierry is watching. Every single day.</p>
+        <p style="color:rgba(255,255,255,0.82); font-size:0.97rem; margin:0;">This isn't a group you join and forget. Thierry tracks your progress. He knows your goal, he sees your check-ins, and he'll call it out when you don't show up.</p>
       </div>
     </div>
     <div style="margin-top:36px; text-align:center;">
@@ -1325,8 +1341,8 @@
       <div class="thierry-text">
         <span class="label reveal">Why I Built This</span>
         <h2 class="reveal">I was very <span class="highlight">distracted!</span></h2>
-        <p class="reveal">I spent most of my life spinning my wheels, entertaining a million ideas but <strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">never finishing anything</strong>. I had the drive but kept jumping from one thing to the next, never building real momentum.<br><br><strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">Then I discovered peer accountability</strong>, and everything shifted. So I built a framework to help others do the same.</p>
-        <p class="reveal">Belgian born, 14 years in Canada, now based in Medellin. I've been deep in personal development circles for years, including <strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">4 years facilitating</strong> Men's Circles. I've seen firsthand how much we change when we're surrounded by people who expect something from us. Focusing has always been hard for me, so I know I'm not alone in this. That's exactly why I built the Focus Tribe.</p>
+        <p class="reveal">I spent most of my life spinning my wheels, entertaining a million ideas but <strong style="background:rgba(255,85,0,0.12); color:#111; padding:0 4px; border-radius:3px;">never finishing anything</strong>. I had the drive but kept jumping from one thing to the next, never building real momentum.<br><br><strong style="background:rgba(255,85,0,0.12); color:#111; padding:0 4px; border-radius:3px;">Then I discovered peer accountability</strong>, and everything shifted. So I built a framework to help others do the same.</p>
+        <p class="reveal">Belgian born, 14 years in Canada, now based in Medellin. I've been deep in personal development circles for years, including <strong style="background:rgba(255,85,0,0.12); color:#111; padding:0 4px; border-radius:3px;">4 years facilitating</strong> Men's Circles. I've seen firsthand how much we change when we're surrounded by people who expect something from us. Focusing has always been hard for me, so I know I'm not alone in this. That's exactly why I built the Focus Tribe.</p>
         <ul class="thierry-creds reveal">
           <li><i class="cred-icon">✦</i> Built and run 6 cohorts since 2024</li>
           <li><i class="cred-icon">✦</i> 6 years of experience facilitating groups</li>
@@ -1724,6 +1740,13 @@
 </div><!-- /modal-overlay -->
 
 <script>
+  // ── Star wave animation ──
+  document.querySelectorAll('.testi-stars').forEach(el => {
+    el.innerHTML = [...el.textContent].map((ch, i) =>
+      ch === '★' ? `<span class="star" style="animation-delay:${i * 0.15}s">${ch}</span>` : ch
+    ).join('');
+  });
+
   // ── Email (obfuscated) ──
   const _em = 'thierry' + '.muller' + '\x40' + 'gmail' + '.com';
 
