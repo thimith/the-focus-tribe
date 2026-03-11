@@ -773,6 +773,31 @@
       </div>
     </div>
     <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
+    <div class="reveal" style="margin-top:36px; max-width:520px; margin-left:auto; margin-right:auto;">
+      <div style="background:var(--blue-lt); border:1.5px solid rgba(14,79,145,0.2); border-radius:12px; padding:28px 28px 24px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+          <span class="hero-dot"></span>
+          <span style="font-family:'Barlow',sans-serif; font-weight:900; font-size:1.05rem; color:var(--text);">Next cohort opening soon.</span>
+        </div>
+        <p style="font-size:0.9rem; color:var(--muted); margin-bottom:16px;">Get notified the moment spots open.</p>
+        <div id="inline-form">
+          <div style="display:flex; gap:8px; margin-bottom:8px;">
+            <input type="text" id="inline-first-input" placeholder="First name" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+            <input type="text" id="inline-last-input" placeholder="Last name" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="email" id="inline-email-input" placeholder="your@email.com" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+            <button onclick="submitWaitlistEmail('inline-email-input','inline-msg','inline-first-input','inline-last-input')" style="background:var(--orange); color:#fff; font-family:Helvetica,Arial,sans-serif; font-weight:700; font-size:0.9rem; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s ease;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
+          </div>
+          <p id="inline-msg" style="font-size:0.8rem; min-height:18px; margin-top:8px; color:var(--muted);"></p>
+        </div>
+        <div id="inline-success" style="display:none; text-align:center; padding:8px 0;">
+          <div style="font-size:1.8rem; color:var(--orange); margin-bottom:6px;">✓</div>
+          <strong style="font-family:'Barlow',sans-serif; font-size:1rem;">You're on the list.</strong>
+          <p style="font-size:0.875rem; color:var(--muted); margin-top:4px;">We'll email you as soon as the next cohort opens.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1839,7 +1864,7 @@
       const res = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE}/${encodeURIComponent(AIRTABLE_TABLE)}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields: { 'First Name': first, 'Last Name': last, Email: email, Source: inputId === 'popup-email-input' ? 'Popup' : 'Quiz' } })
+        body: JSON.stringify({ fields: { 'First Name': first, 'Last Name': last, Email: email, Source: inputId === 'popup-email-input' ? 'Popup' : inputId === 'inline-email-input' ? 'Inline' : 'Quiz' } })
       });
       if (!res.ok) throw new Error();
       if (msg) { msg.style.color = '#22a55a'; msg.textContent = "You're on the list!"; }
@@ -1850,6 +1875,12 @@
         setTimeout(() => {
           document.getElementById('popup-form').style.display = 'none';
           document.getElementById('popup-success').style.display = 'block';
+        }, 800);
+      }
+      if (inputId === 'inline-email-input') {
+        setTimeout(() => {
+          document.getElementById('inline-form').style.display = 'none';
+          document.getElementById('inline-success').style.display = 'block';
         }, 800);
       }
     } catch {
