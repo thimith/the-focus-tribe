@@ -382,6 +382,10 @@
     .alejo-goal { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
 
     .testi-cta { text-align: center; margin-top: 44px; }
+    .inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .inline-fields input:last-of-type { grid-column: 1 / -1; }
+    .inline-fields button { grid-column: 1 / -1; }
+    @media (max-width: 640px) { .inline-fields { grid-template-columns: 1fr; } .inline-fields input:last-of-type { grid-column: auto; } .inline-fields button { grid-column: auto; } }
 
     /* ── PRICING ── */
     #pricing { background: var(--white); }
@@ -777,17 +781,15 @@
       <div style="background:var(--blue-lt); border:1.5px solid rgba(14,79,145,0.2); border-radius:12px; padding:28px 28px 24px;">
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
           <span class="hero-dot"></span>
-          <span style="font-family:'Barlow',sans-serif; font-weight:900; font-size:1.05rem; color:var(--text);">Next cohort opening soon.</span>
+          <span style="font-family:'Barlow',sans-serif; font-weight:900; font-size:1.05rem; color:var(--text);">Next cohort starting soon.</span>
         </div>
         <p style="font-size:0.9rem; color:var(--muted); margin-bottom:16px;">Get notified the moment spots open.</p>
         <div id="inline-form">
-          <div style="display:flex; gap:8px; margin-bottom:8px;">
-            <input type="text" id="inline-first-input" placeholder="First name" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
-            <input type="text" id="inline-last-input" placeholder="Last name" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
-          </div>
-          <div style="display:flex; gap:8px;">
-            <input type="email" id="inline-email-input" placeholder="your@email.com" style="flex:1; padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
-            <button onclick="submitWaitlistEmail('inline-email-input','inline-msg','inline-first-input','inline-last-input')" style="background:var(--orange); color:#fff; font-family:Helvetica,Arial,sans-serif; font-weight:700; font-size:0.9rem; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s ease;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
+          <div class="inline-fields">
+            <input type="text" id="inline-first-input" placeholder="First name" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+            <input type="text" id="inline-last-input" placeholder="Last name" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+            <input type="email" id="inline-email-input" placeholder="your@email.com" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
+            <button onclick="submitWaitlistEmail('inline-email-input','inline-msg','inline-first-input','inline-last-input')" style="background:var(--orange); color:#fff; font-family:Helvetica,Arial,sans-serif; font-weight:700; font-size:0.9rem; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s ease; width:100%;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
           </div>
           <p id="inline-msg" style="font-size:0.8rem; min-height:18px; margin-top:8px; color:var(--muted);"></p>
         </div>
@@ -1228,8 +1230,8 @@
       <div class="thierry-text">
         <span class="label reveal">Why I Built This</span>
         <h2 class="reveal">I was very <span class="highlight">distracted!</span></h2>
-        <p class="reveal">I spent most of my life spinning my wheels, entertaining a million ideas but never committing to anything. I had the drive but kept jumping from one thing to the next, never building real momentum. Then I discovered peer accountability, and everything shifted. So I built a framework to help others do the same.</p>
-        <p class="reveal">Belgian born, 14 years in Canada, now based in Medellin. I've been deep in personal development circles for years, including 4 years facilitating Men's Circles. I've seen firsthand how much we change when we're surrounded by people who expect something from us. Focusing has always been hard for me, so I know I'm not alone in this. That's exactly why I built the Focus Tribe.</p>
+        <p class="reveal">I spent most of my life spinning my wheels, entertaining a million ideas but <strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">never finishing anything</strong>. I had the drive but kept jumping from one thing to the next, never building real momentum.<br><br><strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">Then I discovered peer accountability</strong>, and everything shifted. So I built a framework to help others do the same.</p>
+        <p class="reveal">Belgian born, 14 years in Canada, now based in Medellin. I've been deep in personal development circles for years, including <strong style="background:var(--orange); color:#111; padding:0 4px; border-radius:3px;">4 years facilitating</strong> Men's Circles. I've seen firsthand how much we change when we're surrounded by people who expect something from us. Focusing has always been hard for me, so I know I'm not alone in this. That's exactly why I built the Focus Tribe.</p>
         <ul class="thierry-creds reveal">
           <li><i class="cred-icon">✦</i> Built and run 6 cohorts since 2024</li>
           <li><i class="cred-icon">✦</i> 6 years of experience facilitating groups</li>
@@ -1813,6 +1815,7 @@
   #popup-submit:hover { background: var(--orange-dk); transform: translateY(-1px); }
   #popup-submit:active { transform: translateY(0); }
   #popup-msg { font-size: 0.8rem; min-height: 18px; margin-top: 6px; text-align: center; }
+  @media (max-width: 640px) { .popup-tagline { display: none; } }
   #popup-success { display: none; text-align: center; padding: 8px 0; }
   #popup-success .success-icon {
     width: 48px; height: 48px; border-radius: 50%;
@@ -1826,8 +1829,8 @@
 <div id="waitlist-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
   <button class="popup-close" onclick="closePopup()" aria-label="Close">×</button>
   <div id="popup-form">
-    <h4 id="popup-title">Next cohort opening soon.</h4>
-    <p>Drop your info to get notified first. No spam, just the date.</p>
+    <h4 id="popup-title">Next cohort starting soon.</h4>
+    <p class="popup-tagline">Drop your info to get notified first. No spam, just the date.</p>
     <div id="popup-name-row">
       <input type="text" id="popup-first-input" placeholder="First name" />
       <input type="text" id="popup-last-input" placeholder="Last name" />
