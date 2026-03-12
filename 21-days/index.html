@@ -481,10 +481,10 @@
     .alejo-goal { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
 
     .testi-cta { text-align: center; margin-top: 44px; }
-    .inline-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .inline-fields input:last-of-type { grid-column: 1 / -1; }
-    .inline-fields button { grid-column: 1 / -1; }
-    @media (max-width: 640px) { .inline-fields { grid-template-columns: 1fr; } .inline-fields input:last-of-type { grid-column: auto; } .inline-fields button { grid-column: auto; } }
+    .inline-fields { display: grid; grid-template-columns: 1fr 1fr 1.4fr auto; gap: 8px; align-items: start; }
+    .inline-fields input:last-of-type { grid-column: auto; }
+    .inline-fields button { grid-column: auto; white-space: nowrap; }
+    @media (max-width: 640px) { .inline-fields { grid-template-columns: 1fr; } .inline-fields button { width: 100%; } }
 
     /* ── PRICING ── */
     #pricing { background: var(--white); }
@@ -901,7 +901,7 @@
       </div>
     </div>
     <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
-    <div class="reveal" style="margin-top:36px; max-width:520px; margin-left:auto; margin-right:auto;">
+    <div class="reveal" style="margin-top:36px; max-width:800px; margin-left:auto; margin-right:auto;">
       <div style="background:var(--blue-lt); border:1.5px solid rgba(14,79,145,0.2); border-radius:12px; padding:28px 28px 24px;">
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
           <span class="hero-dot"></span>
@@ -913,7 +913,7 @@
             <input type="text" id="inline-first-input" placeholder="First name" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
             <input type="text" id="inline-last-input" placeholder="Last name" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
             <input type="email" id="inline-email-input" placeholder="your@email.com" style="padding:10px 12px; border:1.5px solid var(--border); border-radius:6px; font-size:0.9rem; font-family:Helvetica,Arial,sans-serif; outline:none; width:100%;" onfocus="this.style.borderColor='var(--orange)'" onblur="this.style.borderColor='var(--border)'" />
-            <button onclick="submitWaitlistEmail('inline-email-input','inline-msg','inline-first-input','inline-last-input')" style="background:var(--orange); color:#fff; font-family:Helvetica,Arial,sans-serif; font-weight:700; font-size:0.9rem; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s ease; width:100%;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
+            <button onclick="submitWaitlistEmail('inline-email-input','inline-msg','inline-first-input','inline-last-input')" style="background:var(--orange); color:#fff; font-family:Helvetica,Arial,sans-serif; font-weight:700; font-size:0.9rem; padding:10px 20px; border:none; border-radius:6px; cursor:pointer; white-space:nowrap; transition:background 0.2s ease;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
           </div>
           <p id="inline-msg" style="font-size:0.8rem; min-height:18px; margin-top:8px; color:var(--muted);"></p>
         </div>
