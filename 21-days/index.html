@@ -786,7 +786,7 @@
   <div class="hero-overlay"></div>
   <div class="hero-inner container">
     <h1 class="hero-title">21-Days<br>of <span class="highlight">Focus.</span></h1>
-    <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight"><span id="typewriter"></span></span></p>
+    <p class="hero-tagline" style="color:#fff;">It's Time to <span class="paint-highlight"><span id="typewriter">Get Sh*t Done.</span></span></p>
     <p class="hero-sub" style="margin-top:-10px;">A 21-day group accountability sprint. Set your goal. Commit publicly. Show up daily or face real consequences.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
@@ -866,7 +866,7 @@
           <li><span class="ico">✓</span><span><strong style="color:#111;">Public commitment</strong>, stakes are real</span></li>
           <li><span class="ico">✓</span><span><strong style="color:#111;">10 people max</strong>, watching daily</span></li>
           <li><span class="ico">✓</span><span><strong style="color:#111;">Fixed 21-day timeline</strong>, no drift</span></li>
-          <li><span class="ico">✓</span><span><strong style="color:#111;">Consequences</strong> that make quitting costly</span></li>
+          <li><span class="ico">✓</span><span><strong style="color:#111;">Consequences</strong> when you slip</span></li>
         </ul>
       </div>
     </div>
@@ -1225,7 +1225,7 @@
         <ul class="who-list">
           <li><span class="no-icon">✗</span> You want soft support with no stakes</li>
           <li><span class="no-icon">✗</span> You need hand-holding through every step</li>
-          <li><span class="no-icon">✗</span> You're not ready to commit publicly</li>
+          <li><span class="no-icon">✗</span> You're not ready to commit to a team</li>
         </ul>
       </div>
     </div>
@@ -2069,18 +2069,54 @@
     if (scrolled / total >= 0.70) { showPopup(); window.removeEventListener('scroll', onScroll); }
   });
 
-  // Typewriter effect for "Get Sh*t Done."
+  // Typewriter cycling effect
   (function() {
-    const text = 'Get Sh*t Done.';
+    const isMobile = window.innerWidth < 641;
+    const phrases = isMobile ? ["Get Sh*t Done."] : [
+      "Get Sh*t Done.",
+      "Stop Circling. Start Finishing.",
+      "Show Up. Follow Through. Ship It.",
+      "Lock In. Do the Work.",
+      "Close the Loops.",
+      "Show up for yourself.",
+      "Actually do it.",
+      "Build the habit.",
+      "Stop drifting."
+    ];
     const el = document.getElementById('typewriter');
-    let i = 0;
-    function type() {
-      if (i < text.length) {
-        el.textContent += text[i++];
-        setTimeout(type, 80);
+    el.textContent = '';
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const TYPE_SPEED = 55;
+    const DELETE_SPEED = 30;
+    const PAUSE_AFTER_TYPE = 1600;
+    const PAUSE_AFTER_DELETE = 200;
+
+    function tick() {
+      const phrase = phrases[phraseIndex];
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++charIndex);
+        if (charIndex === phrase.length) {
+          if (isMobile) return; // stay on mobile after typing once
+          deleting = true;
+          setTimeout(tick, PAUSE_AFTER_TYPE);
+          return;
+        }
+        setTimeout(tick, TYPE_SPEED);
+      } else {
+        el.textContent = phrase.slice(0, --charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, PAUSE_AFTER_DELETE);
+          return;
+        }
+        setTimeout(tick, DELETE_SPEED);
       }
     }
-    setTimeout(type, 400);
+    setTimeout(tick, 500);
   })();
 </script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
