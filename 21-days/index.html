@@ -450,13 +450,26 @@
 
     /* Video testimonial */
     .alejo-wrap {
-      margin-top: 52px; display: flex; justify-content: center;
+      margin-top: 52px; display: flex; justify-content: center; align-items: stretch; gap: 28px;
     }
     .alejo-card {
-      width: 100%; max-width: 560px;
+      flex: 1; min-width: 0; max-width: 560px;
       border-radius: 16px; overflow: hidden;
       border: 1.5px solid var(--border);
       box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.05);
+    }
+    .jeremy-card {
+      flex: 1; min-width: 0; max-width: 480px;
+      border-radius: 16px; overflow: hidden;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.05);
+      background: var(--white);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 32px 28px;
+    }
+    @media (max-width: 900px) {
+      .alejo-wrap { flex-direction: column; align-items: center; }
+      .alejo-card, .jeremy-card { max-width: 560px; width: 100%; }
     }
     .alejo-video-wrap {
       position: relative; aspect-ratio: 16/9;
@@ -1274,7 +1287,7 @@
   <div class="container">
     <span class="label reveal">From Past Cohorts</span>
     <h2 class="reveal">Real people. <span class="highlight">Real outcomes.</span></h2>
-    <!-- Video testimonial — Alejo -->
+    <!-- Video testimonial — Alejo + Jeremy -->
     <div class="alejo-wrap reveal">
       <div class="alejo-card">
         <div class="alejo-video-wrap">
@@ -1289,6 +1302,19 @@
             <div class="alejo-goal">Raised $100,000 for real estate 🥇</div>
           </div>
         </div>
+      </div>
+      <div class="jeremy-card">
+        <div class="testi-header" style="margin-bottom:20px;">
+          <img src="brand_assets/Testimonials/Jeremy.jpeg" alt="Jeremy" class="testi-photo" />
+          <div class="testi-meta">
+            <div class="testi-name-row">
+              <div class="testi-name">Jeremy</div>
+              <div class="testi-stars">★★★★★</div>
+            </div>
+            <div class="testi-goal">Musician & Digital Nomad</div>
+          </div>
+        </div>
+        <p class="testi-quote" style="font-size:0.9rem;">"The 21-day challenge got me moving towards discipline. During the first challenge, Thierry challenged me to find, book a studio and record two songs, which I got done. The second time I focused on a morning routine and workout programme. I didn't always succeed, but even the redemption felt good somehow. It helped me be accountable to myself and the team. I'd definitely recommend this to anyone who wants to convert words into actions."</p>
       </div>
     </div>
 
