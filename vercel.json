@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/tracker",
+      "destination": "https://thimith.github.io/21-days-tracker",
+      "permanent": false
+    }
+  ]
+}
