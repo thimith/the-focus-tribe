@@ -427,8 +427,8 @@
 
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--light); }
-    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 52px; }
-    @media (max-width: 840px) { .testi-grid { grid-template-columns: 1fr; } }
+    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 52px; }
+    @media (max-width: 640px) { .testi-grid { grid-template-columns: 1fr; } }
     .testi-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04); display: flex; flex-direction: column; position: relative; }
     .testi-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: top; display: block; flex-shrink: 0; }
     .testi-header { display: flex; align-items: flex-start; gap: 14px; min-height: 96px; }
@@ -448,7 +448,7 @@
     .testi-name { font-size: 0.88rem; font-weight: 700; color: var(--blue); }
     .testi-quote { font-size: 0.97rem; color: var(--text); line-height: 1.72; font-style: italic; flex: 1; }
 
-    /* Video testimonial */
+    /* Video testimonials */
     .alejo-wrap {
       margin-top: 52px; display: flex; justify-content: center; align-items: stretch; gap: 28px;
     }
@@ -458,18 +458,15 @@
       border: 1.5px solid var(--border);
       box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.05);
     }
-    .jeremy-card {
-      flex: 1; min-width: 0; max-width: 480px;
-      border-radius: 16px; overflow: hidden;
-      border: 1.5px solid var(--border);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.05);
-      background: var(--white);
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 32px 28px;
-    }
     @media (max-width: 900px) {
       .alejo-wrap { flex-direction: column; align-items: center; }
-      .alejo-card, .jeremy-card { max-width: 560px; width: 100%; }
+      .alejo-card { max-width: 560px; width: 100%; }
+    }
+    .testi-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      font-family: 'Barlow', sans-serif; font-weight: 900; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .alejo-video-wrap {
       position: relative; aspect-ratio: 16/9;
@@ -1287,7 +1284,7 @@
   <div class="container">
     <span class="label reveal">From Past Cohorts</span>
     <h2 class="reveal">Real people. <span class="highlight">Real outcomes.</span></h2>
-    <!-- Video testimonial — Alejo + Jeremy -->
+    <!-- Video testimonials — Alejo + Christian -->
     <div class="alejo-wrap reveal">
       <div class="alejo-card">
         <div class="alejo-video-wrap">
@@ -1303,23 +1300,39 @@
           </div>
         </div>
       </div>
-      <div class="jeremy-card">
-        <div class="testi-header" style="margin-bottom:20px;">
-          <img src="brand_assets/Testimonials/Jeremy.jpeg" alt="Jeremy" class="testi-photo" />
-          <div class="testi-meta">
-            <div class="testi-name-row">
-              <div class="testi-name">Jeremy</div>
-              <div class="testi-stars">★★★★★</div>
-            </div>
-            <div class="testi-goal">Recording Music</div>
+      <div class="alejo-card">
+        <div class="alejo-video-wrap">
+          <video controls playsinline preload="metadata">
+            <source src="brand_assets/Testimonials/Christian.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="alejo-info">
+          <div class="alejo-avatar">C</div>
+          <div>
+            <div class="alejo-name">Christian</div>
           </div>
         </div>
-        <p class="testi-quote" style="font-size:0.9rem;">"The 21-day challenge got me moving towards discipline. During the first challenge, Thierry challenged me to find, book a studio and record two songs, which I got done. The second time I focused on a morning routine and workout programme. I didn't always succeed, but even the redemption felt good somehow. It helped me be accountable to myself and the team. I'd definitely recommend this to anyone who wants to convert words into actions."</p>
       </div>
     </div>
 
+    <!-- Written testimonials -->
     <div class="testi-grid">
       <div class="testi-card reveal">
+        <div class="testi-body">
+          <div class="testi-header">
+            <div class="testi-avatar">J</div>
+            <div class="testi-meta">
+              <div class="testi-name-row">
+                <div class="testi-name">Jeremy</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+              <div class="testi-goal">Recording Music</div>
+            </div>
+          </div>
+          <p class="testi-quote">"The 21-day challenge got me moving towards discipline. During the first challenge, Thierry challenged me to find, book a studio and record two songs, which I got done. The second time I focused on a morning routine and workout programme. I didn't always succeed, but even the redemption felt good somehow. It helped me be accountable to myself and the team. I'd definitely recommend this to anyone who wants to convert words into actions."</p>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d2">
         <div class="testi-body">
           <div class="testi-header">
             <img src="brand_assets/Testimonials/Niko.jpeg" alt="Niko" class="testi-photo" />
@@ -1334,7 +1347,7 @@
           <p class="testi-quote">"The 21 days of focus challenge was perfectly timed and just what I needed! Being accountable to the group was instrumental. Thierry leads it in a straightforward, no-bs way and really cares about people achieving their goals."</p>
         </div>
       </div>
-      <div class="testi-card reveal reveal-d2">
+      <div class="testi-card reveal reveal-d3">
         <div class="testi-body">
           <div class="testi-header">
             <img src="brand_assets/Testimonials/Mitch.png" alt="Mitch" class="testi-photo" />
@@ -1349,7 +1362,7 @@
           <p class="testi-quote">"Being accountable to the group was instrumental for me in achieving my goal and succeeding in practicing my daily disciplines. Through the process, my self-talk changed from chastising to self-love and respect. I also shared my experience with my family which resulted in deeper relationships. Thanks Thierry, I look forward to the next one!"</p>
         </div>
       </div>
-      <div class="testi-card reveal reveal-d3">
+      <div class="testi-card reveal reveal-d4">
         <div class="testi-body">
           <div class="testi-header">
             <img src="brand_assets/Testimonials/Clint.jpeg" alt="Clint" class="testi-photo" />
