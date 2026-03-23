@@ -2081,6 +2081,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         body: JSON.stringify({ fields: { 'First Name': first, 'Last Name': last, Email: email, Source: inputId === 'popup-email-input' ? 'Popup' : inputId === 'inline-email-input' ? 'Inline' : 'Quiz' } })
       });
       if (!res.ok) throw new Error();
+      const source = inputId === 'popup-email-input' ? 'Popup' : inputId === 'inline-email-input' ? 'Inline' : 'Quiz';
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'waitlist_signup', waitlist_source: source });
       if (msg) { msg.style.color = '#22a55a'; msg.textContent = "You're on the list!"; }
       if (input) input.value = '';
       if (firstId && document.getElementById(firstId)) document.getElementById(firstId).value = '';
