@@ -479,10 +479,10 @@
       position: relative; aspect-ratio: 16/9;
       background: #000; overflow: hidden;
     }
-    .alejo-card video {
+    .alejo-video-wrap iframe {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
-      object-fit: contain; display: block;
+      border: none; display: block;
     }
     .alejo-info {
       padding: 18px 22px; background: var(--white);
@@ -1296,13 +1296,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <span class="label reveal">From Past Cohorts</span>
     <h2 class="reveal">Real people. <span class="highlight">Real outcomes.</span></h2>
-    <!-- Video testimonials — Alejo + Christian -->
+    <!-- Video testimonials — 2x2 grid -->
     <div class="alejo-wrap reveal">
       <div class="alejo-card">
         <div class="alejo-video-wrap">
-          <video controls playsinline preload="metadata">
-            <source src="brand_assets/Testimonials/Alejo.mp4" type="video/mp4" />
-          </video>
+          <iframe src="https://www.youtube.com/embed/qW3jL2TkV1k" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="alejo-info">
           <div class="alejo-avatar">A</div>
@@ -1314,9 +1312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="alejo-card">
         <div class="alejo-video-wrap">
-          <video controls playsinline preload="metadata">
-            <source src="brand_assets/Testimonials/FlaviaHD.MP4" type="video/mp4" />
-          </video>
+          <iframe src="https://www.youtube.com/embed/6yPxmj9T9fo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="alejo-info">
           <div class="alejo-avatar">F</div>
@@ -1328,15 +1324,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="alejo-card">
         <div class="alejo-video-wrap">
-          <video controls playsinline preload="metadata">
-            <source src="brand_assets/Testimonials/Christian.mp4" type="video/mp4" />
-          </video>
+          <iframe src="https://www.youtube.com/embed/Qi0YJvSyHYs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="alejo-info">
           <div class="alejo-avatar">C</div>
           <div>
             <div class="alejo-name">Christian</div>
             <div class="alejo-goal" style="color:var(--orange); font-weight:700; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.04em;">Launched Cold Email Campaigns</div>
+          </div>
+        </div>
+      </div>
+      <div class="alejo-card">
+        <div class="alejo-video-wrap">
+          <iframe src="https://www.youtube.com/embed/l6ynvRxtG7w" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="alejo-info">
+          <div class="alejo-avatar">M</div>
+          <div>
+            <div class="alejo-name">Marcela</div>
+            <div class="alejo-goal" style="color:var(--orange); font-weight:700; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.04em;">Created a Marketing Funnel</div>
           </div>
         </div>
       </div>
