@@ -67,6 +67,10 @@
     .btn-nav:hover { background: var(--orange-dk); transform: translateY(-1px); }
     .btn-nav:active { transform: translateY(0); }
     .btn-nav:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+    .nav-ig { display:flex; align-items:center; color: var(--muted); transition: color 0.2s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); }
+    .nav-ig:hover { color: var(--orange); transform: scale(1.12); }
+    .nav-ig:active { transform: scale(0.96); }
+    .nav-ig:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
     @media (max-width: 640px) { nav { padding: 0 16px; } .nav-link { display: none; } .nav-logo { height: 20px; } .btn-nav { font-size: 0.78rem; padding: 8px 14px; border-radius: 5px; } }
     @media (max-width: 640px) { .hide-mobile { display: none; } }
 
@@ -798,6 +802,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#testimonials" class="nav-link">Testimonials</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="details.html" class="nav-link">Full Details</a>
+    <a href="https://www.instagram.com/thefocustribe/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
     <a href="commit.html" class="btn-nav">I'm Ready to Commit</a>
   </div>
 </nav>
