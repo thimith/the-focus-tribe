@@ -161,7 +161,7 @@
     .pricing-divider { height: 1px; background: var(--border); margin: 52px 0; }
 
     /* ── PRICE CARDS ── */
-    .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+    .price-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; padding-top: 16px; }
     @media (max-width: 620px) { .price-cards { grid-template-columns: 1fr; } }
 
     .pcard {
@@ -267,28 +267,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="payment-section">
   <div class="container">
 
-    <!-- STEP 1: COHORT SELECTION -->
-    <div class="section-label">Step 1 of 2</div>
-    <h2 class="section-h2">Which cohort are you joining?</h2>
-    <p class="section-sub">Pick your start date. Once selected, your pricing options will appear below.</p>
+    <!-- PRICING -->
+    <h2 class="section-h2">May 3rd Cohort</h2>
+    <p style="font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); margin-bottom:24px;">Kick-Off Call &nbsp;·&nbsp; 4:30pm PST &nbsp;·&nbsp; 6:30pm CST &nbsp;·&nbsp; 7:30pm ET</p>
+    <p class="section-sub" style="margin-bottom:40px;">Both options include everything. Early Bird is the reward for committing before the last minute.</p>
 
-    <div class="cohort-grid" id="cohort-grid">
-
-      <div class="cohort-card" onclick="selectCohort(this)" data-cohort="may3">
-        <div class="cohort-check"><span class="cohort-check-tick">✓</span></div>
-        <div class="cohort-date">May 3, 2026</div>
-        <div class="cohort-time">6:30-8:00pm Medellín / 7:30-9:00pm EST</div>
-      </div>
-
-    </div>
-
-    <!-- STEP 2: PRICING (hidden until cohort chosen) -->
-    <div class="pricing-reveal" id="pricing-reveal">
-      <div class="pricing-divider"></div>
-
-      <div class="section-label">Step 2 of 2</div>
-      <h2 class="section-h2">Choose your spot.</h2>
-      <p class="section-sub" style="margin-bottom:40px;">Both options include everything. Early Bird is just the reward for committing before the last minute.</p>
+    <div class="pricing-reveal open" id="pricing-reveal">
 
       <div class="price-cards">
 
@@ -378,17 +362,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-  function selectCohort(card) {
-    if (card.classList.contains('full')) return;
-    document.querySelectorAll('.cohort-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    const reveal = document.getElementById('pricing-reveal');
-    reveal.classList.add('open');
-    setTimeout(() => {
-      reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
-  }
-
   // ── Email (obfuscated) ──
   const _em = 'thierry' + '.muller' + '\x40' + 'gmail' + '.com';
   document.querySelectorAll('.js-ml').forEach(a => {
