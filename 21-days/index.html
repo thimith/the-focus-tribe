@@ -203,6 +203,13 @@
     .hero-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; animation: pulse 2s ease infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.55;transform:scale(1.6)} }
 
+    .skool-badge-wrap { display: inline-flex; border-radius: 100px; }
+    .skool-badge-wrap a { animation: skool-border-pulse 2.4s ease-in-out infinite; }
+    @keyframes skool-border-pulse {
+      0%, 100% { box-shadow: 0 0 0 0px rgba(255,255,255,0.0), 0 0 0 1px rgba(255,255,255,0.35); }
+      50%       { box-shadow: 0 0 0 3px rgba(255,255,255,0.0), 0 0 0 2px rgba(255,255,255,0.75); }
+    }
+
     h1.hero-title {
       font-family: 'Barlow', sans-serif; font-weight: 900;
       font-size: clamp(4rem, 21vw, 8.4rem);
@@ -833,10 +840,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="hero-dot"></span>
             Next cohort: May 3
           </div>
-          <a href="#pricing" class="hero-cohort-badge" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.35); text-decoration:none; color:#fff;">
-            <span style="font-size:0.7rem;">✨</span>
-            New: Skool Community
-          </a>
+          <div class="skool-badge-wrap">
+            <a href="#pricing" class="hero-cohort-badge" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.35); text-decoration:none; color:#fff; position:relative; z-index:1;">
+              <span style="font-size:0.7rem;">✨</span>
+              New: Skool Community
+            </a>
+          </div>
         </div>
       </div>
     </div>
