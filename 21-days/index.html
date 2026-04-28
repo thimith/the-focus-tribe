@@ -372,17 +372,13 @@
     }
     @media (max-width: 760px) { .steps-grid { grid-template-columns: 1fr; border-radius: 12px 12px 0 0; } }
     .steps-grid-2 {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
-      border: 2.5px solid var(--blue); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr; gap: 0;
+      border: 2.5px solid var(--blue); border-radius: 12px; overflow: hidden;
     }
-    @media (max-width: 760px) { .steps-grid-2 { grid-template-columns: 1fr; border-radius: 0 0 12px 12px; } }
     .step-card {
-      padding: 24px 24px; border-right: 2px solid var(--blue);
+      padding: 24px 28px; border-right: none; border-bottom: none;
       transition: background 0.2s ease;
     }
-    .steps-grid .step-card:nth-child(3n) { border-right: none; }
-    .steps-grid-2 .step-card:nth-child(2n) { border-right: none; }
-    @media (max-width: 760px) { .step-card { border-right: none; border-bottom: 2px solid var(--blue); } }
     .step-card:hover { background: #fafafa; }
     .step-num {
       font-family: 'Barlow', sans-serif; font-size: 1.9rem; font-weight: 900;
@@ -517,6 +513,10 @@
     #pricing { background: var(--white); }
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
     @media (max-width: 660px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .coaching-bar { border: 1.5px solid #1a1a1a; border-radius: 14px; padding: 28px 36px; margin-top: 24px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; position: relative; transition: box-shadow 0.2s ease; }
+    .coaching-bar:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.09), 0 16px 48px rgba(0,0,0,0.06); }
+    .price-badge.dark { background: #1a1a1a; }
+    .coaching-bar .price-features li::before { color: #1a1a1a; }
     .price-card { border: 1.5px solid var(--border); border-radius: 14px; padding: 40px 36px; position: relative; transition: box-shadow 0.2s ease; }
     .price-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 16px 48px rgba(0,0,0,0.05); }
     .price-card.featured { border-color: var(--orange); box-shadow: 0 4px 16px rgba(248,128,50,0.12), 0 16px 40px rgba(248,128,50,0.08); }
@@ -525,6 +525,8 @@
     .price-badge.blue { background: var(--blue); }
     .price-label { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
     .price-amount { font-family: 'Barlow', sans-serif; font-size: 4.4rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1; color: var(--text); margin-bottom: 4px; }
+    @keyframes fire-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .fire-text { background: linear-gradient(90deg,#7c0a02,#b83200,#d95000,#e8690a,#bf4800,#8a1500,#7c0a02); background-size:300% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:fire-shift 2.2s ease infinite; display:inline-block; }
     .price-orig-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .price-orig { font-size: 1.1rem; color: var(--muted); text-decoration: line-through; }
     .price-save { font-size: 0.85rem; color: var(--orange); font-weight: 700; }
@@ -582,24 +584,21 @@
 
     /* ── BEFORE / AFTER ── */
     #before-after { background: var(--white); padding: 64px 0; }
-    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 24px; border-radius: 14px; overflow: hidden; }
-    @media (max-width: 700px) { .ba-grid { grid-template-columns: 1fr; } }
-    .ba-col { padding: 24px 28px; }
-    @media (max-width: 640px) { .ba-col { padding: 20px 18px; } }
-    .ba-before { background: #fafafa; border: 1.5px solid var(--border); border-right: none; border-radius: 14px 0 0 14px; }
-    .ba-after  { background: var(--blue); border-radius: 0 14px 14px 0; }
-    @media (max-width: 700px) { .ba-before { border-radius: 14px 14px 0 0; border-right: 1.5px solid var(--border); border-bottom: none; } .ba-after { border-radius: 0 0 14px 14px; } }
-    .ba-heading { font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
-    .ba-before .ba-heading { color: #aaa; }
-    .ba-after  .ba-heading { color: var(--orange); }
-    .ba-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .ba-item { display: flex; flex-direction: column; gap: 2px; }
-    .ba-item-main { font-family: 'Barlow', sans-serif; font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-    .ba-before .ba-item-main { color: var(--text); }
-    .ba-after  .ba-item-main { color: #fff; }
-    .ba-item-sub { font-size: 0.92rem; line-height: 1.5; padding-left: 28px; }
-    .ba-before .ba-item-sub { color: var(--muted); }
-    .ba-after  .ba-item-sub { color: rgba(255,255,255,0.62); }
+    .ba-grid { display: grid; grid-template-columns: 1fr 48px 1fr; row-gap: 6px; margin-top: 24px; }
+    @media (max-width: 600px) { .ba-grid { grid-template-columns: 1fr 36px 1fr; } }
+    .ba-heading { font-family: 'Barlow', sans-serif; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; padding: 0 6px 8px; }
+    .ba-heading-before { color: #aaa; }
+    .ba-heading-after  { color: var(--orange); }
+    .ba-heading-spacer { display: block; }
+    .ba-cell-before { background: #fafafa; border: 1.5px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; padding: 12px 18px; }
+    .ba-cell-arrow  { display: flex; align-items: center; justify-content: center; background: #f0f0f0; border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); color: var(--orange); font-size: 1.2rem; line-height: 1; }
+    .ba-cell-after  { background: var(--blue); border: 1.5px solid var(--blue); border-left: none; border-radius: 0 12px 12px 0; padding: 12px 18px; }
+    .ba-item-main { font-family: 'Barlow', sans-serif; font-size: 1.02rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .ba-cell-before .ba-item-main { color: var(--text); }
+    .ba-cell-after  .ba-item-main { color: #fff; }
+    .ba-item-sub { font-size: 0.88rem; line-height: 1.5; margin-top: 2px; }
+    .ba-cell-before .ba-item-sub { color: var(--muted); }
+    .ba-cell-after  .ba-item-sub { color: rgba(255,255,255,0.62); }
     .ba-icon-bad  { color: #e5534b; font-style: normal; }
     .ba-icon-good { color: #4ade80; font-style: normal; }
 
@@ -875,26 +874,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ── INTRO VIDEO ── -->
-<section style="background:#fff; padding:72px 0;">
+<!-- ── CORE IDEA + VIDEO ── -->
+<section id="tldr" style="background:#fff; padding:72px 0 56px; border-top:1px solid var(--border);">
   <div class="container">
-    <div style="display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap;">
-      <!-- "Hello." text -->
-      <div style="flex-shrink:0;">
-        <span style="font-family:'Barlow',sans-serif; font-weight:900; font-size:clamp(5rem,14vw,12rem); color:#ebebeb; line-height:0.9; display:block; user-select:none;">Hello.</span>
-        <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:clamp(1.1rem,2.5vw,1.8rem); color:#ccc; display:block; margin-top:12px; user-select:none; text-decoration:line-through;">We start this Sunday!</span>
-        <span style="display:flex; align-items:center; gap:16px; margin-top:10px;">
-          <span style="font-family:'Permanent Marker',cursive; font-size:clamp(1.3rem,3vw,2.2rem); color:#333; transform:rotate(-1.5deg); display:inline-block;">See you on May 3rd</span>
-          <button onclick="openNotifyModal()" style="font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; font-weight:700; background:var(--orange); color:#fff; padding:8px 16px; border-radius:6px; border:none; cursor:pointer; white-space:nowrap; transition:background 0.2s ease;" onmouseover="this.style.background='var(--orange-dk)'" onmouseout="this.style.background='var(--orange)'">Notify me</button>
-        </span>
-      </div>
-      <!-- 9:16 video -->
-      <div class="reveal" style="flex-shrink:0; width:196px; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.06);">
-        <div style="position:relative; aspect-ratio:9/16; background:#000;">
-          <video controls playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
-            <source src="brand_assets/intro.mp4" type="video/mp4" />
-          </video>
+    <div style="display:flex; align-items:flex-start; gap:52px; flex-wrap:wrap;">
+      <!-- Text -->
+      <div class="reveal" style="flex:1; min-width:280px;">
+        <span class="label" style="display:inline-block; margin-bottom:18px;">THE CORE IDEA</span>
+        <div style="font-family:'Barlow',sans-serif; font-size:clamp(1.16rem,1.98vw,1.32rem); font-weight:600; line-height:1.8; color:#1a1a1a; letter-spacing:-0.01em;">
+          <p style="margin-bottom:1.1em;">Most people know exactly what they want to build, fix, or start. They just never actually do it. Not because they're lazy, but because <span style="color:var(--orange);">there's nothing at stake.</span> Working alone means quitting costs nothing. Nobody notices. There's no deadline, no pressure, no one to let down.</p>
+          <p style="margin-bottom:1.1em;">The Focus Tribe is a <span style="color:var(--orange);">21-day group sprint</span> built to change that. You pick one clear goal. You commit to it publicly, in front of a small, closed group of max 10 people. You log your progress every day in the 21-D Tracker. And if you disappear? There are <span style="color:var(--orange);">real consequences.</span></p>
+          <p style="margin-bottom:1.1em;">This isn't a course. There's nothing to binge-watch. It's a structured environment that tracks your progress daily, three live group calls keep you accountable, co-working sessions keep you in motion, and your tribe calls you out the moment you go quiet.</p>
+          <p style="margin-bottom:0;">21 days. Your goals. A group that gives a damn. <span style="color:var(--orange); font-weight:800;">Projects get finished here. Habits get built.</span> And you start becoming the kind of person who actually does what they say they'll do.</p>
         </div>
+        <div style="margin-top:28px; display:flex; align-items:center; gap:10px;">
+          <div style="height:2px; width:40px; background:var(--orange); border-radius:2px;"></div>
+          <span style="font-size:0.82rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted);">Thierry</span>
+        </div>
+      </div>
+      <!-- Video + tagline -->
+      <div class="reveal reveal-d2" style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:16px;">
+        <div style="width:196px; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.06);">
+          <div style="position:relative; aspect-ratio:9/16; background:#000;">
+            <video controls playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+              <source src="brand_assets/intro.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:1rem; color:#111; text-align:center; user-select:none;">We start this Sunday!</span>
       </div>
     </div>
   </div>
@@ -948,11 +955,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="label reveal">The Process</span>
     <h2 class="reveal">How does it work?</h2>
     <div class="steps-wrap">
-      <div class="steps-grid-2" style="border-radius:12px; border-top: 2.5px solid var(--blue);">
+      <div class="steps-grid-2">
         <div class="step-card reveal"><div class="step-num">01</div><h3>Set a Clear Goal</h3><p>Define the one thing you want to achieve in 21 days and connect it to a strong why. A goal without a reason won't survive the hard days.</p></div>
         <div class="step-card reveal reveal-d1"><div class="step-num">02</div><h3>Commit to Yourself and the Group</h3><p>State your goal publicly. Name your consequence. When others witness your commitment, backing out stops being an option.</p></div>
-        <div class="step-card reveal reveal-d2" style="border-top: 2px solid var(--blue);"><div class="step-num">03</div><h3>Track your Progress</h3><p>Log your daily wins in 30 seconds using our 21-D Tracker App. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow." Consistency compounds.</p></div>
-        <div class="step-card reveal reveal-d3" style="border-top: 2px solid var(--blue);"><div class="step-num">04</div><h3>Share Wins and Struggles</h3><p>Weekly live calls with the full cohort. Real talk: what's working, what's not. The group pulls you forward when you can't push yourself.</p></div>
+        <div class="step-card reveal reveal-d2"><div class="step-num">03</div><h3>Track your Progress</h3><p>Log your daily wins in 30 seconds using our 21-D Tracker App. Everyone sees. No hiding a missed day. No "I'll catch up tomorrow." Consistency compounds.</p></div>
+        <div class="step-card reveal reveal-d3"><div class="step-num">04</div><h3>Share Wins and Struggles</h3><p>Weekly live calls with the full cohort. Real talk: what's working, what's not. The group pulls you forward when you can't push yourself.</p></div>
       </div>
     </div>
     <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
@@ -1477,58 +1484,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <span class="label reveal">The Shift</span>
     <h2 class="reveal">Before the challenge.<br>After the challenge.</h2>
-    <div class="ba-grid">
-      <!-- BEFORE -->
-      <div class="ba-col ba-before reveal">
-        <div class="ba-heading">Before</div>
-        <ul class="ba-list">
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Scattered</div>
-            <div class="ba-item-sub">A million ideas, zero follow-through</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Stuck in the cycle</div>
-            <div class="ba-item-sub">Starting strong, fading fast, restarting again</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Eroding self-trust</div>
-            <div class="ba-item-sub">Every fail → negative self-view</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Doing it alone</div>
-            <div class="ba-item-sub">No one noticing when you disappear</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Negotiating constantly</div>
-            <div class="ba-item-sub">"Just this once" becomes every time</div>
-          </li>
-        </ul>
+    <div class="ba-grid reveal">
+      <!-- Header row -->
+      <div class="ba-heading ba-heading-before">Before</div>
+      <span class="ba-heading-spacer"></span>
+      <div class="ba-heading ba-heading-after">After</div>
+      <!-- Row 1 -->
+      <div class="ba-cell-before">
+        <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Scattered</div>
+        <div class="ba-item-sub">A million ideas, zero follow-through</div>
       </div>
-      <!-- AFTER -->
-      <div class="ba-col ba-after reveal reveal-d2">
-        <div class="ba-heading">After</div>
-        <ul class="ba-list">
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-good">✅</i> Focused</div>
-            <div class="ba-item-sub">Clear priorities, daily action, real progress</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-good">✅</i> Building momentum</div>
-            <div class="ba-item-sub">Showing up even when you don't feel like it</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-good">✅</i> Restoring self-trust</div>
-            <div class="ba-item-sub">You do what you say you'll do</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-good">✅</i> Supported by your Tribe</div>
-            <div class="ba-item-sub">People who notice, who care, who call you out</div>
-          </li>
-          <li class="ba-item">
-            <div class="ba-item-main"><i class="ba-icon-good">✅</i> New identity forming</div>
-            <div class="ba-item-sub">You're becoming someone who follows through</div>
-          </li>
-        </ul>
+      <div class="ba-cell-arrow">→</div>
+      <div class="ba-cell-after">
+        <div class="ba-item-main"><i class="ba-icon-good">✅</i> Focused</div>
+        <div class="ba-item-sub">Clear priorities, daily action, real progress</div>
+      </div>
+      <!-- Row 2 -->
+      <div class="ba-cell-before">
+        <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Stuck in the cycle</div>
+        <div class="ba-item-sub">Starting strong, fading fast, restarting again</div>
+      </div>
+      <div class="ba-cell-arrow">→</div>
+      <div class="ba-cell-after">
+        <div class="ba-item-main"><i class="ba-icon-good">✅</i> Building momentum</div>
+        <div class="ba-item-sub">Showing up even when you don't feel like it</div>
+      </div>
+      <!-- Row 3 -->
+      <div class="ba-cell-before">
+        <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Eroding self-trust</div>
+        <div class="ba-item-sub">Every fail → negative self-view</div>
+      </div>
+      <div class="ba-cell-arrow">→</div>
+      <div class="ba-cell-after">
+        <div class="ba-item-main"><i class="ba-icon-good">✅</i> Restoring self-trust</div>
+        <div class="ba-item-sub">You do what you say you'll do</div>
+      </div>
+      <!-- Row 4 -->
+      <div class="ba-cell-before">
+        <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Doing it alone</div>
+        <div class="ba-item-sub">No one noticing when you disappear</div>
+      </div>
+      <div class="ba-cell-arrow">→</div>
+      <div class="ba-cell-after">
+        <div class="ba-item-main"><i class="ba-icon-good">✅</i> Supported by your Tribe</div>
+        <div class="ba-item-sub">People who notice, who care, who call you out</div>
+      </div>
+      <!-- Row 5 -->
+      <div class="ba-cell-before">
+        <div class="ba-item-main"><i class="ba-icon-bad">❌</i> Negotiating constantly</div>
+        <div class="ba-item-sub">"Just this once" becomes every time</div>
+      </div>
+      <div class="ba-cell-arrow">→</div>
+      <div class="ba-cell-after">
+        <div class="ba-item-main"><i class="ba-icon-good">✅</i> New identity forming</div>
+        <div class="ba-item-sub">You're becoming someone who follows through</div>
       </div>
     </div>
   </div>
@@ -1542,9 +1551,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal" style="max-width:560px;">Start where you are. Level up when you're ready.</p>
     <div class="pricing-grid">
       <div class="price-card featured reveal">
-        <div class="price-badge">EXCLUSIVE COHORT</div>
+        <div class="price-badge">🔥 EXCLUSIVE COHORT 🔥</div>
         <div class="price-label">Monthly start, 10 spots max</div>
-        <div class="price-amount">$147</div>
+        <div class="price-amount"><span class="fire-text">$147</span></div>
         <div class="price-divider"></div>
         <ul class="price-features">
           <li><strong>1-on-1 onboarding call with Thierry</strong></li>
@@ -1553,6 +1562,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li>Daily tracking system (21 days)</li>
           <li>WhatsApp accountability group</li>
           <li>Rewards and Consequences</li>
+          <li>Co-working sessions</li>
         </ul>
         <div class="btn-commit-wrap" style="display:block; width:100%;">
           <div class="btn-commit-ring"><div class="btn-commit-dot btn-commit-dot-inst"></div></div>
@@ -1594,6 +1604,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
         <a href="https://www.skool.com/the-mens-circle-3207/about" target="_blank" rel="noopener" class="btn-outline" style="width:100%; justify-content:center;">Join the Community - $27/mo</a>
         <div class="price-note" style="margin-top:14px; text-align:center;">Free 7-day trial &nbsp;·&nbsp; Cancel anytime</div>
+      </div>
+    </div>
+    <!-- PRIVATE COACHING BAR -->
+    <div class="coaching-bar reveal reveal-d2">
+      <div class="price-badge dark">PRIVATE COACHING</div>
+      <!-- Price -->
+      <div style="flex-shrink:0; text-align:center;">
+        <div style="font-family:'Barlow',sans-serif; font-size:2.8rem; font-weight:900; letter-spacing:-0.04em; line-height:1; color:#1a1a1a;">$497</div>
+        <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:4px;">per month</div>
+      </div>
+      <!-- Divider -->
+      <div style="width:1.5px; height:64px; background:var(--border); flex-shrink:0;"></div>
+      <!-- Description -->
+      <div style="flex:1; min-width:200px;">
+        <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1rem; color:#1a1a1a; margin-bottom:4px;">1-on-1 with Thierry</div>
+        <p style="font-size:0.88rem; color:var(--muted); line-height:1.6; margin:0;">You and Thierry, working directly on your goals. No group, no shared check-ins. Personal accountability built around your life and your pace — with direct WhatsApp access, weekly calls, and a custom 21-day plan.</p>
+      </div>
+      <!-- Features -->
+      <ul class="price-features" style="flex-shrink:0; min-width:200px; gap:8px;">
+        <li style="font-size:0.88rem;">Weekly 1-on-1 call</li>
+        <li style="font-size:0.88rem;">Custom 21-day plan</li>
+        <li style="font-size:0.88rem;">Direct WhatsApp access</li>
+        <li style="font-size:0.88rem;">Ongoing beyond 21 days</li>
+      </ul>
+      <!-- CTA -->
+      <div style="flex-shrink:0; text-align:center;">
+        <a href="mailto:thierry.muller@gmail.com?subject=Private%20Coaching%20Inquiry" class="btn-primary" style="background:#1a1a1a; white-space:nowrap; display:inline-block;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1a1a1a'">Contact Thierry</a>
+        <div style="font-size:0.78rem; color:var(--muted); margin-top:8px; font-weight:600; letter-spacing:0.04em;">Spots extremely limited</div>
       </div>
     </div>
   </div>
