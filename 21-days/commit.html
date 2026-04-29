@@ -187,6 +187,12 @@
       font-size: clamp(2.8rem, 8vw, 3.6rem); letter-spacing: -0.04em; line-height: 1; color: var(--text);
       margin-bottom: 4px;
     }
+    @keyframes fire-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .fire-text { background: linear-gradient(90deg,#7c0a02,#b83200,#d95000,#e8690a,#bf4800,#8a1500,#7c0a02); background-size:300% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:fire-shift 2.2s ease infinite; display:inline-block; }
+    .btn-commit-wrap { position:relative; display:inline-block; width:100%; }
+    .btn-commit-ring { position:absolute; inset:-4px; border-radius:10px; border:2px solid var(--orange); opacity:0; animation:commit-pulse 2s ease-in-out infinite; pointer-events:none; }
+    @keyframes commit-pulse { 0%,100%{opacity:0;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.02)} }
+    .btn-commit-dot { display:none; }
     .pcard-orig-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .pcard-orig { font-size: 1rem; color: var(--muted); text-decoration: line-through; }
     .pcard-save { font-size: 0.82rem; color: var(--orange); font-weight: 700; }
@@ -270,7 +276,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- PRICING -->
     <h2 class="section-h2">May 3rd Cohort</h2>
     <p style="font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); margin-bottom:16px;">Kick-Off Call &nbsp;·&nbsp; 4:30pm PST &nbsp;·&nbsp; 6:30pm CST &nbsp;·&nbsp; 7:30pm ET</p>
-    <p style="font-size:1rem; line-height:1.75; color:#444; max-width:600px; margin-bottom:32px;">This isn't just a productivity challenge. It's a deeper commitment to yourself — one where you decide, in front of others, that your goals matter. Every day you show up is a vote for the person you're becoming. Every time you follow through when it's hard, your self-trust grows. Over 21 days, with a tight group, real stakes, and Thierry watching closely, something shifts. People don't just finish projects here. They change how they see themselves.</p>
+    <div style="display:flex; align-items:flex-start; gap:48px; flex-wrap:wrap; margin-bottom:32px;">
+      <!-- Description -->
+      <p style="flex:1; min-width:260px; font-size:1rem; line-height:1.75; color:#444; margin:0;">This isn't just a productivity challenge. It's a deeper commitment to yourself. One where you decide, in front of others, that your goals matter. Every day you show up is a vote for the person you're becoming. Every time you follow through when it's hard, your self-trust grows. Over 21 days, with a tight group, real stakes, and Thierry watching closely, something shifts. People don't just finish projects here. They change how they see themselves.</p>
+    </div>
     <div class="pricing-reveal open" id="pricing-reveal">
 
       <div class="price-cards">
@@ -279,7 +288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="pcard-badge">🔥 EXCLUSIVE COHORT 🔥</div>
           <div class="pcard-label">10 spots max</div>
           <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:4px;">
-            <div class="pcard-price" style="margin:0;">$147</div>
+            <div class="pcard-price" style="margin:0;"><span class="fire-text">$147</span></div>
             <div style="display:flex; flex-direction:column; align-items:flex-end; gap:5px;">
               <span style="font-weight:700; font-size:0.88rem; color:#666;">Starting <span style="color:var(--orange);">May 3rd</span></span>
               <div id="commit-countdown" style="display:flex; gap:5px;"></div>
@@ -296,7 +305,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Co-working sessions</li>
             <li>Personal follow-ups between meetings</li>
           </ul>
-          <div class="stripe-wrap">
+          <div class="btn-commit-wrap">
+            <div class="btn-commit-ring"></div>
             <a href="https://buy.stripe.com/6oUeVd1GOfChb4D3uJ18c03" class="btn-primary" style="width:100%; display:block; text-align:center;">Commit NOW - $147</a>
           </div>
         </div>
