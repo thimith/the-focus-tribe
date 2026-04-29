@@ -774,9 +774,15 @@
       #pricing .label, #pricing h2, #pricing > .container > p { text-align: center; }
       /* Shrink face bubbles so Skool card matches Exclusive height */
       .skool-host-bubble { width: 52px !important; height: 52px !important; }
-      /* Prevent price cards from overflowing viewport */
-      .price-card { overflow: hidden; max-width: 100%; }
-      .pricing-grid { overflow: hidden; }
+      /* Prevent horizontal scroll at section level */
+      #pricing { overflow-x: hidden; }
+      /* Shrink countdown boxes so they fit beside price */
+      #cohort-countdown > div { padding: 2px 5px !important; min-width: 28px !important; }
+      #cohort-countdown span[style*="1.1rem"] { font-size: 0.82rem !important; }
+      #cohort-countdown span[style*="0.62rem"] { font-size: 0.52rem !important; }
+      /* Skool label + bubbles row: shrink label font */
+      .price-card.skool .price-label { font-size: 0.7rem; }
+      .price-card.skool .price-amount { font-size: 2.6rem !important; }
     }
 
     /* ── WHO CARD MOBILE ── */
@@ -1598,7 +1604,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="price-card featured reveal">
         <div class="price-badge">🔥 EXCLUSIVE COHORT 🔥</div>
         <div class="price-label">Monthly start, 10 spots max</div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
           <div class="price-amount" style="margin-bottom:0;"><span class="fire-text">$147</span></div>
           <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
             <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:0.9rem; color:var(--muted);">Starting <span style="color:var(--orange);">May 3rd</span></span>
@@ -1660,7 +1666,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="price-card skool reveal reveal-d2">
         <div class="price-badge blue">SKOOL COMMUNITY</div>
-        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
           <div>
             <div class="price-label">Start any Monday</div>
             <div class="price-amount">$27<span style="font-size:1.2rem; font-weight:600; color:var(--muted);">/mo</span></div>
