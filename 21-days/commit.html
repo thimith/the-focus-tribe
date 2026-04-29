@@ -189,10 +189,16 @@
     }
     @keyframes fire-shift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
     .fire-text { background: linear-gradient(90deg,#7c0a02,#b83200,#d95000,#e8690a,#bf4800,#8a1500,#7c0a02); background-size:300% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; animation:fire-shift 2.2s ease infinite; display:inline-block; }
-    .btn-commit-wrap { position:relative; display:inline-block; width:100%; }
-    .btn-commit-ring { position:absolute; inset:-4px; border-radius:10px; border:2px solid var(--orange); opacity:0; animation:commit-pulse 2s ease-in-out infinite; pointer-events:none; }
-    @keyframes commit-pulse { 0%,100%{opacity:0;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.02)} }
-    .btn-commit-dot { display:none; }
+    .btn-commit-wrap { position: relative; display: inline-block; }
+    .btn-commit-wrap::before { content: ''; position: absolute; inset: -10px; border-radius: 18px; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,85,0,0.5) 0%, rgba(255,85,0,0.18) 50%, transparent 75%); animation: commit-glow-pulse 2.4s ease-in-out infinite; pointer-events: none; z-index: 0; }
+    @keyframes commit-glow-pulse { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+    .btn-commit-ring { position: absolute; inset: -3px; border-radius: 11px; pointer-events: none; z-index: 2; overflow: hidden; border: 1.5px solid rgba(255,85,0,0.3); }
+    .btn-commit-dot { position: absolute; top: 0; left: 0; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle, #fff 0%, rgba(255,140,50,0.9) 45%, transparent 70%); box-shadow: 0 0 8px 4px rgba(255,100,30,0.85); transform: translate(-50%, -50%); offset-distance: 0%; animation: commit-dot-travel 2.2s linear infinite; }
+    @keyframes commit-dot-travel { to { offset-distance: 100%; } }
+    .btn-commit-wrap .btn-primary { position: relative; z-index: 1; overflow: hidden; animation: commit-btn-breathe 2.4s ease-in-out infinite; width: 100%; display: block; text-align: center; }
+    .btn-commit-wrap .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.28) 50%, transparent 70%); transform: translateX(-100%); animation: commit-shimmer 2.2s ease-in-out infinite; }
+    @keyframes commit-shimmer { 0% { transform: translateX(-100%); } 55% { transform: translateX(100%); } 100% { transform: translateX(100%); } }
+    @keyframes commit-btn-breathe { 0%, 100% { box-shadow: 0 2px 8px rgba(255,85,0,0.3), 0 8px 24px rgba(255,85,0,0.18); } 50% { box-shadow: 0 4px 20px rgba(255,85,0,0.55), 0 12px 40px rgba(255,85,0,0.3); } }
     .pcard-orig-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .pcard-orig { font-size: 1rem; color: var(--muted); text-decoration: line-through; }
     .pcard-save { font-size: 0.82rem; color: var(--orange); font-weight: 700; }
@@ -277,13 +283,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="section-h2">May 3rd Cohort</h2>
     <p style="font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); margin-bottom:16px;">Kick-Off Call &nbsp;·&nbsp; 4:30pm PST &nbsp;·&nbsp; 6:30pm CST &nbsp;·&nbsp; 7:30pm ET</p>
     <div style="display:flex; align-items:flex-start; gap:48px; flex-wrap:wrap; margin-bottom:32px;">
-      <!-- Description -->
-      <p style="flex:1; min-width:260px; font-size:1rem; line-height:1.75; color:#444; margin:0;">This isn't just a productivity challenge. It's a deeper commitment to yourself. One where you decide, in front of others, that your goals matter. Every day you show up is a vote for the person you're becoming. Every time you follow through when it's hard, your self-trust grows. Over 21 days, with a tight group, real stakes, and Thierry watching closely, something shifts. People don't just finish projects here. They change how they see themselves.</p>
-    </div>
-    <div class="pricing-reveal open" id="pricing-reveal">
-
-      <div class="price-cards">
-
+      <!-- Card -->
+      <div class="price-cards" style="flex-shrink:0; margin:0;">
         <div class="pcard featured">
           <div class="pcard-badge">🔥 EXCLUSIVE COHORT 🔥</div>
           <div class="pcard-label">10 spots max</div>
@@ -306,12 +307,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <li>Personal follow-ups between meetings</li>
           </ul>
           <div class="btn-commit-wrap">
-            <div class="btn-commit-ring"></div>
-            <a href="https://buy.stripe.com/6oUeVd1GOfChb4D3uJ18c03" class="btn-primary" style="width:100%; display:block; text-align:center;">Commit NOW - $147</a>
+            <div class="btn-commit-ring"><div class="btn-commit-dot btn-commit-dot-inst"></div></div>
+            <a href="https://buy.stripe.com/6oUeVd1GOfChb4D3uJ18c03" class="btn-primary">Commit NOW - $147</a>
           </div>
         </div>
-
       </div>
+      <!-- Description -->
+      <p style="flex:1; min-width:260px; font-size:1rem; line-height:1.75; color:#444; margin:0; padding-top:24px;">This isn't just a productivity challenge. It's a deeper commitment to yourself. One where you decide, in front of others, that your goals matter. Every day you show up is a vote for the person you're becoming. Every time you follow through when it's hard, your self-trust grows. Over 21 days, with a tight group, real stakes, and Thierry watching closely, something shifts. People don't just finish projects here. They change how they see themselves.</p>
+    </div>
+    <div class="pricing-reveal open" id="pricing-reveal">
+      <div></div>
       <script>
       (function(){
         var target = new Date('2026-05-03T19:30:00');
@@ -387,6 +392,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     a.href = 'mailto:' + _em + (a.dataset.s ? '?subject=' + a.dataset.s : '');
   });
   document.querySelectorAll('.js-et').forEach(s => s.textContent = _em);
+
+  // traveling dot on commit button
+  function initCommitDots() {
+    document.querySelectorAll('.btn-commit-dot-inst').forEach(dot => {
+      const ring = dot.closest('.btn-commit-ring');
+      if (!ring) return;
+      const w = ring.offsetWidth, h = ring.offsetHeight, r = 9;
+      dot.style.offsetPath = `path('M${r},0 H${w-r} Q${w},0 ${w},${r} V${h-r} Q${w},${h} ${w-r},${h} H${r} Q0,${h} 0,${h-r} V${r} Q0,0 ${r},0 Z')`;
+    });
+  }
+  window.addEventListener('load', initCommitDots);
+  window.addEventListener('resize', initCommitDots);
+  setTimeout(initCommitDots, 120);
 </script>
 
 </body>
