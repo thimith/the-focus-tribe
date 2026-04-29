@@ -339,26 +339,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
       <!-- WHAT HAPPENS NEXT -->
-      <div class="next-steps">
-        <h3>What happens after you pay</h3>
-        <ul class="next-list">
-          <li class="next-item">
-            <div class="next-num">1</div>
-            <p>You'll receive a confirmation email immediately. <span>Check your spam if you don't see it within a few minutes.</span></p>
-          </li>
-          <li class="next-item">
-            <div class="next-num">2</div>
-            <p>Thierry will reach out within 24 hours to schedule your <strong>1-on-1 onboarding call</strong> where you'll define your goals and set your consequence.</p>
-          </li>
-          <li class="next-item">
-            <div class="next-num">3</div>
-            <p>You'll be added to the WhatsApp group before your cohort starts. <span>Say hello, the group is already active.</span></p>
-          </li>
-          <li class="next-item">
-            <div class="next-num">4</div>
-            <p>Day 1 kicks off on your cohort date. <strong>Show up. Commit publicly. The 21 days start.</strong></p>
-          </li>
-        </ul>
+      <div class="next-steps" style="padding-top:32px;">
+        <button onclick="var c=this.nextElementSibling;var open=c.style.maxHeight&&c.style.maxHeight!='0px';c.style.maxHeight=open?'0px':'600px';c.style.opacity=open?'0':'1';this.querySelector('.ns-arrow').style.transform=open?'rotate(0deg)':'rotate(180deg)';" style="width:100%; display:flex; align-items:center; justify-content:space-between; background:none; border:none; cursor:pointer; padding:0; font-family:'Barlow',sans-serif; font-weight:800; font-size:1.2rem; color:var(--text);">
+          <span>What happens after you pay</span>
+          <span class="ns-arrow" style="font-size:0.9rem; color:var(--muted); transition:transform 0.3s ease;">↓</span>
+        </button>
+        <div style="max-height:0; overflow:hidden; opacity:0; transition:max-height 0.4s ease, opacity 0.3s ease;">
+          <ul class="next-list" style="padding-top:20px;">
+            <li class="next-item">
+              <div class="next-num">1</div>
+              <p>You'll receive a confirmation email immediately. <span>Check your spam if you don't see it within a few minutes.</span></p>
+            </li>
+            <li class="next-item">
+              <div class="next-num">2</div>
+              <p>Thierry will reach out within 24 hours to schedule your <strong>1-on-1 onboarding call</strong> where you'll define your goals and set your consequence.</p>
+            </li>
+            <li class="next-item">
+              <div class="next-num">3</div>
+              <p>You'll be added to the WhatsApp group before your cohort starts. <span>Say hello, the group is already active.</span></p>
+            </li>
+            <li class="next-item">
+              <div class="next-num">4</div>
+              <p>Day 1 kicks off on your cohort date. <strong>Show up. Commit publicly. The 21 days start.</strong></p>
+            </li>
+          </ul>
+        </div>
       </div>
 
     </div><!-- /pricing-reveal -->
