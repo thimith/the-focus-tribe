@@ -768,6 +768,9 @@
       #pricing .label, #pricing h2, #pricing > .container > p { text-align: center; }
       /* Shrink face bubbles so Skool card matches Exclusive height */
       .skool-host-bubble { width: 52px !important; height: 52px !important; }
+      /* Prevent price cards from overflowing viewport */
+      .price-card { overflow: hidden; max-width: 100%; }
+      .pricing-grid { overflow: hidden; }
     }
 
     /* ── WHO CARD MOBILE ── */
@@ -1580,7 +1583,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="price-card featured reveal">
         <div class="price-badge">🔥 EXCLUSIVE COHORT 🔥</div>
         <div class="price-label">Monthly start, 10 spots max</div>
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
           <div class="price-amount" style="margin-bottom:0;"><span class="fire-text">$147</span></div>
           <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
             <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:0.9rem; color:var(--muted);">Starting <span style="color:var(--orange);">May 3rd</span></span>
@@ -1642,7 +1645,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="price-card skool reveal reveal-d2">
         <div class="price-badge blue">SKOOL COMMUNITY</div>
-        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
           <div>
             <div class="price-label">Start any Monday</div>
             <div class="price-amount">$27<span style="font-size:1.2rem; font-weight:600; color:var(--muted);">/mo</span></div>
