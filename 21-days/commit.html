@@ -269,22 +269,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- PRICING -->
     <h2 class="section-h2">May 3rd Cohort</h2>
-    <p style="font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); margin-bottom:24px;">Kick-Off Call &nbsp;·&nbsp; 4:30pm PST &nbsp;·&nbsp; 6:30pm CST &nbsp;·&nbsp; 7:30pm ET</p>
+    <p style="font-size:0.85rem; font-weight:700; letter-spacing:0.04em; color:var(--muted); margin-bottom:16px;">Kick-Off Call &nbsp;·&nbsp; 4:30pm PST &nbsp;·&nbsp; 6:30pm CST &nbsp;·&nbsp; 7:30pm ET</p>
+    <p style="font-size:1rem; line-height:1.75; color:#444; max-width:600px; margin-bottom:32px;">This isn't just a productivity challenge. It's a deeper commitment to yourself — one where you decide, in front of others, that your goals matter. Every day you show up is a vote for the person you're becoming. Every time you follow through when it's hard, your self-trust grows. Over 21 days, with a tight group, real stakes, and Thierry watching closely, something shifts. People don't just finish projects here. They change how they see themselves.</p>
     <div class="pricing-reveal open" id="pricing-reveal">
 
       <div class="price-cards">
 
         <div class="pcard featured">
-          <div class="pcard-badge">EXCLUSIVE COHORT</div>
-          <div class="pcard-label">Monthly start, 10 spots max</div>
-          <div class="pcard-price">$147</div>
+          <div class="pcard-badge">🔥 EXCLUSIVE COHORT 🔥</div>
+          <div class="pcard-label">10 spots max</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:4px;">
+            <div class="pcard-price" style="margin:0;">$147</div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:5px;">
+              <span style="font-weight:700; font-size:0.88rem; color:#666;">Starting <span style="color:var(--orange);">May 3rd</span></span>
+              <div id="commit-countdown" style="display:flex; gap:5px;"></div>
+            </div>
+          </div>
           <div class="pcard-divider"></div>
           <ul class="pcard-features">
-            <li>1-on-1 onboarding call with Thierry</li>
-            <li>Daily tracking system (21 days)</li>
+            <li><strong>1-on-1 onboarding call with Thierry</strong></li>
+            <li><strong>Closed Group (max 10)</strong></li>
             <li>3 weekly live group calls</li>
+            <li>Daily tracking system (21 days)</li>
             <li>WhatsApp accountability group</li>
             <li>Rewards and Consequences</li>
+            <li>Co-working sessions</li>
+            <li>Personal follow-ups between meetings</li>
           </ul>
           <div class="stripe-wrap">
             <a href="https://buy.stripe.com/6oUeVd1GOfChb4D3uJ18c03" class="btn-primary" style="width:100%; display:block; text-align:center;">Commit NOW - $147</a>
@@ -292,6 +302,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
       </div>
+      <script>
+      (function(){
+        var target = new Date('2026-05-03T19:30:00');
+        var el = document.getElementById('commit-countdown');
+        function pad(n){ return String(n).padStart(2,'0'); }
+        function tick(){
+          var now = new Date(); var diff = target - now;
+          if(diff <= 0){ el.innerHTML = '<span style="font-weight:700;font-size:0.82rem;color:var(--orange);">Starting now!</span>'; return; }
+          var d = Math.floor(diff/86400000);
+          var h = Math.floor((diff%86400000)/3600000);
+          var m = Math.floor((diff%3600000)/60000);
+          var s = Math.floor((diff%60000)/1000);
+          var unit = 'font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#999;display:block;margin-top:1px;';
+          var num = 'font-size:1rem;font-weight:900;color:#111;line-height:1;';
+          var box = 'background:#f5f5f3;border-radius:5px;padding:3px 7px;text-align:center;min-width:34px;';
+          el.innerHTML =
+            '<div style="'+box+'"><span style="'+num+'">'+pad(d)+'</span><span style="'+unit+'">days</span></div>'+
+            '<div style="'+box+'"><span style="'+num+'">'+pad(h)+'</span><span style="'+unit+'">hrs</span></div>'+
+            '<div style="'+box+'"><span style="'+num+'">'+pad(m)+'</span><span style="'+unit+'">min</span></div>'+
+            '<div style="'+box+'"><span style="'+num+'">'+pad(s)+'</span><span style="'+unit+'">sec</span></div>';
+        }
+        tick(); setInterval(tick, 1000);
+      })();
+      </script>
 
       <!-- GUARANTEE -->
       <div class="guarantee-bar">
