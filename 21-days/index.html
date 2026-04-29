@@ -1569,7 +1569,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="btn-commit-ring"><div class="btn-commit-dot btn-commit-dot-inst"></div></div>
           <a href="commit.html" class="btn-primary" style="width:100%;">I'm Ready to Commit - $147</a>
         </div>
-        <div style="margin-top:14px; text-align:center; font-family:'Barlow',sans-serif; font-weight:700; font-size:0.9rem; color:var(--muted);">Next cohort starts <span style="color:var(--orange);">May 3rd</span></div>
+        <div style="margin-top:14px; display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+          <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:0.9rem; color:var(--muted);">Next cohort starts <span style="color:var(--orange);">May 3rd</span></span>
+          <div id="cohort-countdown" style="display:flex; gap:6px; align-items:center;"></div>
+        </div>
+        <script>
+        (function(){
+          var target = new Date('2026-05-03T19:30:00');
+          var el = document.getElementById('cohort-countdown');
+          function pad(n){ return String(n).padStart(2,'0'); }
+          function tick(){
+            var now = new Date(); var diff = target - now;
+            if(diff <= 0){ el.innerHTML = '<span style="font-family:Barlow,sans-serif;font-weight:700;font-size:0.82rem;color:var(--orange);">Starting now!</span>'; return; }
+            var d = Math.floor(diff/86400000);
+            var h = Math.floor((diff%86400000)/3600000);
+            var m = Math.floor((diff%3600000)/60000);
+            var s = Math.floor((diff%60000)/1000);
+            var unit = 'font-family:Barlow,sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);display:block;margin-top:1px;';
+            var num = 'font-family:Barlow,sans-serif;font-size:1.1rem;font-weight:900;color:var(--text);line-height:1;';
+            var box = 'background:var(--light);border-radius:6px;padding:4px 8px;text-align:center;min-width:38px;';
+            el.innerHTML =
+              '<div style="'+box+'"><span style="'+num+'">'+pad(d)+'</span><span style="'+unit+'">days</span></div>'+
+              '<div style="'+box+'"><span style="'+num+'">'+pad(h)+'</span><span style="'+unit+'">hrs</span></div>'+
+              '<div style="'+box+'"><span style="'+num+'">'+pad(m)+'</span><span style="'+unit+'">min</span></div>'+
+              '<div style="'+box+'"><span style="'+num+'">'+pad(s)+'</span><span style="'+unit+'">sec</span></div>';
+          }
+          tick(); setInterval(tick, 1000);
+        })();
+        </script>
         <div style="margin-top:20px; border-radius:10px; border:1.5px solid #a8d5b5; overflow:hidden;">
           <button onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'; this.querySelector('.mbg-arrow').style.transform=this.nextElementSibling.style.display==='block'?'rotate(180deg)':'rotate(0deg)'" style="width:100%; display:flex; align-items:center; gap:12px; padding:14px 18px; background:#e8f5ee; border:none; cursor:pointer; text-align:left;">
             <span style="font-size:1.2rem; flex-shrink:0;">🛡️</span>
@@ -1611,29 +1638,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- PRIVATE COACHING BAR -->
     <div class="coaching-bar reveal reveal-d2">
       <div class="price-badge dark">PRIVATE COACHING</div>
-      <!-- Price -->
-      <div style="flex-shrink:0; text-align:center;">
-        <div style="font-family:'Barlow',sans-serif; font-size:2.8rem; font-weight:900; letter-spacing:-0.04em; line-height:1; color:#1a1a1a;">$497</div>
-        <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:4px;">per month</div>
-      </div>
-      <!-- Divider -->
-      <div style="width:1.5px; height:64px; background:var(--border); flex-shrink:0;"></div>
       <!-- Description -->
-      <div style="flex:1; min-width:200px;">
-        <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1rem; color:#1a1a1a; margin-bottom:4px;">1-on-1 with Thierry</div>
+      <div style="flex:1; min-width:220px;">
+        <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1rem; color:#1a1a1a; margin-bottom:6px;">1-on-1 with Thierry</div>
         <p style="font-size:0.88rem; color:var(--muted); line-height:1.6; margin:0;">You and Thierry, working directly on your goals. No group, no waiting for the next cohort. Start whenever you're ready. Ongoing support built around your life and your pace, with Thierry constantly checking in to keep you moving.</p>
       </div>
       <!-- Features -->
-      <ul class="price-features" style="flex-shrink:0; min-width:200px; gap:8px;">
+      <ul class="price-features" style="flex-shrink:0; min-width:190px; gap:8px;">
         <li style="font-size:0.88rem;">Weekly 1-on-1 call</li>
         <li style="font-size:0.88rem;">Constant check-ins from Thierry</li>
         <li style="font-size:0.88rem;">Direct WhatsApp access</li>
         <li style="font-size:0.88rem;">Start anytime, ongoing support</li>
       </ul>
-      <!-- CTA -->
-      <div style="flex-shrink:0; text-align:center;">
+      <!-- Price + CTA -->
+      <div style="flex-shrink:0; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;">
+        <div>
+          <div style="font-family:'Barlow',sans-serif; font-size:2.8rem; font-weight:900; letter-spacing:-0.04em; line-height:1; color:#1a1a1a;">$497</div>
+          <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:2px;">per month</div>
+        </div>
         <a href="https://calendly.com/thierry-muller/discovery-call" target="_blank" rel="noopener" class="btn-primary" style="background:#1a1a1a; white-space:nowrap; display:inline-block;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1a1a1a'">Book a Discovery Call</a>
-        <div style="font-size:0.78rem; color:var(--muted); margin-top:8px; font-weight:600; letter-spacing:0.04em;">Spots limited</div>
+        <div style="font-size:0.78rem; color:var(--muted); font-weight:600; letter-spacing:0.04em;">Spots limited</div>
       </div>
     </div>
   </div>
