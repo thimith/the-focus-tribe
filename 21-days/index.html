@@ -741,6 +741,30 @@
     /* ── PRICE CARD MOBILE ── */
     @media (max-width: 640px) { .price-card { padding: 32px 24px; } .price-amount { font-size: 3.4rem; } }
 
+    /* ── VIDEO COL MOBILE CENTERING ── */
+    @media (max-width: 660px) { .video-col { width: 100%; justify-content: center; } }
+
+    /* ── PRICING ACCORDION (MOBILE) ── */
+    .price-expand-btn {
+      display: none;
+      margin-top: 14px; padding: 9px 14px;
+      background: var(--light); border-radius: 8px; border: none; cursor: pointer;
+      font-family: inherit; font-size: 0.82rem; font-weight: 700; color: var(--muted);
+      width: 100%; text-align: center; letter-spacing: 0.02em;
+      transition: background 0.15s;
+    }
+    .price-expand-btn:hover { background: var(--border); }
+    @media (max-width: 660px) {
+      .price-detail { display: none !important; }
+      .price-card.expanded .price-detail { display: block !important; }
+      .coaching-bar.expanded .price-detail { display: flex !important; flex-direction: column; gap: 16px; }
+      .price-expand-btn { display: block; }
+      .price-card.expanded .price-expand-btn,
+      .coaching-bar.expanded .price-expand-btn { background: var(--border); }
+      .coaching-bar { flex-direction: column; gap: 0; padding: 28px 24px; }
+      .coaching-bar .coaching-divider { display: none; }
+    }
+
     /* ── WHO CARD MOBILE ── */
     @media (max-width: 640px) { .who-card { padding: 28px 20px; } }
 
@@ -813,7 +837,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#how-it-works" class="nav-link">How it works</a>
     <a href="#testimonials" class="nav-link">Testimonials</a>
     <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="details.html" class="nav-link">Full Details</a>
     <a href="https://www.instagram.com/thefocustribe/" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
     </a>
@@ -893,7 +916,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <!-- Video + tagline -->
-      <div class="reveal reveal-d2" style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:16px;">
+      <div class="reveal reveal-d2 video-col" style="flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:16px;">
         <div style="width:196px; border-radius:16px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.06);">
           <div style="position:relative; aspect-ratio:9/16; background:#000;">
             <video controls playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
@@ -962,7 +985,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="step-card reveal reveal-d3"><div class="step-num">04</div><h3>Share Wins and Struggles</h3><p>Weekly live calls with the full cohort. Real talk: what's working, what's not. The group pulls you forward when you can't push yourself.</p></div>
       </div>
     </div>
-    <div class="steps-link-wrap reveal"><a href="details.html#how-it-works" class="text-link">Want the full breakdown? →</a></div>
     <div id="waitlist-form" class="reveal" style="margin-top:36px; max-width:800px; margin-left:auto; margin-right:auto;">
       <div style="background:var(--blue-lt); border:1.5px solid rgba(14,79,145,0.2); border-radius:12px; padding:28px 28px 24px;">
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
@@ -1560,6 +1582,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div id="cohort-countdown" style="display:flex; gap:6px; align-items:center;"></div>
           </div>
         </div>
+        <button class="price-expand-btn" onclick="togglePriceCard(this.closest('.price-card,.coaching-bar'))">↓ See what's included</button>
+        <div class="price-detail">
         <div class="price-divider"></div>
         <ul class="price-features">
           <li><strong>1-on-1 onboarding call with Thierry</strong></li>
@@ -1609,6 +1633,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p style="margin:0; font-size:0.83rem; color:#2d7a4a; line-height:1.6;">Complete all 21 days, show up to every call, and track daily. If you followed through on everything and got zero value, you get a full refund. No hoops, no negotiation.</p>
           </div>
         </div>
+        </div><!-- /price-detail -->
       </div>
       <div class="price-card skool reveal reveal-d2">
         <div class="price-badge blue">SKOOL COMMUNITY</div>
@@ -1625,6 +1650,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span style="font-size:0.72rem; color:var(--blue); font-weight:700; letter-spacing:0.03em; white-space:nowrap;">with Thierry and Niko</span>
           </div>
         </div>
+        <button class="price-expand-btn" onclick="togglePriceCard(this.closest('.price-card,.coaching-bar'))">↓ See what's included</button>
+        <div class="price-detail">
         <div class="price-divider"></div>
         <ul class="price-features">
           <li><strong>Start any Monday, no waiting</strong></li>
@@ -1635,26 +1662,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
         <a href="https://www.skool.com/the-mens-circle-3207/about" target="_blank" rel="noopener" class="btn-outline" style="width:100%; justify-content:center;">Join the Community - $27/mo</a>
         <div class="price-note" style="margin-top:14px; text-align:center;">Free 7-day trial &nbsp;·&nbsp; Cancel anytime</div>
+        </div><!-- /price-detail -->
       </div>
     </div>
     <!-- PRIVATE COACHING BAR -->
     <div class="coaching-bar reveal reveal-d2">
       <div class="price-badge dark">PRIVATE COACHING</div>
-      <!-- Price + CTA -->
+      <!-- Price -->
       <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
         <div>
           <div style="font-family:'Barlow',sans-serif; font-size:2.8rem; font-weight:900; letter-spacing:-0.04em; line-height:1; color:#1a1a1a;">$497</div>
           <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:2px;">per month</div>
         </div>
-        <a href="https://calendly.com/thierry-muller-vew/discovery-call-the-focus-tribe" target="_blank" rel="noopener" class="btn-primary" style="background:#1a1a1a; white-space:nowrap;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1a1a1a'">Book a Discovery Call</a>
-        <div style="font-size:0.78rem; color:var(--muted); font-weight:600; letter-spacing:0.04em;">Spots limited</div>
       </div>
+      <button class="price-expand-btn" onclick="togglePriceCard(this.closest('.price-card,.coaching-bar'))">↓ See what's included</button>
+      <div class="price-detail" style="display:contents;">
       <!-- Divider -->
-      <div style="width:1.5px; align-self:stretch; background:var(--border); flex-shrink:0;"></div>
+      <div class="coaching-divider" style="width:1.5px; align-self:stretch; background:var(--border); flex-shrink:0;"></div>
       <!-- Description -->
       <div style="flex:1; min-width:200px;">
         <div style="font-family:'Barlow',sans-serif; font-weight:800; font-size:1rem; color:#1a1a1a; margin-bottom:6px;">1-on-1 with Thierry</div>
-        <p style="font-size:0.88rem; color:var(--muted); line-height:1.6; margin:0;">You and Thierry, working directly on your goals. No group, no waiting for the next cohort. Start whenever you're ready. Ongoing support built around your life and your pace, with Thierry constantly checking in to keep you moving.</p>
+        <p style="font-size:0.88rem; color:var(--muted); line-height:1.6; margin:0 0 12px;">You and Thierry, working directly on your goals. No group, no waiting for the next cohort. Start whenever you're ready. Ongoing support built around your life and your pace, with Thierry constantly checking in to keep you moving.</p>
+        <a href="https://calendly.com/thierry-muller-vew/discovery-call-the-focus-tribe" target="_blank" rel="noopener" class="btn-primary" style="background:#1a1a1a; white-space:nowrap; display:inline-flex;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1a1a1a'">Book a Discovery Call</a>
+        <div style="font-size:0.78rem; color:var(--muted); font-weight:600; letter-spacing:0.04em; margin-top:8px;">Spots limited</div>
       </div>
       <!-- Features -->
       <ul class="price-features" style="flex-shrink:0; min-width:190px; gap:8px; align-self:center;">
@@ -1664,6 +1694,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li style="font-size:0.88rem;">Daily tracking system</li>
         <li style="font-size:0.88rem;">Start anytime, ongoing support</li>
       </ul>
+      </div><!-- /price-detail -->
     </div>
   </div>
 </section>
@@ -1761,7 +1792,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#pricing" class="btn-primary" style="font-size:1.1rem; padding:18px 44px;">I'm Ready to Commit</a>
     </div>
     <br>
-    <a href="details.html" class="sublink reveal">Want to read everything first? →</a>
     <p class="contact reveal">Questions? <a href="#" class="js-ml" data-s=""><span class="js-et"></span></a></p>
   </div>
 </section>
@@ -1781,9 +1811,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="footer-links">
-      <a href="details.html">Full Details</a>
-      <a href="details.html#privacy">Privacy</a>
-      <a href="details.html#terms">Terms</a>
     </div>
     <p class="footer-copy">© 2026 The Focus Tribe. All rights reserved.</p>
   </div>
@@ -2079,11 +2106,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       desc.textContent = `A score of ${total}/100 suggests you might not be at the stage where external accountability is your main lever. That's okay. Come back when you have a specific goal and feel the pull to commit publicly.`;
       benefits.style.display = 'none';
       cta.textContent = 'Learn More First';
-      cta.href = 'details.html';
+      cta.href = '#pricing';
     }
   }
 
   // ── FAQ ──
+  function togglePriceCard(card) {
+    const expanded = card.classList.toggle('expanded');
+    const btn = card.querySelector('.price-expand-btn');
+    if (btn) btn.textContent = expanded ? '↑ Show less' : '↓ See what\'s included';
+  }
+
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const isOpen = btn.classList.contains('open');
