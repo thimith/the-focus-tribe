@@ -259,10 +259,10 @@
 
     /* ── PROBLEM / SOLUTION ── */
     #problem { background: var(--light); }
-    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 52px; }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
     @media (max-width: 700px) { .problem-grid { grid-template-columns: 1fr; } }
-    .prob-col { padding: 44px 40px; position: relative; overflow: hidden; border-radius: 14px; }
-    @media (max-width: 640px) { .prob-col { padding: 32px 24px; } }
+    .prob-col { padding: 32px 30px; position: relative; overflow: hidden; border-radius: 14px; }
+    @media (max-width: 640px) { .prob-col { padding: 24px 20px; } }
 
     /* Problem card: red pulsing border glow — "stuck" */
     .prob-col.problem-side {
@@ -288,7 +288,7 @@
     @media (max-width: 640px) { .prob-col-label { font-size: 1.56rem; } }
     .problem-side .prob-col-label { color: #d93025; }
     .solution-side .prob-col-label { color: #22a55a; }
-    .prob-col h3 { font-size: 1.6rem; margin-bottom: 18px; }
+    .prob-col h3 { font-size: 1.3rem; margin-bottom: 14px; }
     .problem-side h3 { color: var(--text); }
     .solution-side h3 { color: var(--text); }
     .prob-col p { font-size: 1rem; }
@@ -945,14 +945,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ── PROBLEM / SOLUTION ── -->
-<section id="problem" style="padding-top:32px;">
+<section id="problem" style="padding-top:20px; padding-bottom:48px;">
   <div class="container">
     <span class="label reveal">The Core Issue</span>
     <h2 class="reveal" style="max-width:900px;">You don't have a <span class="highlight">motivation problem.</span><br>You have an <span class="draw-underline">environment problem</span>.</h2>
     <div class="problem-grid">
       <div class="prob-col problem-side reveal">
         <div class="prob-col-label">The Problem</div>
-        <h3>You ship for clients. Not for yourself.</h3>
+        <h3>You deliver for others. Not for yourself.</h3>
         <p>You show up for everyone else. Your boss, your clients, your team. But when it's just you and your own project? The website sits unfinished. The course stays in draft. The habit never sticks.</p>
         <ul class="prob-list">
           <li><span class="ico">❌</span><span><strong style="color:#111;">No stakes</strong>, quitting costs nothing</span></li>
