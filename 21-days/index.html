@@ -365,7 +365,7 @@
 
     /* ── HOW IT WORKS ── */
     #how-it-works { background: var(--white); }
-    .steps-wrap { margin-top: 32px; }
+    .steps-wrap { margin-top: 24px; }
     .steps-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
       border: 2.5px solid var(--blue); border-radius: 12px 12px 0 0; overflow: hidden;
@@ -374,18 +374,22 @@
     .steps-grid-2 {
       display: grid; grid-template-columns: 1fr; gap: 0;
       border: 2.5px solid var(--blue); border-radius: 12px; overflow: hidden;
+      max-width: 640px;
     }
     .step-card {
-      padding: 24px 28px; border-right: none; border-bottom: none;
+      padding: 16px 24px; border-right: none;
+      border-bottom: 1px solid var(--border);
       transition: background 0.2s ease;
+      display: flex; align-items: flex-start; gap: 18px;
     }
+    .step-card:last-child { border-bottom: none; }
     .step-card:hover { background: #fafafa; }
     .step-num {
-      font-family: 'Barlow', sans-serif; font-size: 1.9rem; font-weight: 900;
-      color: var(--orange); line-height: 1; margin-bottom: 10px;
+      font-family: 'Barlow', sans-serif; font-size: 1.4rem; font-weight: 900;
+      color: var(--orange); line-height: 1; flex-shrink: 0; padding-top: 2px;
     }
-    .step-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-    .step-card p { font-size: 0.95rem; line-height: 1.6; }
+    .step-card h3 { font-size: 0.98rem; margin-bottom: 4px; }
+    .step-card p { font-size: 0.88rem; line-height: 1.55; color: var(--muted); }
     .steps-link-wrap { text-align: center; margin-top: 36px; }
     .text-link {
       font-size: 0.95rem; color: var(--blue); font-weight: 700;
@@ -736,7 +740,7 @@
     @media (max-width: 760px) { .proof-grid { grid-template-columns: 1fr; gap: 20px; } }
 
     /* ── STEP CARD MOBILE ── */
-    @media (max-width: 640px) { .step-card { padding: 14px 14px; } }
+    @media (max-width: 640px) { .step-card { padding: 12px 16px; gap: 12px; } }
 
     /* ── PRICE CARD MOBILE ── */
     @media (max-width: 640px) { .price-card { padding: 32px 24px; } .price-amount { font-size: 3.4rem; } }
