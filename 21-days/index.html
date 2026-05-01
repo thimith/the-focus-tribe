@@ -376,9 +376,10 @@
       border: 2.5px solid var(--blue); border-radius: 12px; overflow: hidden;
     }
     .step-card {
-      padding: 24px 28px; border-right: none; border-bottom: none;
+      padding: 24px 28px; border-right: none; border-bottom: 1px solid var(--border);
       transition: background 0.2s ease;
     }
+    .step-card:last-child { border-bottom: none; }
     .step-card:hover { background: #fafafa; }
     .step-num {
       font-family: 'Barlow', sans-serif; font-size: 1.9rem; font-weight: 900;
